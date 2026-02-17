@@ -90,11 +90,24 @@
   .hero {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
     padding: 8rem 3rem 4rem;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
+  }
+  .hero-content { flex: 1; }
+  .hero-photo {
+    flex-shrink: 0;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 15%;
+    border: 3px solid var(--gold);
+    box-shadow: 0 0 40px rgba(201, 169, 110, 0.15);
   }
   .hero-label {
     font-size: 0.75rem;
@@ -185,11 +198,27 @@
 
   /* ── ABOUT ── */
   #about { background: var(--bg-secondary); }
+  .about-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+  }
+  .about-photo {
+    flex-shrink: 0;
+    width: 220px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+  }
+  .about-text-wrap { flex: 1; }
   .about-text {
     font-size: 1.05rem;
     color: var(--text-secondary);
     max-width: 680px;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
   }
   .credentials {
     display: grid;
@@ -300,6 +329,16 @@
   #contact { text-align: center; }
   #contact .section-label { justify-content: center; }
   #contact .section-label::before { display: none; }
+  .contact-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid var(--gold);
+    margin: 0 auto 2rem;
+    display: block;
+  }
   .contact-text {
     font-size: 1.05rem;
     color: var(--text-secondary);
@@ -352,8 +391,13 @@
     nav { padding: 1rem 1.5rem; }
     nav .nav-links { gap: 1.5rem; }
     nav .nav-links a { font-size: 0.72rem; }
-    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero { padding: 7rem 1.5rem 3rem; flex-direction: column-reverse; text-align: center; gap: 2rem; }
+    .hero-photo { width: 200px; height: 200px; }
+    .hero-label { justify-content: center; }
+    .hero-label::before { display: none; }
     section { padding: 5rem 1.5rem; }
+    .about-layout { flex-direction: column; align-items: center; }
+    .about-photo { width: 180px; height: 240px; }
     .service-item { grid-template-columns: auto 1fr; gap: 1rem; }
     .service-arrow { display: none; }
     .contact-links { flex-direction: column; align-items: center; }
@@ -379,20 +423,23 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-label">Copenhagen, Denmark</div>
-  <h1>
-    Turning AI governance from compliance checkbox into
-    <span class="accent">competitive advantage.</span>
-  </h1>
-  <p class="tagline">
-    Senior Program & Transition Manager with deep expertise in AI governance,
-    regulatory compliance, and digital transformation across pharma, public sector,
-    and critical infrastructure.
-  </p>
-  <a href="#contact" class="hero-cta">
-    Get in touch
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </a>
+  <div class="hero-content">
+    <div class="hero-label">Copenhagen, Denmark</div>
+    <h1>
+      Turning AI governance from compliance checkbox into
+      <span class="accent">competitive advantage.</span>
+    </h1>
+    <p class="tagline">
+      Senior Program & Transition Manager with deep expertise in AI governance,
+      regulatory compliance, and digital transformation across pharma, public sector,
+      and critical infrastructure.
+    </p>
+    <a href="#contact" class="hero-cta">
+      Get in touch
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <img src="img/photo-hero.jpg" alt="Steven Seidenfaden Wensley" class="hero-photo">
 </section>
 
 <!-- ABOUT -->
@@ -400,16 +447,21 @@
   <div class="section-inner">
     <div class="section-label">About</div>
     <h2 class="section-title">The bridge between regulation<br>and real-world execution.</h2>
-    <p class="about-text">
-      Your AI governance deadline is August 2026. Your compliance framework wasn't built for it.
-      I fix that. With experience spanning pharma GxP environments, public sector digitalization,
-      and IT infrastructure transitions, I bring an operator's perspective to governance —
-      not a consultant's slide deck.
-    </p>
-    <p class="about-text">
-      Advisory Board member at a Swiss AI startup. Challenging conventional thinking on
-      AI regulation, compliance, and the uncomfortable gap between policy and practice.
-    </p>
+    <div class="about-layout">
+      <img src="img/photo-about.jpg" alt="Steven Seidenfaden Wensley - professional portrait" class="about-photo">
+      <div class="about-text-wrap">
+        <p class="about-text">
+          Your AI governance deadline is August 2026. Your compliance framework wasn't built for it.
+          I fix that. With experience spanning pharma GxP environments, public sector digitalization,
+          and IT infrastructure transitions, I bring an operator's perspective to governance —
+          not a consultant's slide deck.
+        </p>
+        <p class="about-text">
+          Advisory Board member at a Swiss AI startup. Challenging conventional thinking on
+          AI regulation, compliance, and the uncomfortable gap between policy and practice.
+        </p>
+      </div>
+    </div>
     <div class="credentials">
       <div class="credential">
         <div class="credential-value">15+</div>
@@ -516,6 +568,7 @@
   <div class="section-inner">
     <div class="section-label">Contact</div>
     <div class="gold-line"></div>
+    <img src="img/photo-contact.jpg" alt="Steven Seidenfaden Wensley" class="contact-photo">
     <h2 class="section-title">Let's talk.</h2>
     <p class="contact-text">
       Whether you need a governance framework, a compliance roadmap, or an experienced
