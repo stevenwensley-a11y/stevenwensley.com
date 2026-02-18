@@ -7,14 +7,12 @@
   <meta name="description" content="Gratis AI governance readiness assessment. 30 spÃ¸rgsmÃ¥l, 6 dimensioner, 5 minutter. Er din organisation klar til EU AI Act?">
   <meta property="og:title" content="AI Governance Readiness Assessment">
   <meta property="og:description" content="Find ud af hvor klar din organisation er til EU AI Act. Gratis, 5-minutters self-assessment.">
-  <meta property="og:type" content="website">h
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://stevenwensley.com/ai-governance-assessment.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/recharts@2.10.4/umd/Recharts.js"></script>
-    <script>window.Recharts = window._Recharts || window.Recharts;</script>
   <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,7 +31,6 @@
   <div id="root"></div>
   <script type="text/babel">
     const { useState, useMemo } = React;
-    const { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } = Recharts;
 
     const DIMENSIONS = [
       {
@@ -197,6 +194,7 @@
           return { id: d.id, name: t(d.name, d.nameEN), score, maxScore, pct, icon: d.icon };
         });
       }, [answers, lang]);
+
       const totalScore = useMemo(() => {
         const total = scores.reduce((a, s) => a + s.pct, 0);
         return Math.round(total / scores.length);
@@ -236,18 +234,52 @@
                   {t(maturityLevel.desc, maturityLevel.descEN)}
                 </p>
               </div>
+
               <div style={{ background: "#161620", borderRadius: 16, padding: 32, marginBottom: 32 }}>
                 <h2 style={{ fontSize: 18, fontWeight: 600, color: "#C9A96E", marginBottom: 24, textAlign: "center" }}>
                   {t("Governance-profil", "Governance Profile")}
                 </h2>
-                <ResponsiveContainer width="100%" height={350}>
-                  <RadarChart data={radarData}>
-                    <PolarGrid stroke="#2A2A3A" />
-                    <PolarAngleAxis dataKey="subject" tick={{ fill: "#9CA3AF", fontSize: 11 }} />
-                    <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fill: "#666" }} />
-                    <Radar name="Score" dataKey="score" stroke="#C9A96E" fill="#C9A96E" fillOpacity={0.25} strokeWidth={2} />
-                  </RadarChart>
-                </ResponsiveContainer>
+                {(() => {
+                  const cx = 175, cy = 175, maxR = 130;
+                  const n = radarData.length;
+                  const angleStep = (2 * Math.PI) / n;
+                  const startAngle = -Math.PI / 2;
+                  const getXY = (i, r) => ({
+                    x: cx + r * Math.cos(startAngle + i * angleStep),
+                    y: cy + r * Math.sin(startAngle + i * angleStep),
+                  });
+                  const gridLevels = [0.25, 0.5, 0.75, 1.0];
+                  const dataPoints = radarData.map((d, i) => getXY(i, (d.score / 100) * maxR));
+                  const polygon = dataPoints.map((p) => `${p.x},${p.y}`).join(" ");
+                  const labelOffset = 18;
+                  return (
+                    <svg viewBox="0 0 350 350" style={{ width: "100%", maxWidth: 400, margin: "0 auto", display: "block" }}>
+                      {gridLevels.map((lvl) => (
+                        <polygon key={lvl}
+                          points={Array.from({ length: n }, (_, i) => { const p = getXY(i, maxR * lvl); return `${p.x},${p.y}`; }).join(" ")}
+                          fill="none" stroke="#2A2A3A" strokeWidth={1} />
+                      ))}
+                      {Array.from({ length: n }, (_, i) => {
+                        const p = getXY(i, maxR);
+                        return <line key={i} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="#2A2A3A" strokeWidth={1} />;
+                      })}
+                      <polygon points={polygon} fill="#C9A96E" fillOpacity={0.25} stroke="#C9A96E" strokeWidth={2} />
+                      {dataPoints.map((p, i) => (
+                        <circle key={i} cx={p.x} cy={p.y} r={4} fill="#C9A96E" />
+                      ))}
+                      {radarData.map((d, i) => {
+                        const p = getXY(i, maxR + labelOffset);
+                        const anchor = p.x < cx - 10 ? "end" : p.x > cx + 10 ? "start" : "middle";
+                        return (
+                          <text key={i} x={p.x} y={p.y} textAnchor={anchor} dominantBaseline="central"
+                            fill="#9CA3AF" fontSize={11} fontFamily="Inter, sans-serif">
+                            {d.subject}
+                          </text>
+                        );
+                      })}
+                    </svg>
+                  );
+                })()}
               </div>
 
               <div style={{ marginBottom: 32 }}>
@@ -290,6 +322,7 @@
                   Senior Program & Transition Manager | AI Governance | EU AI Act
                 </p>
               </div>
+
               <div style={{ textAlign: "center", marginTop: 32 }}>
                 <button onClick={() => { setShowResults(false); setAnswers({}); setCurrentDim(0); }}
                   style={{ background: "transparent", border: "1px solid #333", color: "#9CA3AF", padding: "10px 24px", borderRadius: 8, cursor: "pointer", fontSize: 14 }}>
@@ -362,6 +395,7 @@
                 {lang === "da" ? "\u{1F1EC}\u{1F1E7} EN" : "\u{1F1E9}\u{1F1F0} DA"}
               </button>
             </div>
+
             <div style={{ height: 4, background: "#1A1A2A", borderRadius: 2, marginBottom: 8, overflow: "hidden" }}>
               <div style={{ height: "100%", width: `${progress}%`, background: "#C9A96E", borderRadius: 2, transition: "width 0.3s ease" }} />
             </div>
@@ -420,6 +454,7 @@
                 );
               })}
             </div>
+
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 24 }}>
               <button onClick={() => setCurrentDim(Math.max(0, currentDim - 1))} disabled={currentDim === 0}
                 style={{ background: "#161620", border: "1px solid #2A2A3A", color: currentDim === 0 ? "#333" : "#9CA3AF", padding: "10px 24px", borderRadius: 8, cursor: currentDim === 0 ? "default" : "pointer", fontSize: 14 }}>
