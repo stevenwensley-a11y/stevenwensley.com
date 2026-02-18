@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Book a free full-day AI Governance Strategy Session with Steven Wensley. Assessment review, compliance roadmap, and 90-day action plan. Value: DKK 35,000.">
+    <meta name="description" content="Book a free full-day AI Governance Strategy Session with Steven Wensley. Choose between Scale-up or Public Sector track. Value: DKK 35,000.">
     <meta property="og:title" content="Free AI Governance Strategy Day — Steven Wensley">
-    <meta property="og:description" content="Full-day strategy session: governance assessment review, EU AI Act compliance roadmap, and concrete 90-day action plan. For CTO/CIOs in mid-sized organisations.">
+    <meta property="og:description" content="Full-day strategy session tailored to your sector: Tech/SaaS Scale-ups or Public Sector. EU AI Act compliance, governance framework, and 90-day action plan.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://stevenwensley.com/book-session.html">
     <meta name="theme-color" content="#0a0a0f">
     <meta property="og:image" content="https://stevenwensley.com/og-image.png">
     <link rel="canonical" href="https://stevenwensley.com/book-session.html">
-    <link rel="alternate" hreflang="en" href="https://stevenwensley.com/book-session.html">
-    <link rel="alternate" hreflang="x-default" href="https://stevenwensley.com/book-session.html">
 
     <title>Free AI Governance Strategy Day | Steven Wensley</title>
 
@@ -22,7 +20,6 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
             --bg-dark: #0a0a0f;
             --bg-darker: #0C0C12;
@@ -34,11 +31,12 @@
             --text-muted: #9a9aaa;
             --success: #10b981;
             --border: #2a2a3e;
-            --shadow: rgba(0, 0, 0, 0.3);
+            --scaleup: #6366f1;
+            --scaleup-dim: rgba(99, 102, 241, 0.15);
+            --public: #0ea5e9;
+            --public-dim: rgba(14, 165, 233, 0.15);
         }
-
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
@@ -47,9 +45,7 @@
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Header */
         header {
@@ -79,7 +75,6 @@
             transition: all 0.3s ease;
         }
         .back-link:hover { gap: 1rem; color: var(--text-light); }
-
         .lang-toggle {
             background: var(--gold-dim);
             border: 1px solid var(--gold);
@@ -93,7 +88,6 @@
             font-family: 'Inter', sans-serif;
         }
         .lang-toggle:hover { background: rgba(201, 169, 110, 0.25); color: var(--text-light); }
-
         .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
 
         /* Hero */
@@ -129,11 +123,7 @@
             gap: 1rem;
             margin-bottom: 2rem;
         }
-        .value-original {
-            font-size: 1rem;
-            color: var(--text-muted);
-            text-decoration: line-through;
-        }
+        .value-original { font-size: 1rem; color: var(--text-muted); text-decoration: line-through; }
         .value-free {
             background: rgba(16, 185, 129, 0.1);
             border: 1px solid var(--success);
@@ -146,13 +136,11 @@
         .hero-subtitle {
             font-size: 1.1rem;
             color: var(--text-light);
-            max-width: 680px;
+            max-width: 720px;
             margin: 0 auto;
             opacity: 0.9;
         }
-        .hero-cta {
-            margin-top: 2.5rem;
-        }
+        .hero-cta { margin-top: 2.5rem; }
         .btn-primary {
             display: inline-block;
             background: var(--gold);
@@ -171,11 +159,66 @@
             box-shadow: 0 10px 30px rgba(201, 169, 110, 0.2);
         }
 
-        /* Who section */
-        .who-section {
-            padding: 4rem 1rem;
-            animation: fadeIn 0.8s ease-out 0.4s both;
+        /* Segment Selector */
+        .segment-selector {
+            padding: 3rem 1rem 1rem;
+            animation: fadeIn 0.8s ease-out 0.3s both;
         }
+        .segment-tabs {
+            display: flex;
+            gap: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .segment-tab {
+            flex: 1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid var(--border);
+            background: rgba(42, 42, 62, 0.2);
+        }
+        .segment-tab:hover { border-color: rgba(201, 169, 110, 0.4); }
+        .segment-tab.active-scaleup {
+            border-color: var(--scaleup);
+            background: var(--scaleup-dim);
+        }
+        .segment-tab.active-public {
+            border-color: var(--public);
+            background: var(--public-dim);
+        }
+        .segment-tab .tab-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .segment-tab .tab-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+        .segment-tab .tab-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .segment-tab.active-scaleup .tab-title { color: var(--scaleup); }
+        .segment-tab.active-public .tab-title { color: var(--public); }
+
+        /* Segment content */
+        .segment-content { display: none; }
+        .segment-content.active { display: block; }
+
+        /* Accent color overrides per segment */
+        .segment-scaleup .who-card:hover { border-color: var(--scaleup); }
+        .segment-scaleup .who-card h3 { color: var(--scaleup); }
+        .segment-scaleup .agenda-time { border-color: var(--scaleup); }
+        .segment-scaleup .agenda-time span { color: var(--scaleup); }
+        .segment-public .who-card:hover { border-color: var(--public); }
+        .segment-public .who-card h3 { color: var(--public); }
+        .segment-public .agenda-time { border-color: var(--public); }
+        .segment-public .agenda-time span { color: var(--public); }
+
+        /* Sections */
+        .who-section, .agenda-section, .deliverables-section { padding: 3rem 1rem; }
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
@@ -186,7 +229,7 @@
         .section-subtitle {
             color: var(--text-muted);
             font-size: 1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             max-width: 600px;
         }
         .who-grid {
@@ -201,30 +244,12 @@
             border-radius: 8px;
             transition: all 0.3s ease;
         }
-        .who-card:hover {
-            border-color: var(--gold);
-            background: rgba(42, 42, 62, 0.5);
-        }
-        .who-card h3 {
-            color: var(--gold);
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-        }
-        .who-card p {
-            color: var(--text-light);
-            opacity: 0.85;
-            font-size: 0.95rem;
-        }
+        .who-card:hover { background: rgba(42, 42, 62, 0.5); }
+        .who-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .who-card p { color: var(--text-light); opacity: 0.85; font-size: 0.95rem; }
 
-        /* Agenda */
-        .agenda-section {
-            padding: 4rem 1rem;
-            animation: fadeIn 0.8s ease-out 0.6s both;
-        }
-        .agenda-timeline {
-            max-width: 800px;
-            position: relative;
-        }
+        /* Agenda timeline */
+        .agenda-timeline { max-width: 800px; position: relative; }
         .agenda-timeline::before {
             content: '';
             position: absolute;
@@ -234,12 +259,7 @@
             width: 2px;
             background: var(--border);
         }
-        .agenda-block {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
+        .agenda-block { display: flex; gap: 2rem; margin-bottom: 2rem; position: relative; }
         .agenda-time {
             flex-shrink: 0;
             width: 3rem;
@@ -252,70 +272,32 @@
             justify-content: center;
             z-index: 1;
         }
-        .agenda-time span {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--gold);
-            line-height: 1;
-        }
-        .agenda-content {
-            flex: 1;
-            padding-top: 0.3rem;
-        }
-        .agenda-content h4 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 0.4rem;
-        }
-        .agenda-content p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-        .agenda-break {
-            opacity: 0.5;
-        }
-        .agenda-break .agenda-time {
-            border-color: var(--border);
-        }
+        .agenda-time span { font-size: 0.65rem; font-weight: 700; color: var(--gold); line-height: 1; }
+        .agenda-content { flex: 1; padding-top: 0.3rem; }
+        .agenda-content h4 { font-size: 1.05rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.4rem; }
+        .agenda-content p { font-size: 0.9rem; color: var(--text-muted); }
+        .agenda-break { opacity: 0.5; }
+        .agenda-break .agenda-time { border-color: var(--border); }
 
         /* Deliverables */
-        .deliverables-section {
-            padding: 4rem 1rem;
-            animation: fadeIn 0.8s ease-out 0.7s both;
-        }
         .deliverables-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
         }
         .deliverable {
             background: rgba(42, 42, 62, 0.3);
             border: 1px solid var(--border);
-            padding: 2rem;
+            padding: 1.8rem;
             border-radius: 8px;
             text-align: center;
         }
-        .deliverable-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .deliverable h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-        .deliverable p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
+        .deliverable-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .deliverable h3 { font-size: 1rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem; }
+        .deliverable p { font-size: 0.85rem; color: var(--text-muted); }
 
         /* Form */
-        .contact-section {
-            padding: 4rem 1rem;
-            animation: fadeIn 0.8s ease-out 0.8s both;
-        }
+        .contact-section { padding: 4rem 1rem; }
         .form-container {
             max-width: 700px;
             margin: 0 auto;
@@ -325,13 +307,7 @@
             border-radius: 8px;
         }
         .form-group { margin-bottom: 1.5rem; }
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-secondary); font-size: 0.9rem; }
         input, textarea, select {
             width: 100%;
             padding: 0.8rem;
@@ -380,20 +356,14 @@
         }
 
         /* Credibility */
-        .credibility {
-            padding: 3rem 1rem;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .credibility p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-        .credibility strong {
-            color: var(--text-secondary);
-        }
+        .credibility { padding: 3rem 1rem; text-align: center; max-width: 700px; margin: 0 auto; }
+        .credibility p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+        .credibility strong { color: var(--text-secondary); }
+
+        /* Form message */
+        .form-message { padding: 1rem; margin-bottom: 1.5rem; border-radius: 4px; text-align: center; display: none; }
+        .form-message.success { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--success); color: var(--success); display: block; }
+        .form-message.error { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; display: block; }
 
         /* Footer */
         footer {
@@ -417,7 +387,7 @@
         .footer-right a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
         .footer-right a:hover { color: var(--gold); }
 
-        /* Hidden language */
+        /* Language toggle */
         [data-lang="en"] { display: none; }
         body.lang-en [data-lang="da"] { display: none; }
         body.lang-en [data-lang="en"] { display: block; }
@@ -426,24 +396,13 @@
         span[data-lang="en"] { display: none; }
         span[data-lang="da"] { display: inline; }
 
-        /* Form message */
-        .form-message {
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 4px;
-            text-align: center;
-            display: none;
-        }
-        .form-message.success { background: rgba(16, 185, 129, 0.1); border: 1px solid var(--success); color: var(--success); display: block; }
-        .form-message.error { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; display: block; }
-
         /* Responsive */
         @media (max-width: 768px) {
             h1 { font-size: 1.9rem; }
             .hero { padding: 3rem 1rem 2rem; }
             .section-title { font-size: 1.5rem; }
             .form-container { padding: 1.5rem; }
-            .agenda-block { gap: 1.2rem; }
+            .segment-tabs { flex-direction: column; }
             .value-badge { flex-direction: column; gap: 0.5rem; }
         }
         @media (max-width: 480px) {
@@ -489,176 +448,343 @@
                 </span>
             </div>
             <p class="hero-subtitle">
-                <span data-lang="da">En hel dag dedikeret til din organisation. Vi gennemg&aring;r jeres AI-modenhed, bygger en compliance-roadmap og laver en konkret 90-dages handlingsplan. Du g&aring;r hjem med dokumenter, ikke PowerPoints.</span>
-                <span data-lang="en">A full day dedicated to your organisation. We review your AI maturity, build a compliance roadmap, and create a concrete 90-day action plan. You leave with documents, not PowerPoints.</span>
+                <span data-lang="da">En hel dag dedikeret til din organisation. Vi tilpasser sessionen til jeres sektor &mdash; v&aelig;lg mellem Tech/SaaS Scale-up eller Offentlig Sektor nedenfor.</span>
+                <span data-lang="en">A full day dedicated to your organisation. We tailor the session to your sector &mdash; choose between Tech/SaaS Scale-up or Public Sector below.</span>
             </p>
             <div class="hero-cta">
-                <a href="#book" class="btn-primary">
-                    <span data-lang="da">Book din session &#8594;</span>
-                    <span data-lang="en">Book your session &#8594;</span>
+                <a href="#segment-select" class="btn-primary">
+                    <span data-lang="da">V&aelig;lg din session &#8595;</span>
+                    <span data-lang="en">Choose your session &#8595;</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Who is it for -->
-    <section class="who-section">
+    <!-- Segment Selector -->
+    <section class="segment-selector" id="segment-select">
         <div class="container">
-            <h2 class="section-title">
-                <span data-lang="da">Er det relevant for dig?</span>
-                <span data-lang="en">Is this relevant for you?</span>
-            </h2>
-            <p class="section-subtitle">
-                <span data-lang="da">Sessionen er designet til beslutningstagere i mellemstore organisationer (200-2.000 ansatte) der st&aring;r over for AI governance-udfordringer.</span>
-                <span data-lang="en">The session is designed for decision-makers in mid-sized organisations (200-2,000 employees) facing AI governance challenges.</span>
-            </p>
-            <div class="who-grid">
-                <div class="who-card">
-                    <h3>
-                        <span data-lang="da">CTO / CIO / IT-direkt&oslash;r</span>
-                        <span data-lang="en">CTO / CIO / IT Director</span>
-                    </h3>
-                    <p>
-                        <span data-lang="da">Du ved, at AI-regulering kommer, men mangler en konkret plan for at g&aring; fra ambition til implementation.</span>
-                        <span data-lang="en">You know AI regulation is coming but lack a concrete plan to go from ambition to implementation.</span>
-                    </p>
-                </div>
-                <div class="who-card">
-                    <h3>
-                        <span data-lang="da">Compliance / Risk Manager</span>
-                        <span data-lang="en">Compliance / Risk Manager</span>
-                    </h3>
-                    <p>
-                        <span data-lang="da">EU AI Act, NIS2 eller branchespecifik regulering er p&aring; dagsordenen &mdash; men ejerskab og ansvar er uklart.</span>
-                        <span data-lang="en">EU AI Act, NIS2 or sector-specific regulation is on the agenda &mdash; but ownership and accountability are unclear.</span>
-                    </p>
-                </div>
-                <div class="who-card">
-                    <h3>
-                        <span data-lang="da">CEO / COO i v&aelig;kstvirksomhed</span>
-                        <span data-lang="en">CEO / COO in growth company</span>
-                    </h3>
-                    <p>
-                        <span data-lang="da">I bruger AI aktivt, men har ikke et governance-framework der f&oslash;lger med. Det g&aring;r stærkt &mdash; og risikoen vokser.</span>
-                        <span data-lang="en">You&rsquo;re actively using AI but lack a governance framework that keeps pace. Growth is fast &mdash; and so is the risk.</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Agenda -->
-    <section class="agenda-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span data-lang="da">Hvad sker der p&aring; dagen?</span>
-                <span data-lang="en">What happens on the day?</span>
-            </h2>
-            <p class="section-subtitle">
-                <span data-lang="da">En struktureret dag med fokus p&aring; jeres konkrete situation. Ikke teori &mdash; handling.</span>
-                <span data-lang="en">A structured day focused on your specific situation. Not theory &mdash; action.</span>
-            </p>
-            <div class="agenda-timeline">
-                <div class="agenda-block">
-                    <div class="agenda-time"><span>09:00</span></div>
-                    <div class="agenda-content">
-                        <h4><span data-lang="da">Assessment-gennemgang</span><span data-lang="en">Assessment review</span></h4>
-                        <p><span data-lang="da">Vi dykker ned i jeres governance-score. Hvor er I st&aelig;rke, hvor er hullerne, og hvad betyder det for jeres risikoprofil?</span><span data-lang="en">We dive into your governance score. Where are you strong, where are the gaps, and what does it mean for your risk profile?</span></p>
+            <div class="segment-tabs">
+                <div class="segment-tab active-scaleup" id="tab-scaleup" onclick="switchSegment('scaleup')">
+                    <div class="tab-icon">&#128640;</div>
+                    <div class="tab-title">
+                        <span data-lang="da">Tech / SaaS Scale-up</span>
+                        <span data-lang="en">Tech / SaaS Scale-up</span>
+                    </div>
+                    <div class="tab-desc">
+                        <span data-lang="da">200&ndash;1.000 ansatte &middot; CTO / CPO / CIO</span>
+                        <span data-lang="en">200&ndash;1,000 employees &middot; CTO / CPO / CIO</span>
                     </div>
                 </div>
-                <div class="agenda-block">
-                    <div class="agenda-time"><span>09:30</span></div>
-                    <div class="agenda-content">
-                        <h4><span data-lang="da">AI-landskab og brancherisici</span><span data-lang="en">AI landscape &amp; sector risks</span></h4>
-                        <p><span data-lang="da">Hvad bruger I AI til i dag? Hvad planlægger I? Vi kortlægger jeres AI-systemer og vurderer risiko ud fra jeres branche.</span><span data-lang="en">What are you using AI for today? What are you planning? We map your AI systems and assess risk based on your sector.</span></p>
+                <div class="segment-tab" id="tab-public" onclick="switchSegment('public')">
+                    <div class="tab-icon">&#127963;</div>
+                    <div class="tab-title">
+                        <span data-lang="da">Offentlig Sektor</span>
+                        <span data-lang="en">Public Sector</span>
                     </div>
-                </div>
-                <div class="agenda-block agenda-break">
-                    <div class="agenda-time"><span>10:30</span></div>
-                    <div class="agenda-content">
-                        <h4><span data-lang="da">Pause</span><span data-lang="en">Break</span></h4>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="agenda-block">
-                    <div class="agenda-time"><span>10:45</span></div>
-                    <div class="agenda-content">
-                        <h4><span data-lang="da">Governance-framework workshop</span><span data-lang="en">Governance framework workshop</span></h4>
-                        <p><span data-lang="da">Vi bygger jeres RACI-matrix for AI-beslutninger. Hvem ejer hvad? Hvem har veto? Hvem rapporterer til hvem?</span><span data-lang="en">We build your RACI matrix for AI decisions. Who owns what? Who has veto? Who reports to whom?</span></p>
-                    </div>
-                </div>
-                <div class="agenda-block agenda-break">
-                    <div class="agenda-time"><span>12:00</span></div>
-                    <div class="agenda-content">
-                        <h4><span data-lang="da">Frokost</span><span data-lang="en">Lunch</span></h4>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="agenda-block">
-                    <div class="agenda-time"><span>13:00</span></div>
-                    <div class="agenda-content">
-                        <h4><span data-lang="da">Compliance-roadmap</span><span data-lang="en">Compliance roadmap</span></h4>
-                        <p><span data-lang="da">EU AI Act, NIS2, og hvad det konkret kr&aelig;ver af jer. Vi prioriterer indsatsomr&aring;der og s&aelig;tter realistiske deadlines.</span><span data-lang="en">EU AI Act, NIS2, and what it concretely requires from you. We prioritise focus areas and set realistic deadlines.</span></p>
-                    </div>
-                </div>
-                <div class="agenda-block agenda-break">
-                    <div class="agenda-time"><span>14:30</span></div>
-                    <div class="agenda-content">
-                        <h4><span data-lang="da">Pause</span><span data-lang="en">Break</span></h4>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="agenda-block">
-                    <div class="agenda-time"><span>14:45</span></div>
-                    <div class="agenda-content">
-                        <h4><span data-lang="da">90-dages handlingsplan</span><span data-lang="en">90-day action plan</span></h4>
-                        <p><span data-lang="da">Vi bygger en konkret plan med milepæle, ansvarlige og m&aring;lbare resultater. Ingen PowerPoint &mdash; et dokument I kan handle p&aring; mandag morgen.</span><span data-lang="en">We build a concrete plan with milestones, owners, and measurable outcomes. No PowerPoint &mdash; a document you can act on Monday morning.</span></p>
-                    </div>
-                </div>
-                <div class="agenda-block">
-                    <div class="agenda-time"><span>16:00</span></div>
-                    <div class="agenda-content">
-                        <h4><span data-lang="da">Opsamling og n&aelig;ste skridt</span><span data-lang="en">Wrap-up &amp; next steps</span></h4>
-                        <p><span data-lang="da">Vi opsummerer, afstemmer prioriteter og aftaler eventuelt opf&oslash;lgning.</span><span data-lang="en">We summarise, align priorities, and agree on follow-up if needed.</span></p>
+                    <div class="tab-desc">
+                        <span data-lang="da">Kommuner &middot; Regioner &middot; Styrelser</span>
+                        <span data-lang="en">Municipalities &middot; Regions &middot; Agencies</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What you leave with -->
-    <section class="deliverables-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span data-lang="da">Hvad g&aring;r du hjem med?</span>
-                <span data-lang="en">What do you leave with?</span>
-            </h2>
-            <div class="deliverables-grid">
-                <div class="deliverable">
-                    <div class="deliverable-icon">&#128202;</div>
-                    <h3><span data-lang="da">Modenhedsrapport</span><span data-lang="en">Maturity report</span></h3>
-                    <p><span data-lang="da">PDF med jeres score p&aring; tv&aelig;rs af 6 dimensioner, benchmarked mod jeres branche.</span><span data-lang="en">PDF with your score across 6 dimensions, benchmarked against your sector.</span></p>
-                </div>
-                <div class="deliverable">
-                    <div class="deliverable-icon">&#128736;</div>
-                    <h3><span data-lang="da">RACI-matrix</span><span data-lang="en">RACI matrix</span></h3>
-                    <p><span data-lang="da">Udfyldt ejerskabsmatrix for AI-governance p&aring; tv&aelig;rs af jeres organisation.</span><span data-lang="en">Completed ownership matrix for AI governance across your organisation.</span></p>
-                </div>
-                <div class="deliverable">
-                    <div class="deliverable-icon">&#128197;</div>
-                    <h3><span data-lang="da">Compliance-roadmap</span><span data-lang="en">Compliance roadmap</span></h3>
-                    <p><span data-lang="da">Tidslinje med deadlines for EU AI Act, NIS2 og branchespecifikke krav.</span><span data-lang="en">Timeline with deadlines for EU AI Act, NIS2, and sector-specific requirements.</span></p>
-                </div>
-                <div class="deliverable">
-                    <div class="deliverable-icon">&#128640;</div>
-                    <h3><span data-lang="da">90-dages handlingsplan</span><span data-lang="en">90-day action plan</span></h3>
-                    <p><span data-lang="da">Konkret plan med milepæle, ansvarlige og m&aring;lbare resultater.</span><span data-lang="en">Concrete plan with milestones, owners, and measurable outcomes.</span></p>
+    <!-- ==================== SCALE-UP TRACK ==================== -->
+    <div class="segment-content segment-scaleup active" id="content-scaleup">
+
+        <!-- Who: Scale-ups -->
+        <section class="who-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span data-lang="da">Er det relevant for dig?</span>
+                    <span data-lang="en">Is this relevant for you?</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span data-lang="da">For tech- og SaaS-virksomheder i v&aelig;kst (200&ndash;1.000 ansatte) der vil g&oslash;re AI governance til et konkurrenceparameter.</span>
+                    <span data-lang="en">For growing tech and SaaS companies (200&ndash;1,000 employees) that want to turn AI governance into a competitive advantage.</span>
+                </p>
+                <div class="who-grid">
+                    <div class="who-card">
+                        <h3>
+                            <span data-lang="da">CTO / CPO</span>
+                            <span data-lang="en">CTO / CPO</span>
+                        </h3>
+                        <p>
+                            <span data-lang="da">AI-features ruller ud hurtigere end governance kan f&oslash;lge med. Du har brug for et lightweight framework der ikke dr&aelig;ber velocity.</span>
+                            <span data-lang="en">AI features ship faster than governance can keep up. You need a lightweight framework that doesn&rsquo;t kill velocity.</span>
+                        </p>
+                    </div>
+                    <div class="who-card">
+                        <h3>
+                            <span data-lang="da">CEO / COO i v&aelig;kstfase</span>
+                            <span data-lang="en">CEO / COO in growth phase</span>
+                        </h3>
+                        <p>
+                            <span data-lang="da">Enterprise-kunder sp&oslash;rger til jeres AI governance. Compliance er blevet et salgsargument &mdash; og en deal-breaker.</span>
+                            <span data-lang="en">Enterprise customers are asking about your AI governance. Compliance has become a sales argument &mdash; and a deal-breaker.</span>
+                        </p>
+                    </div>
+                    <div class="who-card">
+                        <h3>
+                            <span data-lang="da">Compliance / Legal</span>
+                            <span data-lang="en">Compliance / Legal</span>
+                        </h3>
+                        <p>
+                            <span data-lang="da">Er I provider eller deployer under EU AI Act? Klassificeringen afg&oslash;r jeres forpligtelser &mdash; og b&oslash;derisiko op til 7% af oms&aelig;tning.</span>
+                            <span data-lang="en">Are you a provider or deployer under the EU AI Act? The classification determines your obligations &mdash; and fines up to 7% of turnover.</span>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Booking form -->
+        <!-- Agenda: Scale-ups -->
+        <section class="agenda-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span data-lang="da">Hvad sker der p&aring; dagen?</span>
+                    <span data-lang="en">What happens on the day?</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span data-lang="da">Tilpasset tech/SaaS-virksomheder. Fra produkt-mapping til audit-readiness.</span>
+                    <span data-lang="en">Tailored for tech/SaaS companies. From product mapping to audit readiness.</span>
+                </p>
+                <div class="agenda-timeline">
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>09:00</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">AI-portef&oslash;lje-mapping</span><span data-lang="en">AI portfolio mapping</span></h4>
+                            <p><span data-lang="da">Hvilke AI-features har I i produktion og pipeline? Vi kortl&aelig;gger jeres rolle (provider vs. deployer) for hvert system.</span><span data-lang="en">Which AI features do you have in production and pipeline? We map your role (provider vs. deployer) for each system.</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>10:15</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Risikoklassificering workshop</span><span data-lang="en">Risk classification workshop</span></h4>
+                            <p><span data-lang="da">Fra &ldquo;minimal risk&rdquo; til &ldquo;high risk&rdquo; &mdash; med jeres konkrete produkter som cases. Hvad kr&aelig;ver dokumentation, og hvad er friholdt?</span><span data-lang="en">From &ldquo;minimal risk&rdquo; to &ldquo;high risk&rdquo; &mdash; using your actual products as cases. What requires documentation, and what&rsquo;s exempt?</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>11:30</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Governance-framework der skalerer</span><span data-lang="en">Governance framework that scales</span></h4>
+                            <p><span data-lang="da">Lightweight policies og processer der passer ind i agile workflows. RACI-matrix for AI-beslutninger uden bureaukrati.</span><span data-lang="en">Lightweight policies and processes that fit agile workflows. RACI matrix for AI decisions without bureaucracy.</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block agenda-break">
+                        <div class="agenda-time"><span>12:30</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Frokost</span><span data-lang="en">Lunch</span></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>13:30</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">ISO 42001 alignment</span><span data-lang="en">ISO 42001 alignment</span></h4>
+                            <p><span data-lang="da">Compliance som salgsargument. Vi mapper jeres nuv&aelig;rende setup mod ISO 42001 og identificerer gaps. Giver jer et &ldquo;trust badge&rdquo; over for enterprise-kunder.</span><span data-lang="en">Compliance as a sales argument. We map your current setup against ISO 42001 and identify gaps. Gives you a &ldquo;trust badge&rdquo; for enterprise customers.</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>14:45</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Implementeringsplan: 0 &#8594; audit-ready</span><span data-lang="en">Implementation plan: 0 &#8594; audit-ready</span></h4>
+                            <p><span data-lang="da">Roller, processer, dokumentation. Konkret roadmap med milepæle og ansvarlige &mdash; klar til at eksekvere mandag morgen.</span><span data-lang="en">Roles, processes, documentation. Concrete roadmap with milestones and owners &mdash; ready to execute Monday morning.</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>15:45</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Roadmap og n&aelig;ste skridt</span><span data-lang="en">Roadmap &amp; next steps</span></h4>
+                            <p><span data-lang="da">Vi opsummerer, prioriterer og aftaler 90-dages milep&aelig;le. Eventuelt opf&oslash;lgning og partnerskaber.</span><span data-lang="en">We summarise, prioritise, and agree on 90-day milestones. Optional follow-up and partnerships.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables: Scale-ups -->
+        <section class="deliverables-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span data-lang="da">Hvad g&aring;r du hjem med?</span>
+                    <span data-lang="en">What do you leave with?</span>
+                </h2>
+                <div class="deliverables-grid">
+                    <div class="deliverable">
+                        <div class="deliverable-icon">&#128202;</div>
+                        <h3><span data-lang="da">AI Risk Register</span><span data-lang="en">AI Risk Register</span></h3>
+                        <p><span data-lang="da">Komplet oversigt over jeres AI-systemer med risikoklassificering (provider/deployer, risk level).</span><span data-lang="en">Complete overview of your AI systems with risk classification (provider/deployer, risk level).</span></p>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-icon">&#128736;</div>
+                        <h3><span data-lang="da">Governance Policy</span><span data-lang="en">Governance Policy</span></h3>
+                        <p><span data-lang="da">Lean governance-politik tilpasset agile teams. RACI-matrix og beslutningsflow.</span><span data-lang="en">Lean governance policy for agile teams. RACI matrix and decision flow.</span></p>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-icon">&#127942;</div>
+                        <h3><span data-lang="da">Customer Trust Kit</span><span data-lang="en">Customer Trust Kit</span></h3>
+                        <p><span data-lang="da">Dokumentation I kan dele med enterprise-kunder: AI governance statement, risk assessment, ISO 42001 gap-analyse.</span><span data-lang="en">Documentation you can share with enterprise customers: AI governance statement, risk assessment, ISO 42001 gap analysis.</span></p>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-icon">&#128197;</div>
+                        <h3><span data-lang="da">90-dages roadmap</span><span data-lang="en">90-day roadmap</span></h3>
+                        <p><span data-lang="da">Konkret plan med milepæle, ansvarlige og m&aring;lbare resultater. Fra 0 til audit-ready.</span><span data-lang="en">Concrete plan with milestones, owners, and measurable outcomes. From zero to audit-ready.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PUBLIC SECTOR TRACK ==================== -->
+    <div class="segment-content segment-public" id="content-public">
+
+        <!-- Who: Public sector -->
+        <section class="who-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span data-lang="da">Er det relevant for dig?</span>
+                    <span data-lang="en">Is this relevant for you?</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span data-lang="da">For kommuner, regioner og styrelser der vil sikre ansvarlig AI-anvendelse og overholde AI-forordningen inden august 2026.</span>
+                    <span data-lang="en">For municipalities, regions, and agencies ensuring responsible AI use and EU AI Act compliance before August 2026.</span>
+                </p>
+                <div class="who-grid">
+                    <div class="who-card">
+                        <h3>
+                            <span data-lang="da">Digitaliseringschef / IT-chef</span>
+                            <span data-lang="en">Head of Digitalisation / IT Director</span>
+                        </h3>
+                        <p>
+                            <span data-lang="da">AI-projekter k&oslash;rer p&aring; tv&aelig;rs af forvaltninger &mdash; men hvem ejer governance? Du har brug for en tv&aelig;rg&aring;ende struktur.</span>
+                            <span data-lang="en">AI projects run across departments &mdash; but who owns governance? You need a cross-functional structure.</span>
+                        </p>
+                    </div>
+                    <div class="who-card">
+                        <h3>
+                            <span data-lang="da">Juridisk chef / DPO</span>
+                            <span data-lang="en">Legal Director / DPO</span>
+                        </h3>
+                        <p>
+                            <span data-lang="da">AI-forordningen kommer oven i GDPR. Hvad er &ldquo;high-risk&rdquo; i en kommunal kontekst? Hvorn&aring;r kr&aelig;ver det konsekvensanalyse?</span>
+                            <span data-lang="en">The AI Act comes on top of GDPR. What&rsquo;s &ldquo;high-risk&rdquo; in a municipal context? When does it require impact assessment?</span>
+                        </p>
+                    </div>
+                    <div class="who-card">
+                        <h3>
+                            <span data-lang="da">Kommunaldirekt&oslash;r / Direktionsmedlem</span>
+                            <span data-lang="en">Municipal Director / Executive Board</span>
+                        </h3>
+                        <p>
+                            <span data-lang="da">Borgerne forventer transparens om AI. I har brug for en governance-ramme der b&aring;de sikrer innovation og tillid.</span>
+                            <span data-lang="en">Citizens expect AI transparency. You need a governance framework that enables both innovation and trust.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agenda: Public sector -->
+        <section class="agenda-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span data-lang="da">Hvad sker der p&aring; dagen?</span>
+                    <span data-lang="en">What happens on the day?</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span data-lang="da">Tilpasset offentlig sektor. Fra AI-kortl&aelig;gning til borger-transparens.</span>
+                    <span data-lang="en">Tailored for the public sector. From AI mapping to citizen transparency.</span>
+                </p>
+                <div class="agenda-timeline">
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>09:00</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Kortl&aelig;gning af AI-anvendelser</span><span data-lang="en">Mapping AI applications</span></h4>
+                            <p><span data-lang="da">Hvilke AI-systemer bruger I i dag? Automatiseret sagsbehandling, chatbots, prædiktive modeller? Vi kortlægger dataflows og systemejerskab.</span><span data-lang="en">Which AI systems are you using today? Automated case processing, chatbots, predictive models? We map data flows and system ownership.</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>10:15</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">AI-forordningen i kommunal kontekst</span><span data-lang="en">The AI Act in municipal context</span></h4>
+                            <p><span data-lang="da">Hvad betyder &ldquo;high-risk&rdquo; for borger-services? Vi gennemg&aring;r KL&rsquo;s vejledning og Digitaliseringsstyrelsens retningslinjer med jeres konkrete cases.</span><span data-lang="en">What does &ldquo;high-risk&rdquo; mean for citizen services? We review guidelines from KL and the Digital Agency using your actual cases.</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>11:30</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Risikovurdering workshop</span><span data-lang="en">Risk assessment workshop</span></h4>
+                            <p><span data-lang="da">Hands-on risikovurdering med KL&rsquo;s framework. Prioritering af systemer og identifikation af gaps mod AI-forordningens krav.</span><span data-lang="en">Hands-on risk assessment using the KL framework. Prioritising systems and identifying gaps against AI Act requirements.</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block agenda-break">
+                        <div class="agenda-time"><span>12:30</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Frokost</span><span data-lang="en">Lunch</span></h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>13:30</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Governance-struktur p&aring; tv&aelig;rs af forvaltninger</span><span data-lang="en">Cross-department governance structure</span></h4>
+                            <p><span data-lang="da">Roller, ansvar og beslutningskompetence. Hvem ejer AI-governance? Hvordan rapporteres der til direktion og politisk niveau?</span><span data-lang="en">Roles, responsibilities, and decision authority. Who owns AI governance? How do you report to executive and political levels?</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>14:45</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Borger-transparens og AI-register</span><span data-lang="en">Citizen transparency &amp; AI register</span></h4>
+                            <p><span data-lang="da">Praktisk implementering af et offentligt AI-register. Hvad skal dokumenteres, og hvordan kommunikerer I om AI til borgerne?</span><span data-lang="en">Practical implementation of a public AI register. What needs documenting, and how do you communicate about AI to citizens?</span></p>
+                        </div>
+                    </div>
+                    <div class="agenda-block">
+                        <div class="agenda-time"><span>15:45</span></div>
+                        <div class="agenda-content">
+                            <h4><span data-lang="da">Handlingsplan mod august 2026</span><span data-lang="en">Action plan towards August 2026</span></h4>
+                            <p><span data-lang="da">Prioriteret roadmap med milep&aelig;le, ansvarlige og deadlines. Alignment med KL og Digitaliseringsstyrelsens tidsplan.</span><span data-lang="en">Prioritised roadmap with milestones, owners, and deadlines. Aligned with the KL and Digital Agency timeline.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables: Public sector -->
+        <section class="deliverables-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span data-lang="da">Hvad g&aring;r du hjem med?</span>
+                    <span data-lang="en">What do you leave with?</span>
+                </h2>
+                <div class="deliverables-grid">
+                    <div class="deliverable">
+                        <div class="deliverable-icon">&#128202;</div>
+                        <h3><span data-lang="da">AI-risikovurdering</span><span data-lang="en">AI risk assessment</span></h3>
+                        <p><span data-lang="da">Komplet risikovurdering af jeres AI-systemer baseret p&aring; KL&rsquo;s framework og AI-forordningens krav.</span><span data-lang="en">Complete risk assessment of your AI systems based on the KL framework and AI Act requirements.</span></p>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-icon">&#127963;</div>
+                        <h3><span data-lang="da">Governance-politik</span><span data-lang="en">Governance policy</span></h3>
+                        <p><span data-lang="da">Intern governance-politik tilpasset kommunal organisering. Roller, ansvar og eskaleringsflow.</span><span data-lang="en">Internal governance policy adapted to municipal organisation. Roles, responsibilities, and escalation flows.</span></p>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-icon">&#128101;</div>
+                        <h3><span data-lang="da">AI-register (borger)</span><span data-lang="en">AI register (citizen)</span></h3>
+                        <p><span data-lang="da">Skabelon til offentligt AI-register der sikrer transparens og borgertillid.</span><span data-lang="en">Template for a public AI register ensuring transparency and citizen trust.</span></p>
+                    </div>
+                    <div class="deliverable">
+                        <div class="deliverable-icon">&#128197;</div>
+                        <h3><span data-lang="da">Handlingsplan 2026</span><span data-lang="en">Action plan 2026</span></h3>
+                        <p><span data-lang="da">Prioriteret roadmap med milep&aelig;le og ansvarlige. Alignment med nationale deadlines og KL-vejledning.</span><span data-lang="en">Prioritised roadmap with milestones and owners. Aligned with national deadlines and KL guidance.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== SHARED: Booking Form ==================== -->
     <section class="contact-section" id="book">
         <div class="container">
             <div class="form-container">
@@ -673,7 +799,7 @@
 
                 <form id="bookingForm" action="https://formspree.io/f/xpqjldbp" method="POST">
                     <input type="hidden" name="_subject" value="Strategy Day Booking Request">
-                    <input type="hidden" name="session_type" value="1-day-strategy-session">
+                    <input type="hidden" name="session_type" id="session_type" value="scaleup-strategy-session">
                     <div class="form-message" id="formMessage"></div>
 
                     <div class="form-group">
@@ -682,7 +808,7 @@
                     </div>
                     <div class="form-group">
                         <label for="title"><span data-lang="da">Titel / Rolle</span><span data-lang="en">Title / Role</span> <span class="required">*</span></label>
-                        <input type="text" id="title" name="title" required placeholder="">
+                        <input type="text" id="title" name="title" required>
                     </div>
                     <div class="form-group">
                         <label for="email"><span data-lang="da">Arbejdsmail</span><span data-lang="en">Work email</span> <span class="required">*</span></label>
@@ -695,36 +821,38 @@
                     <div class="form-group">
                         <label for="org_size"><span data-lang="da">Antal ansatte</span><span data-lang="en">Number of employees</span> <span class="required">*</span></label>
                         <select id="org_size" name="org_size" required>
-                            <option value=""><span data-lang="da">V&aelig;lg</span><span data-lang="en">Select</span></option>
-                            <option value="50-200">50-200</option>
-                            <option value="200-500">200-500</option>
-                            <option value="500-2000">500-2.000</option>
+                            <option value="">V&aelig;lg / Select</option>
+                            <option value="50-200">50&ndash;200</option>
+                            <option value="200-500">200&ndash;500</option>
+                            <option value="500-2000">500&ndash;2.000</option>
                             <option value="2000+">2.000+</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="industry"><span data-lang="da">Branche</span><span data-lang="en">Industry</span> <span class="required">*</span></label>
+                        <label for="industry"><span data-lang="da">Branche / Sektor</span><span data-lang="en">Industry / Sector</span> <span class="required">*</span></label>
                         <select id="industry" name="industry" required>
-                            <option value=""><span data-lang="da">V&aelig;lg branche</span><span data-lang="en">Select industry</span></option>
-                            <option value="pharma">Pharma / Life Science</option>
-                            <option value="finance"><span data-lang="da">Finans / Forsikring</span><span data-lang="en">Finance / Insurance</span></option>
-                            <option value="infrastructure"><span data-lang="da">Kritisk infrastruktur / Energi</span><span data-lang="en">Critical infrastructure / Energy</span></option>
-                            <option value="public"><span data-lang="da">Offentlig sektor</span><span data-lang="en">Public sector</span></option>
-                            <option value="manufacturing"><span data-lang="da">Produktion / Industri</span><span data-lang="en">Manufacturing / Industry</span></option>
+                            <option value="">V&aelig;lg / Select</option>
                             <option value="tech">Tech / SaaS</option>
-                            <option value="other"><span data-lang="da">Anden</span><span data-lang="en">Other</span></option>
+                            <option value="public-kommune">Kommune</option>
+                            <option value="public-region">Region</option>
+                            <option value="public-styrelse">Styrelse / Agency</option>
+                            <option value="pharma">Pharma / Life Science</option>
+                            <option value="finance">Finans / Finance</option>
+                            <option value="infrastructure">Kritisk infrastruktur / Energy</option>
+                            <option value="manufacturing">Produktion / Manufacturing</option>
+                            <option value="other">Anden / Other</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="assessment"><span data-lang="da">Har du taget vores AI Governance Assessment?</span><span data-lang="en">Have you taken our AI Governance Assessment?</span></label>
                         <select id="assessment" name="assessment">
-                            <option value="no"><span data-lang="da">Nej (vi sender link)</span><span data-lang="en">No (we&rsquo;ll send you the link)</span></option>
+                            <option value="no"><span data-lang="da">Nej (vi sender link)</span><span data-lang="en">No (we&rsquo;ll send the link)</span></option>
                             <option value="yes"><span data-lang="da">Ja</span><span data-lang="en">Yes</span></option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="challenge"><span data-lang="da">St&oslash;rste AI governance-udfordring lige nu?</span><span data-lang="en">Biggest AI governance challenge right now?</span></label>
-                        <textarea id="challenge" name="challenge" placeholder=""></textarea>
+                        <textarea id="challenge" name="challenge"></textarea>
                     </div>
 
                     <button type="submit" class="submit-btn">
@@ -760,30 +888,41 @@
     </footer>
 
     <script>
-        const langToggle = document.getElementById('langToggle');
-        const body = document.body;
-
-        langToggle.addEventListener('click', function() {
-            body.classList.toggle('lang-en');
+        // Language toggle
+        document.getElementById('langToggle').addEventListener('click', function() {
+            document.body.classList.toggle('lang-en');
         });
 
-        const bookingForm = document.getElementById('bookingForm');
-        const formMessage = document.getElementById('formMessage');
+        // Segment switching
+        function switchSegment(segment) {
+            // Update tabs
+            document.getElementById('tab-scaleup').className = 'segment-tab' + (segment === 'scaleup' ? ' active-scaleup' : '');
+            document.getElementById('tab-public').className = 'segment-tab' + (segment === 'public' ? ' active-public' : '');
 
-        bookingForm.addEventListener('submit', function(e) {
+            // Update content
+            document.getElementById('content-scaleup').className = 'segment-content segment-scaleup' + (segment === 'scaleup' ? ' active' : '');
+            document.getElementById('content-public').className = 'segment-content segment-public' + (segment === 'public' ? ' active' : '');
+
+            // Update hidden form field
+            document.getElementById('session_type').value = segment === 'scaleup' ? 'scaleup-strategy-session' : 'public-sector-strategy-session';
+        }
+
+        // Form validation
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            var formMessage = document.getElementById('formMessage');
             formMessage.classList.remove('success', 'error');
             formMessage.textContent = '';
 
-            const required = ['name', 'title', 'email', 'organization', 'org_size', 'industry'];
-            let isValid = true;
-            for (let field of required) {
-                if (!document.getElementById(field).value.trim()) { isValid = false; break; }
+            var required = ['name', 'title', 'email', 'organization', 'org_size', 'industry'];
+            var isValid = true;
+            for (var i = 0; i < required.length; i++) {
+                if (!document.getElementById(required[i]).value.trim()) { isValid = false; break; }
             }
 
             if (!isValid) {
                 e.preventDefault();
                 formMessage.classList.add('error');
-                formMessage.textContent = body.classList.contains('lang-en')
+                formMessage.textContent = document.body.classList.contains('lang-en')
                     ? 'Please fill in all required fields.'
                     : 'Udfyld alle markerede felter.';
                 return false;
