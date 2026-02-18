@@ -555,6 +555,12 @@
             if (email) {
                 // Save email to localStorage
                 localStorage.setItem('templates-email', email);
+                // Send to Formspree
+                fetch('https://formspree.io/f/xpqjldbp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, source: 'templates-download' })
+                }).catch(() => {});
                 revealTemplates();
             }
         });
