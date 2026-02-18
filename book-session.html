@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book a free 1-hour AI Governance consultation with Steven Wensley. Get your governance score reviewed and a concrete action plan.">
+    <meta property="og:title" content="Book Free Strategy Session - AI Governance">
+    <meta property="og:description" content="1 hour free AI Governance consultation. Score review and concrete action plan.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stevenwensley.com/book-session.html">
+    <meta name="theme-color" content="#0a0a0f">
+
+    <title>Book Session - Steven Wensley AI Governance</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-darker: #0C0C12;
+            --gold: #C9A96E;
+            --text-light: #f0ece4;
+            --text-secondary: #E8E8ED;
+            --success: #10b981;
+            --border: #2a2a3e;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-down {
+            animation: slideInDown 0.8s ease-out forwards;
+        }
+
+        .animate-slide-up {
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        /* Header */
+        header {
+            background: rgba(12, 12, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+            color: var(--text-light);
+        }
+
+        .lang-toggle {
+            background: rgba(201, 169, 110, 0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(201, 169, 110, 0.2);
+            color: var(--text-light);
+        }
+
+        .lang-toggle.active {
+            background: var(--gold);
+            color: var(--bg-darker);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.2;
+        }
+
+        .value-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* What you get section */
+        .what-you-get {
+            padding: 4rem 1rem;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: rgba(42, 42, 62, 0.5);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            animation: slideInUp 0.8s ease-out both;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .card:hover {
+            background: rgba(42, 42, 62, 0.8);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .card p {
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        /* Contact form section */
+        .contact-section {
+            padding: 4rem 1rem;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(42, 42, 62, 0.3);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.875rem;
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            line-height: 1.5;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(20, 20, 30, 0.9);
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(240, 236, 228, 0.5);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C9A96E' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 40px;
+        }
+
+        .required {
+            color: var(--success);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gold);
+            color: var(--bg-darker);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--text-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 110, 0.2);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* What happens next section */
+        .next-steps {
+            padding: 4rem 1rem;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+
+        .steps-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 3rem;
+            height: 3rem;
+            background: var(--gold);
+            color: var(--bg-darker);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .step-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(20, 20, 30, 0.8);
+            border-top: 1px solid var(--border);
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-section p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            opacity: 0.85;
+        }
+
+        .footer-section a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--text-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-light);
+            opacity: 0.6;
+            font-size: 0.85rem;
+        }
+
+        .footer-portrait {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .portrait-placeholder {
+            width: 80px;
+            height: 80px;
+            background: rgba(201, 169, 110, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        /* Hidden language content */
+        [data-lang="en"] {
+            display: none;
+        }
+
+        body.lang-en [data-lang="da"] {
+            display: none;
+        }
+
+        body.lang-en [data-lang="en"] {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .cards-grid {
+                gap: 1.5rem;
+            }
+
+            .hero-icon {
+                font-size: 3rem;
+            }
+
+            .step {
+                gap: 1rem;
+            }
+
+            .step-number {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            .footer-content {
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .form-container {
+                padding: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+                margin-bottom: 2rem;
+            }
+
+            .steps-grid {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Form success message */
+        .form-message {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="https://stevenwensley.com" class="back-link">
+                <span>←</span>
+                <span data-lang="da">stevenwensley.com</span>
+                <span data-lang="en">stevenwensley.com</span>
+            </a>
+            <button class="lang-toggle active" data-lang="da" id="langToggle">
+                <span data-lang="da">EN</span>
+                <span data-lang="en">DA</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-icon">📅</div>
+            <h1>
+                <span data-lang="da">1 times gratis AI Governance sparring</span>
+                <span data-lang="en">1 hour free AI Governance consultation</span>
+            </h1>
+            <div class="value-badge">
+                <span data-lang="da">Værdi: 7.000 kr</span>
+                <span data-lang="en">Value: €1,000</span>
+            </div>
+            <p class="hero-subtitle">
+                <span data-lang="da">Jeg gennemgår din governance-score og laver en konkret handlingsplan tilpasset din organisation og branche.</span>
+                <span data-lang="en">I'll review your governance score and create a concrete action plan tailored to your organization and industry.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- What You Get -->
+    <section class="what-you-get">
+        <div class="container">
+            <h2 class="section-title">
+                <span data-lang="da">Hvad får du?</span>
+                <span data-lang="en">What you get</span>
+            </h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>
+                        <span data-lang="da">Gennemgang af din score</span>
+                        <span data-lang="en">Score review</span>
+                    </h3>
+                    <p>
+                        <span data-lang="da">Vi dykker ned i dine svageste dimensioner og identificerer quick wins.</span>
+                        <span data-lang="en">We'll dive into your weakest dimensions and identify quick wins.</span>
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>
+                        <span data-lang="da">Konkret handlingsplan</span>
+                        <span data-lang="en">Concrete action plan</span>
+                    </h3>
+                    <p>
+                        <span data-lang="da">Du får en prioriteret roadmap med 90-dages milestones.</span>
+                        <span data-lang="en">You'll get a prioritized roadmap with 90-day milestones.</span>
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>
+                        <span data-lang="da">Regulerings-briefing</span>
+                        <span data-lang="en">Regulatory briefing</span>
+                    </h3>
+                    <p>
+                        <span data-lang="da">EU AI Act, NIS2, og hvad det konkret betyder for din organisation.</span>
+                        <span data-lang="en">EU AI Act, NIS2, and what it concretely means for your organization.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="section-title" style="margin-bottom: 2rem;">
+                    <span data-lang="da">Reserver din session</span>
+                    <span data-lang="en">Reserve your session</span>
+                </h2>
+
+                <!-- Replace Formspree URL with your actual endpoint -->
+                <form id="bookingForm" action="https://formspree.io/f/xpwzgqwl" method="POST">
+                    <div class="form-message" id="formMessage"></div>
+
+                    <div class="form-group">
+                        <label for="name">
+                            <span data-lang="da">Navn</span>
+                            <span data-lang="en">Name</span>
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" id="name" name="name" required placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            <span data-lang="da">Arbejdsmail</span>
+                            <span data-lang="en">Work email</span>
+                            <span class="required">*</span>
+                        </label>
+                        <input type="email" id="email" name="email" required placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="organization">
+                            <span data-lang="da">Organisation</span>
+                            <span data-lang="en">Organization</span>
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" id="organization" name="organization" required placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">
+                            <span data-lang="da">Branche</span>
+                            <span data-lang="en">Industry</span>
+                            <span class="required">*</span>
+                        </label>
+                        <select id="industry" name="industry" required>
+                            <option value="">
+                                <span data-lang="da">Vælg branche</span>
+                                <span data-lang="en">Select industry</span>
+                            </option>
+                            <option value="pharma">
+                                <span data-lang="da">Pharma/Life Science</span>
+                                <span data-lang="en">Pharma/Life Science</span>
+                            </option>
+                            <option value="finance">
+                                <span data-lang="da">Finans/Forsikring</span>
+                                <span data-lang="en">Finance/Insurance</span>
+                            </option>
+                            <option value="public">
+                                <span data-lang="da">Offentlig sektor</span>
+                                <span data-lang="en">Public sector</span>
+                            </option>
+                            <option value="infrastructure">
+                                <span data-lang="da">Kritisk infrastruktur/Energi</span>
+                                <span data-lang="en">Critical infrastructure/Energy</span>
+                            </option>
+                            <option value="manufacturing">
+                                <span data-lang="da">Produktion/Industri</span>
+                                <span data-lang="en">Manufacturing/Industry</span>
+                            </option>
+                            <option value="tech">
+                                <span data-lang="da">Tech/SaaS</span>
+                                <span data-lang="en">Tech/SaaS</span>
+                            </option>
+                            <option value="other">
+                                <span data-lang="da">Anden</span>
+                                <span data-lang="en">Other</span>
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assessment">
+                            <span data-lang="da">Har du taget assessment?</span>
+                            <span data-lang="en">Have you taken the assessment?</span>
+                            <span class="required">*</span>
+                        </label>
+                        <select id="assessment" name="assessment" required>
+                            <option value="">
+                                <span data-lang="da">Vælg</span>
+                                <span data-lang="en">Select</span>
+                            </option>
+                            <option value="yes">
+                                <span data-lang="da">Ja</span>
+                                <span data-lang="en">Yes</span>
+                            </option>
+                            <option value="no">
+                                <span data-lang="da">Nej</span>
+                                <span data-lang="en">No</span>
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="score">
+                            <span data-lang="da">Din governance-score (hvis du har den)</span>
+                            <span data-lang="en">Your governance score (if you have it)</span>
+                        </label>
+                        <input type="text" id="score" name="score" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">
+                            <span data-lang="da">Besked</span>
+                            <span data-lang="en">Message</span>
+                        </label>
+                        <textarea id="message" name="message" placeholder=""></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span data-lang="da">Send anmodning →</span>
+                        <span data-lang="en">Send request →</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Happens Next -->
+    <section class="next-steps">
+        <div class="container">
+            <div class="steps-container">
+                <h2 class="section-title">
+                    <span data-lang="da">Hvad sker der nu?</span>
+                    <span data-lang="en">What happens next?</span>
+                </h2>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>
+                                <span data-lang="da">Bekræftelse</span>
+                                <span data-lang="en">Confirmation</span>
+                            </h4>
+                            <p>
+                                <span data-lang="da">Du modtager en bekræftelse inden for 24 timer</span>
+                                <span data-lang="en">You'll receive a confirmation within 24 hours</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>
+                                <span data-lang="da">Tidsplan</span>
+                                <span data-lang="en">Schedule</span>
+                            </h4>
+                            <p>
+                                <span data-lang="da">Vi finder et tidspunkt der passer</span>
+                                <span data-lang="en">We'll find a time that works</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>
+                                <span data-lang="da">Handlingsplan</span>
+                                <span data-lang="en">Action plan</span>
+                            </h4>
+                            <p>
+                                <span data-lang="da">Du får din handlingsplan efter sessionen</span>
+                                <span data-lang="en">You'll receive your action plan after the session</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-portrait">
+                    <div class="portrait-placeholder">Steven Seidenfaden Wensley</div>
+                    <p style="font-size: 0.9rem;">
+                        <span data-lang="da">Senior Program & Transition Manager</span>
+                        <span data-lang="en">Senior Program & Transition Manager</span>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>
+                        <span data-lang="da">Kontakt</span>
+                        <span data-lang="en">Contact</span>
+                    </h3>
+                    <p>
+                        <a href="mailto:steven.wensley@gmail.com">steven.wensley@gmail.com</a>
+                    </p>
+                    <p>
+                        <span data-lang="da">Tlf:</span>
+                        <span data-lang="en">Phone:</span>
+                        +45 53886061
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>
+                        <span data-lang="da">Links</span>
+                        <span data-lang="en">Links</span>
+                    </h3>
+                    <p>
+                        <a href="https://stevenwensley.com" target="_blank">stevenwensley.com</a>
+                    </p>
+                    <p>
+                        <a href="https://linkedin.com/in/stevenwensley" target="_blank">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Steven Seidenfaden Wensley. <span data-lang="da">Alle rettigheder forbeholdt.</span><span data-lang="en">All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle
+        const langToggle = document.getElementById('langToggle');
+        const body = document.body;
+
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('preferredLanguage') || 'da';
+        if (savedLang === 'en') {
+            body.classList.add('lang-en');
+            langToggle.classList.remove('active');
+        }
+
+        langToggle.addEventListener('click', function() {
+            body.classList.toggle('lang-en');
+            const isEnglish = body.classList.contains('lang-en');
+            langToggle.classList.toggle('active', !isEnglish);
+            localStorage.setItem('preferredLanguage', isEnglish ? 'en' : 'da');
+        });
+
+        // Form handling
+        const bookingForm = document.getElementById('bookingForm');
+        const formMessage = document.getElementById('formMessage');
+
+        bookingForm.addEventListener('submit', function(e) {
+            // Clear previous messages
+            formMessage.classList.remove('success', 'error');
+            formMessage.textContent = '';
+
+            // Validate required fields
+            const requiredFields = ['name', 'email', 'organization', 'industry', 'assessment'];
+            let isValid = true;
+
+            for (let field of requiredFields) {
+                if (!document.getElementById(field).value.trim()) {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+                formMessage.classList.add('error');
+                const message = body.classList.contains('lang-en')
+                    ? 'Please fill in all required fields.'
+                    : 'Udfyld alle påkrævede felter.';
+                formMessage.textContent = message;
+                return false;
+            }
+        });
+
+        // Add fade-in animation on page load
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.animate-fade, .animate-slide-down, .animate-slide-up').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Trigger animations on initial load
+        document.querySelectorAll('[class*="animate"]').forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
