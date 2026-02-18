@@ -4,17 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Governance Template-Pakke</title>
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #0a0a0f;
             --gold: #C9A96E;
@@ -23,345 +15,94 @@
             --border: #2a2a35;
             --accent-dark: #1a1a25;
         }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        a { color: var(--gold); text-decoration: none; transition: opacity 0.2s ease; }
+        a:hover { opacity: 0.8; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
+        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+        .header-left { flex: 1; min-width: 300px; }
+        .back-link { display: inline-block; margin-bottom: 1rem; font-size: 0.95rem; color: var(--gold); }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
 
-        a {
-            color: var(--gold);
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
+        .lang-toggle { display: flex; gap: 0.5rem; align-items: center; padding: 0.5rem; background: var(--accent-dark); border-radius: 6px; border: 1px solid var(--border); height: fit-content; }
+        .lang-toggle button { padding: 0.4rem 0.8rem; border: none; background: transparent; color: var(--text-dim); cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease; border-radius: 4px; }
+        .lang-toggle button.active { background: var(--gold); color: var(--bg); font-weight: 600; }
 
-        a:hover {
-            opacity: 0.8;
-        }
+        /* Lead Capture Form */
+        .intro { margin-bottom: 3rem; padding: 2rem; background: var(--accent-dark); border: 1px solid var(--border); border-radius: 8px; }
+        .intro-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .intro h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .intro-subtitle { font-size: 1.05rem; color: var(--text-dim); margin-bottom: 2rem; line-height: 1.7; }
 
-        /* Layout */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .header-left {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-            color: var(--gold);
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .lang-toggle {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            padding: 0.5rem;
-            background: var(--accent-dark);
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            height: fit-content;
-        }
-
-        .lang-toggle button {
-            padding: 0.4rem 0.8rem;
-            border: none;
-            background: transparent;
-            color: var(--text-dim);
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            border-radius: 4px;
-        }
-
-        .lang-toggle button.active {
-            background: var(--gold);
-            color: var(--bg);
-            font-weight: 600;
-        }
-
-        /* Intro Section */
-        .intro {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: var(--accent-dark);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-        }
-
-        .intro-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .intro h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .intro-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        /* Email Gate */
-        .email-gate {
-            margin-bottom: 2rem;
-        }
-
-        .email-gate-form {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .email-input {
-            flex: 1;
-            min-width: 250px;
-            padding: 0.85rem 1rem;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
+        .lead-form { display: flex; flex-direction: column; gap: 1rem; }
+        .form-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .form-group { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 0.3rem; }
+        .form-label { font-size: 0.85rem; color: var(--text-dim); font-weight: 500; }
+        .form-input, .form-select {
+            padding: 0.8rem 1rem; background: var(--bg); border: 1px solid var(--border);
+            border-radius: 6px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.95rem;
             transition: border-color 0.2s ease;
         }
+        .form-input:focus, .form-select:focus { outline: none; border-color: var(--gold); }
+        .form-input::placeholder { color: #555; }
+        .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b5aea0' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+        .form-select option { background: var(--bg); color: var(--text); }
 
-        .email-input:focus {
-            outline: none;
-            border-color: var(--gold);
+        .submit-btn {
+            padding: 0.9rem 2rem; background: var(--gold); border: none; border-radius: 6px;
+            color: var(--bg); font-weight: 600; cursor: pointer; transition: opacity 0.2s ease;
+            font-family: 'Inter', sans-serif; font-size: 1rem; align-self: flex-start;
         }
+        .submit-btn:hover { opacity: 0.9; }
+        .submit-btn:active { transform: scale(0.98); }
 
-        .email-input::placeholder {
-            color: var(--text-dim);
-        }
+        .email-message { font-size: 0.9rem; color: var(--text-dim); margin-top: 0.75rem; display: none; }
+        .email-message.visible { display: block; }
 
-        .email-submit {
-            padding: 0.85rem 1.5rem;
-            background: var(--gold);
-            border: none;
-            border-radius: 6px;
-            color: var(--bg);
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.2s ease;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-        }
-
-        .email-submit:hover {
-            opacity: 0.9;
-        }
-
-        .email-submit:active {
-            transform: scale(0.98);
-        }
-
-        /* Email message */
-        .email-message {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            margin-top: 0.75rem;
-            display: none;
-        }
-
-        .email-message.visible {
-            display: block;
-        }
+        /* Badge */
+        .format-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.7rem; background: rgba(34,139,34,0.15); border: 1px solid rgba(34,139,34,0.3); border-radius: 4px; font-size: 0.8rem; color: #4CAF50; font-weight: 500; margin-bottom: 1.5rem; }
 
         /* Templates Grid */
-        .templates-section {
-            display: none;
-        }
-
-        .templates-section.visible {
-            display: block;
-        }
-
-        .templates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            .templates-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        .templates-section { display: none; }
+        .templates-section.visible { display: block; animation: fadeIn 0.4s ease; }
+        .templates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        @media (max-width: 768px) { .templates-grid { grid-template-columns: 1fr; } }
 
         .template-card {
-            padding: 2rem;
-            background: var(--accent-dark);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            padding: 2rem; background: var(--accent-dark); border: 1px solid var(--border);
+            border-radius: 8px; transition: all 0.3s ease; display: flex; flex-direction: column;
         }
-
-        .template-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(201, 169, 110, 0.1);
-        }
-
-        .template-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .template-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .template-subtitle {
-            font-size: 0.9rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .template-description {
-            font-size: 0.95rem;
-            color: var(--text-dim);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
+        .template-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 24px rgba(201, 169, 110, 0.1); }
+        .template-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .template-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.5rem; font-weight: 700; }
+        .template-subtitle { font-size: 0.9rem; color: var(--gold); margin-bottom: 1rem; font-weight: 500; }
+        .template-description { font-size: 0.95rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1.5rem; flex-grow: 1; }
+        .template-meta { font-size: 0.8rem; color: #666; margin-bottom: 1rem; display: flex; gap: 1rem; }
         .template-download {
-            padding: 0.75rem 1.25rem;
-            background: transparent;
-            border: 1.5px solid var(--gold);
-            border-radius: 6px;
-            color: var(--gold);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
+            padding: 0.75rem 1.25rem; background: transparent; border: 1.5px solid var(--gold);
+            border-radius: 6px; color: var(--gold); font-weight: 600; cursor: pointer;
+            transition: all 0.2s ease; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+            display: inline-flex; align-items: center; gap: 0.5rem;
         }
-
-        .template-download:hover {
-            background: var(--gold);
-            color: var(--bg);
-        }
-
-        .template-download:active {
-            transform: scale(0.98);
-        }
+        .template-download:hover { background: var(--gold); color: var(--bg); }
+        .template-download:active { transform: scale(0.98); }
 
         /* CTA Section */
-        .cta-section {
-            padding: 2rem;
-            background: var(--accent-dark);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
+        .cta-section { padding: 2rem; background: var(--accent-dark); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 3rem; text-align: center; }
+        .cta-section h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1rem; }
+        .cta-link { display: inline-block; padding: 0.85rem 1.5rem; background: var(--gold); color: var(--bg); border-radius: 6px; font-weight: 600; transition: opacity 0.2s ease; }
+        .cta-link:hover { opacity: 0.9; }
 
-        .cta-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
+        .footer { border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: var(--text-dim); font-size: 0.9rem; }
+        .footer p { margin-bottom: 0.5rem; }
 
-        .cta-link {
-            display: inline-block;
-            padding: 0.85rem 1.5rem;
-            background: var(--gold);
-            color: var(--bg);
-            border-radius: 6px;
-            font-weight: 600;
-            transition: opacity 0.2s ease;
-        }
+        [data-lang="en"] { display: none; }
+        body.lang-en [data-lang="da"] { display: none; }
+        body.lang-en [data-lang="en"] { display: inline; }
 
-        .cta-link:hover {
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding-top: 2rem;
-            text-align: center;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        .footer p {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Hidden content toggle */
-        [data-lang="en"] {
-            display: none;
-        }
-
-        body.lang-en [data-lang="da"] {
-            display: none;
-        }
-
-        body.lang-en [data-lang="en"] {
-            display: inline;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .templates-section.visible {
-            animation: fadeIn 0.4s ease;
-        }
-
-        .template-card {
-            animation: fadeIn 0.5s ease backwards;
-        }
-
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .template-card { animation: fadeIn 0.5s ease backwards; }
         .template-card:nth-child(1) { animation-delay: 0.1s; }
         .template-card:nth-child(2) { animation-delay: 0.2s; }
         .template-card:nth-child(3) { animation-delay: 0.3s; }
@@ -370,10 +111,9 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="header-left">
-                <a href="https://stevenwensley.com" class="back-link">← stevenwensley.com</a>
+                <a href="https://stevenwensley.com" class="back-link">&larr; stevenwensley.com</a>
                 <h1 data-lang="da">AI Governance Template-Pakke</h1>
                 <h1 data-lang="en" style="display: none;">AI Governance Template Package</h1>
             </div>
@@ -383,97 +123,174 @@
             </div>
         </div>
 
-        <!-- Intro Section -->
+        <!-- Lead Capture Section -->
         <div class="intro">
             <div class="intro-icon">📋</div>
             <h2 data-lang="da">4 gratis governance-templates</h2>
             <h2 data-lang="en" style="display: none;">4 free governance templates</h2>
-            <p class="intro-subtitle" data-lang="da">Praktiske templates til at kickstarte din AI governance. Baseret på EU AI Act-krav og best practice fra regulerede brancher.</p>
-            <p class="intro-subtitle" data-lang="en" style="display: none;">Practical templates to kickstart your AI governance. Based on EU AI Act requirements and best practice from regulated industries.</p>
+            <p class="intro-subtitle" data-lang="da">Professionelle Excel-templates til at kickstarte din AI governance. Baseret på EU AI Act-krav og best practice fra regulerede brancher.</p>
+            <p class="intro-subtitle" data-lang="en" style="display: none;">Professional Excel templates to kickstart your AI governance. Based on EU AI Act requirements and best practice from regulated industries.</p>
+            <div class="format-badge">📄 .xlsx format &mdash; klar til brug i Excel</div>
 
-            <!-- Email Gate -->
-            <div class="email-gate">
-                <form class="email-gate-form" id="emailGateForm">
-                    <input
-                        type="email"
-                        class="email-input"
-                        id="emailInput"
-                        placeholder="name@example.com"
-                        required
-                    >
-                    <button type="submit" class="email-submit">
-                        <span data-lang="da">Vis templates</span>
-                        <span data-lang="en" style="display: none;">Show templates</span>
-                    </button>
-                </form>
-                <div class="email-message" id="emailMessage">
-                    <span data-lang="da">✓ Tak! Download-links vises nu.</span>
-                    <span data-lang="en" style="display: none;">✓ Thank you! Download links are now visible.</span>
+            <form class="lead-form" id="leadForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" data-lang="da">Arbejdsmail *</label>
+                        <label class="form-label" data-lang="en" style="display:none">Work email *</label>
+                        <input type="email" class="form-input" id="emailInput" placeholder="name@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-lang="da">Navn</label>
+                        <label class="form-label" data-lang="en" style="display:none">Name</label>
+                        <input type="text" class="form-input" id="nameInput" placeholder="Dit navn">
+                    </div>
                 </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" data-lang="da">Branche *</label>
+                        <label class="form-label" data-lang="en" style="display:none">Industry *</label>
+                        <select class="form-select" id="industrySelect" required>
+                            <option value="" disabled selected data-lang="da">Vælg branche...</option>
+                            <option value="" disabled data-lang="en" style="display:none">Select industry...</option>
+                            <option value="pharma">Pharma / Life Science</option>
+                            <option value="finance">Finans / Forsikring</option>
+                            <option value="public">Offentlig sektor</option>
+                            <option value="telecom">Telecom / Tech</option>
+                            <option value="energy">Energi / Utility</option>
+                            <option value="manufacturing">Produktion / Manufacturing</option>
+                            <option value="retail">Retail / E-commerce</option>
+                            <option value="consulting">Konsulentvirksomhed</option>
+                            <option value="other">Anden branche</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-lang="da">Din rolle *</label>
+                        <label class="form-label" data-lang="en" style="display:none">Your role *</label>
+                        <select class="form-select" id="roleSelect" required>
+                            <option value="" disabled selected data-lang="da">Vælg rolle...</option>
+                            <option value="" disabled data-lang="en" style="display:none">Select role...</option>
+                            <option value="c-suite">C-suite / Direktion</option>
+                            <option value="compliance">Compliance / Risk</option>
+                            <option value="legal">Legal / DPO</option>
+                            <option value="it-data">IT / Data / AI</option>
+                            <option value="hr">HR / People</option>
+                            <option value="operations">Operations / PMO</option>
+                            <option value="consultant">Konsulent / Rådgiver</option>
+                            <option value="other">Anden rolle</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" data-lang="da">Organisation</label>
+                        <label class="form-label" data-lang="en" style="display:none">Organisation</label>
+                        <input type="text" class="form-input" id="orgInput" placeholder="Virksomhedsnavn">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" data-lang="da">Organisationsstørrelse</label>
+                        <label class="form-label" data-lang="en" style="display:none">Organisation size</label>
+                        <select class="form-select" id="sizeSelect">
+                            <option value="" disabled selected data-lang="da">Vælg størrelse...</option>
+                            <option value="" disabled data-lang="en" style="display:none">Select size...</option>
+                            <option value="1-49">1-49 ansatte</option>
+                            <option value="50-249">50-249 ansatte</option>
+                            <option value="250-999">250-999 ansatte</option>
+                            <option value="1000+">1.000+ ansatte</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span data-lang="da">Hent templates &darr;</span>
+                    <span data-lang="en" style="display: none;">Get templates &darr;</span>
+                </button>
+            </form>
+
+            <div class="email-message" id="emailMessage">
+                <span data-lang="da">✓ Tak! Dine download-links er klar nedenfor.</span>
+                <span data-lang="en" style="display: none;">✓ Thank you! Your download links are ready below.</span>
             </div>
         </div>
 
-        <!-- Templates Section (hidden until email is entered) -->
+        <!-- Templates Section -->
         <div class="templates-section" id="templatesSection">
             <div class="templates-grid">
-                <!-- Template 1: AI System Registry -->
                 <div class="template-card">
                     <div class="template-icon">📊</div>
                     <h3 class="template-title" data-lang="da">AI-systemregister</h3>
                     <h3 class="template-title" data-lang="en" style="display: none;">AI System Registry</h3>
-                    <p class="template-subtitle" data-lang="da">Systemoversigt</p>
-                    <p class="template-subtitle" data-lang="en" style="display: none;">System Overview</p>
-                    <p class="template-description" data-lang="da">Overblik over alle AI-systemer i organisationen. Inkluderer: systemnavn, formål, risikoklassificering, datakilde, ejer, status, EU AI Act-klassificering.</p>
-                    <p class="template-description" data-lang="en" style="display: none;">Overview of all AI systems in the organization. Includes: system name, purpose, risk classification, data source, owner, status, EU AI Act classification.</p>
-                    <button class="template-download" data-template="ai-system-registry">
-                        <span data-lang="da">Download</span>
-                        <span data-lang="en" style="display: none;">Download</span>
-                    </button>
+                    <p class="template-subtitle" data-lang="da">Systemoversigt med EU AI Act-klassificering</p>
+                    <p class="template-subtitle" data-lang="en" style="display: none;">System inventory with EU AI Act classification</p>
+                    <p class="template-description" data-lang="da">Komplet register over alle AI-systemer i organisationen. Med dropdown-validering til risikoklassificering, AI-type, status. Inkluderer 3 eksempler og instruktions-ark.</p>
+                    <p class="template-description" data-lang="en" style="display: none;">Complete registry of all AI systems in the organisation. With dropdown validation for risk classification, AI type, status. Includes 3 examples and instructions sheet.</p>
+                    <div class="template-meta">
+                        <span>📄 Excel (.xlsx)</span>
+                        <span>13 kolonner</span>
+                        <span>2 ark</span>
+                    </div>
+                    <a href="templates/ai-system-registry.xlsx" class="template-download" download>
+                        <span data-lang="da">Download .xlsx</span>
+                        <span data-lang="en" style="display: none;">Download .xlsx</span>
+                    </a>
                 </div>
 
-                <!-- Template 2: Risk Assessment Framework -->
                 <div class="template-card">
                     <div class="template-icon">⚠️</div>
-                    <h3 class="template-title" data-lang="da">AI Risk Assessment Framework</h3>
-                    <h3 class="template-title" data-lang="en" style="display: none;">AI Risk Assessment Framework</h3>
-                    <p class="template-subtitle" data-lang="da">Risikovurdering</p>
-                    <p class="template-subtitle" data-lang="en" style="display: none;">Risk Assessment</p>
-                    <p class="template-description" data-lang="da">One-pager til risikovurdering af nye AI-systemer FØR implementering. Inkluderer: impact-analyse, sandsynlighed, mitigering, godkendelse.</p>
-                    <p class="template-description" data-lang="en" style="display: none;">One-pager for risk assessment of new AI systems BEFORE implementation. Includes: impact analysis, likelihood, mitigation, approval.</p>
-                    <button class="template-download" data-template="ai-risk-assessment">
-                        <span data-lang="da">Download</span>
-                        <span data-lang="en" style="display: none;">Download</span>
-                    </button>
+                    <h3 class="template-title" data-lang="da">Risk Assessment Framework</h3>
+                    <h3 class="template-title" data-lang="en" style="display: none;">Risk Assessment Framework</h3>
+                    <p class="template-subtitle" data-lang="da">Risikovurdering med automatisk scoring</p>
+                    <p class="template-subtitle" data-lang="en" style="display: none;">Risk assessment with automatic scoring</p>
+                    <p class="template-description" data-lang="da">10 prædefinerede risikokategorier (bias, privacy, sikkerhed, compliance m.fl.) med Likelihood × Impact scoring. Farvekodede risikoniveauer og mitigeringsplan.</p>
+                    <p class="template-description" data-lang="en" style="display: none;">10 predefined risk categories (bias, privacy, security, compliance etc.) with Likelihood × Impact scoring. Colour-coded risk levels and mitigation plan.</p>
+                    <div class="template-meta">
+                        <span>📄 Excel (.xlsx)</span>
+                        <span>10 risici</span>
+                        <span>Auto-scoring</span>
+                    </div>
+                    <a href="templates/risk-assessment-framework.xlsx" class="template-download" download>
+                        <span data-lang="da">Download .xlsx</span>
+                        <span data-lang="en" style="display: none;">Download .xlsx</span>
+                    </a>
                 </div>
 
-                <!-- Template 3: RACI Matrix -->
                 <div class="template-card">
                     <div class="template-icon">👥</div>
                     <h3 class="template-title" data-lang="da">AI Governance RACI Matrix</h3>
                     <h3 class="template-title" data-lang="en" style="display: none;">AI Governance RACI Matrix</h3>
-                    <p class="template-subtitle" data-lang="da">Ansvarsdefinition</p>
-                    <p class="template-subtitle" data-lang="en" style="display: none;">Responsibility Matrix</p>
-                    <p class="template-description" data-lang="da">Ansvarsmatrix for AI governance. Definerer roller for: AI-ejerskab, risikostyring, compliance, monitorering, datahåndtering.</p>
-                    <p class="template-description" data-lang="en" style="display: none;">Responsibility matrix for AI governance. Defines roles for: AI ownership, risk management, compliance, monitoring, data handling.</p>
-                    <button class="template-download" data-template="ai-governance-raci">
-                        <span data-lang="da">Download</span>
-                        <span data-lang="en" style="display: none;">Download</span>
-                    </button>
+                    <p class="template-subtitle" data-lang="da">25 aktiviteter × 11 roller, farvekodede</p>
+                    <p class="template-subtitle" data-lang="en" style="display: none;">25 activities × 11 roles, colour-coded</p>
+                    <p class="template-description" data-lang="da">Komplet ansvarsmatrix med 25 governance-aktiviteter fordelt på 5 kategorier (strategi, compliance, risiko, drift, kultur) og 11 roller fra CEO til intern audit. Farvekodede RACI-celler.</p>
+                    <p class="template-description" data-lang="en" style="display: none;">Complete responsibility matrix with 25 governance activities across 5 categories (strategy, compliance, risk, operations, culture) and 11 roles from CEO to internal audit. Colour-coded RACI cells.</p>
+                    <div class="template-meta">
+                        <span>📄 Excel (.xlsx)</span>
+                        <span>25 aktiviteter</span>
+                        <span>11 roller</span>
+                    </div>
+                    <a href="templates/raci-matrix.xlsx" class="template-download" download>
+                        <span data-lang="da">Download .xlsx</span>
+                        <span data-lang="en" style="display: none;">Download .xlsx</span>
+                    </a>
                 </div>
 
-                <!-- Template 4: EU AI Act Compliance Checklist -->
                 <div class="template-card">
                     <div class="template-icon">✅</div>
                     <h3 class="template-title" data-lang="da">EU AI Act Compliance Checklist</h3>
                     <h3 class="template-title" data-lang="en" style="display: none;">EU AI Act Compliance Checklist</h3>
-                    <p class="template-subtitle" data-lang="da">Compliance-tjekliste</p>
-                    <p class="template-subtitle" data-lang="en" style="display: none;">Compliance Checklist</p>
-                    <p class="template-description" data-lang="da">Tjekliste med 25 punkter for EU AI Act-compliance. Dækker: klassificering, dokumentation, transparens, audit trail, human oversight.</p>
-                    <p class="template-description" data-lang="en" style="display: none;">25-point checklist for EU AI Act compliance. Covers: classification, documentation, transparency, audit trail, human oversight.</p>
-                    <button class="template-download" data-template="eu-ai-act-checklist">
-                        <span data-lang="da">Download</span>
-                        <span data-lang="en" style="display: none;">Download</span>
-                    </button>
+                    <p class="template-subtitle" data-lang="da">25 krav med artikelhenvisninger</p>
+                    <p class="template-subtitle" data-lang="en" style="display: none;">25 requirements with article references</p>
+                    <p class="template-description" data-lang="da">Struktureret tjekliste med 25 compliance-krav fordelt på 6 kategorier. Med direkte EU AI Act-artikelhenvisninger, status-tracking, ejer-tildeling og automatisk compliance-rate beregning.</p>
+                    <p class="template-description" data-lang="en" style="display: none;">Structured checklist with 25 compliance requirements across 6 categories. With direct EU AI Act article references, status tracking, owner assignment and automatic compliance rate calculation.</p>
+                    <div class="template-meta">
+                        <span>📄 Excel (.xlsx)</span>
+                        <span>25 krav</span>
+                        <span>6 kategorier</span>
+                    </div>
+                    <a href="templates/eu-ai-act-checklist.xlsx" class="template-download" download>
+                        <span data-lang="da">Download .xlsx</span>
+                        <span data-lang="en" style="display: none;">Download .xlsx</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -483,16 +300,15 @@
             <h3 data-lang="da">Har du brug for hjælp til implementering?</h3>
             <h3 data-lang="en" style="display: none;">Need help with implementation?</h3>
             <p style="margin-bottom: 1.5rem; color: var(--text-dim);">
-                <span data-lang="da">Book en konsultation for at få personlig vejledning.</span>
-                <span data-lang="en" style="display: none;">Book a consultation for personalized guidance.</span>
+                <span data-lang="da">Book en gratis sparring-session for personlig vejledning til din organisation.</span>
+                <span data-lang="en" style="display: none;">Book a free strategy session for personalised guidance for your organisation.</span>
             </p>
-            <a href="https://stevenwensley.com/book-session.html" class="cta-link">
-                <span data-lang="da">Book konsultation</span>
-                <span data-lang="en" style="display: none;">Book consultation</span>
+            <a href="book-session.html" class="cta-link">
+                <span data-lang="da">Book gratis sparring</span>
+                <span data-lang="en" style="display: none;">Book free session</span>
             </a>
         </div>
 
-        <!-- Footer -->
         <div class="footer">
             <p>&copy; 2026 Steven Wensley. <span data-lang="da">Alle rettigheder forbeholdt.</span><span data-lang="en" style="display: none;">All rights reserved.</span></p>
             <p><a href="https://stevenwensley.com">stevenwensley.com</a></p>
@@ -502,18 +318,12 @@
     <script>
         // Language toggle
         const langBtns = document.querySelectorAll('.lang-btn');
-        const emailInput = document.getElementById('emailInput');
-
         langBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const lang = btn.getAttribute('data-lang');
-
-                // Update active button
                 langBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
-                // Update page language
                 if (lang === 'en') {
                     document.body.classList.add('lang-en');
                     localStorage.setItem('preferred-lang', 'en');
@@ -524,626 +334,55 @@
             });
         });
 
-        // Load preferred language
         const preferredLang = localStorage.getItem('preferred-lang') || 'da';
         if (preferredLang === 'en') {
             document.body.classList.add('lang-en');
-            langBtns.forEach(btn => btn.classList.remove('active'));
             langBtns.forEach(btn => {
-                if (btn.getAttribute('data-lang') === 'en') {
-                    btn.classList.add('active');
-                }
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === 'en') btn.classList.add('active');
             });
         }
 
-        // Email gate functionality
-        const emailGateForm = document.getElementById('emailGateForm');
+        // Lead form
+        const leadForm = document.getElementById('leadForm');
         const templatesSection = document.getElementById('templatesSection');
         const emailMessage = document.getElementById('emailMessage');
 
-        // Check if user already provided email
-        const savedEmail = localStorage.getItem('templates-email');
-        if (savedEmail) {
-            emailInput.value = savedEmail;
-            revealTemplates();
-        }
-
-        emailGateForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = emailInput.value.trim();
-
-            if (email) {
-                // Save email to localStorage
-                localStorage.setItem('templates-email', email);
-                // Send to Formspree
-                fetch('https://formspree.io/f/xpqjldbp', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email, source: 'templates-download' })
-                }).catch(() => {});
-                revealTemplates();
-            }
-        });
-
-        function revealTemplates() {
-            // Hide form
-            emailGateForm.style.display = 'none';
-
-            // Show message
+        // Check returning user
+        const savedData = localStorage.getItem('templates-lead');
+        if (savedData) {
+            leadForm.style.display = 'none';
             emailMessage.classList.add('visible');
-
-            // Show templates
             templatesSection.classList.add('visible');
         }
 
-        // Template download handlers
-        const downloadBtns = document.querySelectorAll('.template-download');
-
-        downloadBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const template = btn.getAttribute('data-template');
-                downloadTemplate(template);
-            });
-        });
-
-        function downloadTemplate(templateName) {
-            // Create a simple HTML download based on template
-            const templates = {
-                'ai-system-registry': generateAISystemRegistry(),
-                'ai-risk-assessment': generateRiskAssessment(),
-                'ai-governance-raci': generateRACIMatrix(),
-                'eu-ai-act-checklist': generateComplianceChecklist()
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {
+                email: document.getElementById('emailInput').value.trim(),
+                name: document.getElementById('nameInput').value.trim(),
+                industry: document.getElementById('industrySelect').value,
+                role: document.getElementById('roleSelect').value,
+                organisation: document.getElementById('orgInput').value.trim(),
+                size: document.getElementById('sizeSelect').value,
+                source: 'templates-download'
             };
 
-            const html = templates[templateName];
-            if (!html) return;
+            // Save locally
+            localStorage.setItem('templates-lead', JSON.stringify(data));
 
-            // Create blob and download
-            const blob = new Blob([html], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${templateName}.html`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
+            // Send to Formspree
+            fetch('https://formspree.io/f/xpqjldbp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).catch(() => {});
 
-        function generateAISystemRegistry() {
-            return `<!DOCTYPE html>
-<html lang="da">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-systemregister</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            color: #333;
-        }
-        h1 { color: #2c3e50; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #bbb;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-        }
-        .instructions {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-left: 4px solid #C9A96E;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>📊 AI-systemregister</h1>
-    <div class="instructions">
-        <h3>Instruktioner:</h3>
-        <p>Udfyld denne tabel for alle AI-systemer i organisationen. Opdater mindst kvartalsvis.</p>
-    </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Systemnavn</th>
-                <th>Formål/Use case</th>
-                <th>Risikoklasse (lav/medium/høj)</th>
-                <th>Datakilde</th>
-                <th>Systemejere</th>
-                <th>Status (aktiv/pilottest/udfaset)</th>
-                <th>EU AI Act-klassificering</th>
-                <th>Dokumentation</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>[Eksempel: Customer Churn Predictor]</td>
-                <td>[Predict customer churn]</td>
-                <td>[Medium]</td>
-                <td>[CRM system]</td>
-                <td>[John Doe, Data Science]</td>
-                <td>[Aktiv]</td>
-                <td>[High-risk]</td>
-                <td>[Link til dokumentation]</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</body>
-</html>`;
-        }
-
-        function generateRiskAssessment() {
-            return `<!DOCTYPE html>
-<html lang="da">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Risk Assessment Framework</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            color: #333;
-            max-width: 900px;
-        }
-        h1, h2 { color: #2c3e50; }
-        .section {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-left: 4px solid #C9A96E;
-        }
-        .score-box {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #fff;
-            border: 2px solid #C9A96E;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #bbb;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <h1>⚠️ AI Risk Assessment Framework</h1>
-    <p><strong>System Name:</strong> ________________</p>
-    <p><strong>Assessment Date:</strong> ________________</p>
-    <p><strong>Assessed by:</strong> ________________</p>
-
-    <div class="section">
-        <h2>1. Impact Analysis</h2>
-        <p><strong>Potential harms to users/organization:</strong></p>
-        <textarea style="width: 100%; height: 80px; padding: 10px;"></textarea>
-        <p><strong>Impact Score (1-5):</strong> <span class="score-box">__</span></p>
-    </div>
-
-    <div class="section">
-        <h2>2. Likelihood Assessment</h2>
-        <p><strong>How likely is this risk to occur?</strong></p>
-        <table>
-            <tr>
-                <td><input type="radio" name="likelihood"> Very Low (1)</td>
-                <td><input type="radio" name="likelihood"> Low (2)</td>
-                <td><input type="radio" name="likelihood"> Medium (3)</td>
-            </tr>
-            <tr>
-                <td><input type="radio" name="likelihood"> High (4)</td>
-                <td><input type="radio" name="likelihood"> Very High (5)</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="section">
-        <h2>3. Risk Score & Mitigation</h2>
-        <p><strong>Risk Score = Impact × Likelihood:</strong> <span class="score-box">__</span></p>
-        <p><strong>Mitigation measures:</strong></p>
-        <textarea style="width: 100%; height: 80px; padding: 10px;"></textarea>
-        <p><strong>Residual Risk Level:</strong> <select style="padding: 5px;">
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-        </select></p>
-    </div>
-
-    <div class="section">
-        <h2>4. Approval</h2>
-        <p><input type="checkbox"> Risk is acceptable</p>
-        <p><strong>Approved by:</strong> ________________ <strong>Date:</strong> ________________</p>
-    </div>
-</body>
-</html>`;
-        }
-
-        function generateRACIMatrix() {
-            return `<!DOCTYPE html>
-<html lang="da">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Governance RACI Matrix</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            color: #333;
-        }
-        h1, h2 { color: #2c3e50; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #bbb;
-            padding: 12px;
-            text-align: center;
-        }
-        th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-            text-align: left;
-        }
-        .legend {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-left: 4px solid #C9A96E;
-        }
-        .legend p {
-            margin: 5px 0;
-        }
-        .role-column {
-            text-align: left !important;
-            min-width: 200px;
-        }
-    </style>
-</head>
-<body>
-    <h1>👥 AI Governance RACI Matrix</h1>
-    <p>Fill in RACI roles: R=Responsible, A=Accountable, C=Consulted, I=Informed</p>
-
-    <table>
-        <thead>
-            <tr>
-                <th class="role-column">AI Governance Activity</th>
-                <th>AI Owner</th>
-                <th>CTO/AI Lead</th>
-                <th>Chief Compliance Officer</th>
-                <th>Data Protection Officer</th>
-                <th>Risk Management</th>
-                <th>Executive Sponsor</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="role-column">AI System Classification</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="role-column">Risk Assessment</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="role-column">Documentation & Audit Trail</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="role-column">Transparency & User Notification</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="role-column">Monitoring & Performance Review</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="role-column">Incident Management</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="role-column">Data Handling & Privacy</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="role-column">Human Oversight & Appeals</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="legend">
-        <h3>RACI Legend</h3>
-        <p><strong>R - Responsible:</strong> Does the work</p>
-        <p><strong>A - Accountable:</strong> Final approval/owner</p>
-        <p><strong>C - Consulted:</strong> Provides input</p>
-        <p><strong>I - Informed:</strong> Kept in the loop</p>
-    </div>
-</body>
-</html>`;
-        }
-
-        function generateComplianceChecklist() {
-            return `<!DOCTYPE html>
-<html lang="da">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EU AI Act Compliance Checklist</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            color: #333;
-            max-width: 900px;
-        }
-        h1 { color: #2c3e50; }
-        .section {
-            margin-bottom: 25px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-left: 4px solid #C9A96E;
-        }
-        .section h2 {
-            color: #2c3e50;
-            margin-top: 0;
-        }
-        .checklist-item {
-            margin: 12px 0;
-            display: flex;
-            align-items: flex-start;
-        }
-        .checklist-item input {
-            margin-right: 12px;
-            margin-top: 2px;
-        }
-        .checklist-item label {
-            cursor: pointer;
-        }
-        .status-info {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
-    <h1>✅ EU AI Act Compliance Checklist</h1>
-    <p><strong>System Name:</strong> ________________ <strong>Last Updated:</strong> ________________</p>
-
-    <div class="section">
-        <h2>1. Classification & Documentation (5 items)</h2>
-        <div class="checklist-item">
-            <input type="checkbox" id="c1">
-            <label for="c1">AI System accurately classified (prohibited/high-risk/limited risk/minimal risk)</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c2">
-            <label for="c2">Technical documentation created and maintained</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c3">
-            <label for="c3">Training data quality assessed & documented</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c4">
-            <label for="c4">Algorithmic bias testing performed</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c5">
-            <label for="c5">Model card / system documentation complete</label>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>2. Transparency & User Rights (5 items)</h2>
-        <div class="checklist-item">
-            <input type="checkbox" id="c6">
-            <label for="c6">Users informed when interacting with AI system</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c7">
-            <label for="c7">Decisions explained to affected individuals</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c8">
-            <label for="c8">Appeal/challenge process documented</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c9">
-            <label for="c9">High-risk decisions logged for audit trail</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c10">
-            <label for="c10">Data subject rights (access, deletion, etc.) enabled</label>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>3. Risk Management & Monitoring (5 items)</h2>
-        <div class="checklist-item">
-            <input type="checkbox" id="c11">
-            <label for="c11">Risk assessment completed for high-risk systems</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c12">
-            <label for="c12">Monitoring system in place for performance drift</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c13">
-            <label for="c13">Incident response plan documented</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c14">
-            <label for="c14">Human oversight mechanisms implemented</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c15">
-            <label for="c15">Regular performance audits scheduled</label>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>4. Data Governance & Privacy (5 items)</h2>
-        <div class="checklist-item">
-            <input type="checkbox" id="c16">
-            <label for="c16">Data inventory documented (sources, types, categories)</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c17">
-            <label for="c17">Data processing agreements in place (GDPR compliance)</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c18">
-            <label for="c18">Sensitive data (race, religion, etc.) use justified</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c19">
-            <label for="c19">Data retention policies enforced</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c20">
-            <label for="c20">Consent mechanisms in place (where required)</label>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>5. Compliance & Governance (5 items)</h2>
-        <div class="checklist-item">
-            <input type="checkbox" id="c21">
-            <label for="c21">Governance roles assigned (AI owner, compliance lead)</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c22">
-            <label for="c22">Training provided to relevant staff on AI Act requirements</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c23">
-            <label for="c23">Board/executive oversight established</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c24">
-            <label for="c24">Regular compliance reviews scheduled (quarterly/annual)</label>
-        </div>
-        <div class="checklist-item">
-            <input type="checkbox" id="c25">
-            <label for="c25">Competent Authority notifications/registrations submitted (if required)</label>
-        </div>
-    </div>
-
-    <div class="status-info">
-        <p><strong>Checklist Progress:</strong> <span id="progress">0</span>/25 items completed</p>
-        <p><strong>Last Reviewed:</strong> ________________ <strong>Next Review:</strong> ________________</p>
-        <p><strong>Responsible Person:</strong> ________________</p>
-    </div>
-
-    <script>
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        const progressSpan = document.getElementById('progress');
-
-        function updateProgress() {
-            const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-            progressSpan.textContent = checked;
-        }
-
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', updateProgress);
+            // Reveal templates
+            leadForm.style.display = 'none';
+            emailMessage.classList.add('visible');
+            templatesSection.classList.add('visible');
         });
-    </script>
-</body>
-</html>`;
-        }
     </script>
 </body>
 </html>
