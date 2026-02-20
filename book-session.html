@@ -786,21 +786,38 @@
         </section>
     </div>
 
-    <!-- ==================== SHARED: Booking Form ==================== -->
+    <!-- ==================== SHARED: Booking ==================== -->
     <section class="contact-section" id="book">
         <div class="container">
-            <div class="form-container">
+            <!-- Calendly quick booking -->
+            <div style="max-width: 700px; margin: 0 auto 2rem; background: linear-gradient(135deg, rgba(201, 169, 110, 0.08) 0%, rgba(42, 42, 62, 0.3) 100%); border: 2px solid var(--gold); padding: 2.5rem; border-radius: 8px; text-align: center;">
                 <h2 class="section-title" style="margin-bottom: 0.5rem;">
-                    <span data-lang="da">Book din strategi-dag</span>
-                    <span data-lang="en">Book your strategy day</span>
+                    <span data-lang="da">Book en introduktionssamtale</span>
+                    <span data-lang="en">Book an intro call</span>
                 </h2>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">
-                    <span data-lang="da">Udfyld formularen, s&aring; vender jeg tilbage inden for 24 timer med mulige datoer.</span>
-                    <span data-lang="en">Fill in the form and I&rsquo;ll get back to you within 24 hours with available dates.</span>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                    <span data-lang="da">30 minutters uforpligtende samtale om jeres AI governance-behov. V&aelig;lg en tid der passer dig.</span>
+                    <span data-lang="en">30-minute no-obligation call about your AI governance needs. Pick a time that works for you.</span>
                 </p>
-                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.85rem;">
-                    <span data-lang="da">Foretr&aelig;kker du at booke direkte? Ring <a href="tel:+4553886061" style="color: var(--gold);">+45 5388 6061</a> eller skriv til <a href="mailto:steven.wensley@gmail.com" style="color: var(--gold);">steven.wensley@gmail.com</a></span>
-                    <span data-lang="en">Prefer to book directly? Call <a href="tel:+4553886061" style="color: var(--gold);">+45 5388 6061</a> or email <a href="mailto:steven.wensley@gmail.com" style="color: var(--gold);">steven.wensley@gmail.com</a></span>
+                <a href="https://calendly.com/steven-wensley/30min" target="_blank" rel="noopener" class="btn-primary" style="font-size: 1.05rem; padding: 1rem 3rem;">
+                    <span data-lang="da">V&aelig;lg en tid i kalenderen &#8594;</span>
+                    <span data-lang="en">Pick a time in my calendar &#8594;</span>
+                </a>
+                <p style="color: var(--text-muted); margin-top: 1.2rem; font-size: 0.82rem;">
+                    <span data-lang="da">Eller ring direkte: <a href="tel:+4553886061" style="color: var(--gold);">+45 5388 6061</a> &middot; <a href="mailto:steven.wensley@gmail.com" style="color: var(--gold);">steven.wensley@gmail.com</a></span>
+                    <span data-lang="en">Or call directly: <a href="tel:+4553886061" style="color: var(--gold);">+45 5388 6061</a> &middot; <a href="mailto:steven.wensley@gmail.com" style="color: var(--gold);">steven.wensley@gmail.com</a></span>
+                </p>
+            </div>
+
+            <!-- Detailed form as alternative -->
+            <div class="form-container">
+                <h2 class="section-title" style="margin-bottom: 0.5rem; font-size: 1.5rem;">
+                    <span data-lang="da">Eller send en detaljeret anmodning</span>
+                    <span data-lang="en">Or send a detailed request</span>
+                </h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem;">
+                    <span data-lang="da">Vil du hellere beskrive jeres situation f&oslash;rst? Udfyld formularen, s&aring; vender jeg tilbage inden for 24 timer.</span>
+                    <span data-lang="en">Prefer to describe your situation first? Fill in the form and I&rsquo;ll get back within 24 hours.</span>
                 </p>
 
                 <form id="bookingForm" action="https://formspree.io/f/xpqjldbp" method="POST">
