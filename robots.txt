@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /templates/
 
 Sitemap: https://stevenwensley.com/sitemap.xml
