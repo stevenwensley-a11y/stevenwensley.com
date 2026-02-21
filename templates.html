@@ -111,14 +111,8 @@
         .footer p { margin-bottom: 0.5rem; }
 
         [data-lang="en"] { display: none; }
-        span[data-lang="da"] { display: inline; }
-        span[data-lang="en"] { display: none; }
         body.lang-en [data-lang="da"] { display: none; }
-        body.lang-en [data-lang="en"] { display: block; }
-        body.lang-en span[data-lang="en"] { display: inline; }
-        body.lang-en span[data-lang="da"] { display: none; }
-        body.lang-en label[data-lang="en"] { display: inline; }
-        body.lang-en option[data-lang="en"] { display: block; }
+        body.lang-en [data-lang="en"] { display: inline; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .template-card { animation: fadeIn 0.5s ease backwards; }
@@ -134,7 +128,7 @@
             <div class="header-left">
                 <a href="https://stevenwensley.com" class="back-link">&larr; stevenwensley.com</a>
                 <h1 data-lang="da">AI Governance Template-Pakke</h1>
-                <h1 data-lang="en">AI Governance Template Package</h1>
+                <h1 data-lang="en" style="display: none;">AI Governance Template Package</h1>
             </div>
             <div class="lang-toggle">
                 <button class="lang-btn active" data-lang="da">DA</button>
@@ -146,21 +140,21 @@
         <div class="intro">
             <div class="intro-icon">📋</div>
             <h2 data-lang="da">4 gratis governance-templates</h2>
-            <h2 data-lang="en">4 free governance templates</h2>
+            <h2 data-lang="en" style="display: none;">4 free governance templates</h2>
             <p class="intro-subtitle" data-lang="da">Professionelle Excel-templates til at kickstarte din AI governance. Baseret på EU AI Act-krav og best practice fra regulerede brancher.</p>
-            <p class="intro-subtitle" data-lang="en">Professional Excel templates to kickstart your AI governance. Based on EU AI Act requirements and best practice from regulated industries.</p>
+            <p class="intro-subtitle" data-lang="en" style="display: none;">Professional Excel templates to kickstart your AI governance. Based on EU AI Act requirements and best practice from regulated industries.</p>
             <div class="format-badge">📄 .xlsx format &mdash; klar til brug i Excel</div>
 
             <form class="lead-form" id="leadForm">
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" data-lang="da">Arbejdsmail *</label>
-                        <label class="form-label" data-lang="en">Work email *</label>
+                        <label class="form-label" data-lang="en" style="display:none">Work email *</label>
                         <input type="email" class="form-input" id="emailInput" placeholder="name@company.com" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" data-lang="da">Navn</label>
-                        <label class="form-label" data-lang="en">Name</label>
+                        <label class="form-label" data-lang="en" style="display:none">Name</label>
                         <input type="text" class="form-input" id="nameInput" placeholder="Dit navn">
                     </div>
                 </div>
@@ -168,10 +162,10 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" data-lang="da">Branche *</label>
-                        <label class="form-label" data-lang="en">Industry *</label>
+                        <label class="form-label" data-lang="en" style="display:none">Industry *</label>
                         <select class="form-select" id="industrySelect" required>
                             <option value="" disabled selected data-lang="da">Vælg branche...</option>
-                            <option value="" disabled data-lang="en">Select industry...</option>
+                            <option value="" disabled data-lang="en" style="display:none">Select industry...</option>
                             <option value="pharma">Pharma / Life Science</option>
                             <option value="finance">Finans / Forsikring</option>
                             <option value="public">Offentlig sektor</option>
@@ -185,10 +179,10 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label" data-lang="da">Din rolle *</label>
-                        <label class="form-label" data-lang="en">Your role *</label>
+                        <label class="form-label" data-lang="en" style="display:none">Your role *</label>
                         <select class="form-select" id="roleSelect" required>
                             <option value="" disabled selected data-lang="da">Vælg rolle...</option>
-                            <option value="" disabled data-lang="en">Select role...</option>
+                            <option value="" disabled data-lang="en" style="display:none">Select role...</option>
                             <option value="c-suite">C-suite / Direktion</option>
                             <option value="compliance">Compliance / Risk</option>
                             <option value="legal">Legal / DPO</option>
@@ -204,15 +198,15 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" data-lang="da">Organisation</label>
-                        <label class="form-label" data-lang="en">Organisation</label>
+                        <label class="form-label" data-lang="en" style="display:none">Organisation</label>
                         <input type="text" class="form-input" id="orgInput" placeholder="Virksomhedsnavn">
                     </div>
                     <div class="form-group">
                         <label class="form-label" data-lang="da">Organisationsstørrelse</label>
-                        <label class="form-label" data-lang="en">Organisation size</label>
+                        <label class="form-label" data-lang="en" style="display:none">Organisation size</label>
                         <select class="form-select" id="sizeSelect">
                             <option value="" disabled selected data-lang="da">Vælg størrelse...</option>
-                            <option value="" disabled data-lang="en">Select size...</option>
+                            <option value="" disabled data-lang="en" style="display:none">Select size...</option>
                             <option value="1-49">1-49 ansatte</option>
                             <option value="50-249">50-249 ansatte</option>
                             <option value="250-999">250-999 ansatte</option>
@@ -223,13 +217,13 @@
 
                 <button type="submit" class="submit-btn">
                     <span data-lang="da">Hent templates &darr;</span>
-                    <span data-lang="en">Get templates &darr;</span>
+                    <span data-lang="en" style="display: none;">Get templates &darr;</span>
                 </button>
             </form>
 
             <div class="email-message" id="emailMessage">
                 <span data-lang="da">✓ Tak! Dine download-links er klar nedenfor.</span>
-                <span data-lang="en">✓ Thank you! Your download links are ready below.</span>
+                <span data-lang="en" style="display: none;">✓ Thank you! Your download links are ready below.</span>
             </div>
         </div>
 
@@ -239,11 +233,11 @@
                 <div class="template-card">
                     <div class="template-icon">📊</div>
                     <h3 class="template-title" data-lang="da">AI-systemregister</h3>
-                    <h3 class="template-title" data-lang="en">AI System Registry</h3>
+                    <h3 class="template-title" data-lang="en" style="display: none;">AI System Registry</h3>
                     <p class="template-subtitle" data-lang="da">Systemoversigt med EU AI Act-klassificering</p>
-                    <p class="template-subtitle" data-lang="en">System inventory with EU AI Act classification</p>
+                    <p class="template-subtitle" data-lang="en" style="display: none;">System inventory with EU AI Act classification</p>
                     <p class="template-description" data-lang="da">Komplet register over alle AI-systemer i organisationen. Med dropdown-validering til risikoklassificering, AI-type, status. Inkluderer 3 eksempler og instruktions-ark.</p>
-                    <p class="template-description" data-lang="en">Complete registry of all AI systems in the organisation. With dropdown validation for risk classification, AI type, status. Includes 3 examples and instructions sheet.</p>
+                    <p class="template-description" data-lang="en" style="display: none;">Complete registry of all AI systems in the organisation. With dropdown validation for risk classification, AI type, status. Includes 3 examples and instructions sheet.</p>
                     <div class="template-meta">
                         <span>📄 Excel (.xlsx)</span>
                         <span>13 kolonner</span>
@@ -251,18 +245,18 @@
                     </div>
                     <a href="templates/ai-system-registry.xlsx" class="template-download" download>
                         <span data-lang="da">Download .xlsx</span>
-                        <span data-lang="en">Download .xlsx</span>
+                        <span data-lang="en" style="display: none;">Download .xlsx</span>
                     </a>
                 </div>
 
                 <div class="template-card">
                     <div class="template-icon">⚠️</div>
                     <h3 class="template-title" data-lang="da">Risk Assessment Framework</h3>
-                    <h3 class="template-title" data-lang="en">Risk Assessment Framework</h3>
+                    <h3 class="template-title" data-lang="en" style="display: none;">Risk Assessment Framework</h3>
                     <p class="template-subtitle" data-lang="da">Risikovurdering med automatisk scoring</p>
-                    <p class="template-subtitle" data-lang="en">Risk assessment with automatic scoring</p>
+                    <p class="template-subtitle" data-lang="en" style="display: none;">Risk assessment with automatic scoring</p>
                     <p class="template-description" data-lang="da">10 prædefinerede risikokategorier (bias, privacy, sikkerhed, compliance m.fl.) med Likelihood × Impact scoring. Farvekodede risikoniveauer og mitigeringsplan.</p>
-                    <p class="template-description" data-lang="en">10 predefined risk categories (bias, privacy, security, compliance etc.) with Likelihood × Impact scoring. Colour-coded risk levels and mitigation plan.</p>
+                    <p class="template-description" data-lang="en" style="display: none;">10 predefined risk categories (bias, privacy, security, compliance etc.) with Likelihood × Impact scoring. Colour-coded risk levels and mitigation plan.</p>
                     <div class="template-meta">
                         <span>📄 Excel (.xlsx)</span>
                         <span>10 risici</span>
@@ -270,18 +264,18 @@
                     </div>
                     <a href="templates/risk-assessment-framework.xlsx" class="template-download" download>
                         <span data-lang="da">Download .xlsx</span>
-                        <span data-lang="en">Download .xlsx</span>
+                        <span data-lang="en" style="display: none;">Download .xlsx</span>
                     </a>
                 </div>
 
                 <div class="template-card">
                     <div class="template-icon">👥</div>
                     <h3 class="template-title" data-lang="da">AI Governance RACI Matrix</h3>
-                    <h3 class="template-title" data-lang="en">AI Governance RACI Matrix</h3>
+                    <h3 class="template-title" data-lang="en" style="display: none;">AI Governance RACI Matrix</h3>
                     <p class="template-subtitle" data-lang="da">25 aktiviteter × 11 roller, farvekodede</p>
-                    <p class="template-subtitle" data-lang="en">25 activities × 11 roles, colour-coded</p>
+                    <p class="template-subtitle" data-lang="en" style="display: none;">25 activities × 11 roles, colour-coded</p>
                     <p class="template-description" data-lang="da">Komplet ansvarsmatrix med 25 governance-aktiviteter fordelt på 5 kategorier (strategi, compliance, risiko, drift, kultur) og 11 roller fra CEO til intern audit. Farvekodede RACI-celler.</p>
-                    <p class="template-description" data-lang="en">Complete responsibility matrix with 25 governance activities across 5 categories (strategy, compliance, risk, operations, culture) and 11 roles from CEO to internal audit. Colour-coded RACI cells.</p>
+                    <p class="template-description" data-lang="en" style="display: none;">Complete responsibility matrix with 25 governance activities across 5 categories (strategy, compliance, risk, operations, culture) and 11 roles from CEO to internal audit. Colour-coded RACI cells.</p>
                     <div class="template-meta">
                         <span>📄 Excel (.xlsx)</span>
                         <span>25 aktiviteter</span>
@@ -289,18 +283,18 @@
                     </div>
                     <a href="templates/raci-matrix.xlsx" class="template-download" download>
                         <span data-lang="da">Download .xlsx</span>
-                        <span data-lang="en">Download .xlsx</span>
+                        <span data-lang="en" style="display: none;">Download .xlsx</span>
                     </a>
                 </div>
 
                 <div class="template-card">
                     <div class="template-icon">✅</div>
                     <h3 class="template-title" data-lang="da">EU AI Act Compliance Checklist</h3>
-                    <h3 class="template-title" data-lang="en">EU AI Act Compliance Checklist</h3>
+                    <h3 class="template-title" data-lang="en" style="display: none;">EU AI Act Compliance Checklist</h3>
                     <p class="template-subtitle" data-lang="da">25 krav med artikelhenvisninger</p>
-                    <p class="template-subtitle" data-lang="en">25 requirements with article references</p>
+                    <p class="template-subtitle" data-lang="en" style="display: none;">25 requirements with article references</p>
                     <p class="template-description" data-lang="da">Struktureret tjekliste med 25 compliance-krav fordelt på 6 kategorier. Med direkte EU AI Act-artikelhenvisninger, status-tracking, ejer-tildeling og automatisk compliance-rate beregning.</p>
-                    <p class="template-description" data-lang="en">Structured checklist with 25 compliance requirements across 6 categories. With direct EU AI Act article references, status tracking, owner assignment and automatic compliance rate calculation.</p>
+                    <p class="template-description" data-lang="en" style="display: none;">Structured checklist with 25 compliance requirements across 6 categories. With direct EU AI Act article references, status tracking, owner assignment and automatic compliance rate calculation.</p>
                     <div class="template-meta">
                         <span>📄 Excel (.xlsx)</span>
                         <span>25 krav</span>
@@ -308,7 +302,7 @@
                     </div>
                     <a href="templates/eu-ai-act-checklist.xlsx" class="template-download" download>
                         <span data-lang="da">Download .xlsx</span>
-                        <span data-lang="en">Download .xlsx</span>
+                        <span data-lang="en" style="display: none;">Download .xlsx</span>
                     </a>
                 </div>
             </div>
@@ -317,19 +311,20 @@
         <!-- CTA Section -->
         <div class="cta-section">
             <h3 data-lang="da">Har du brug for hjælp til implementering?</h3>
-            <h3 data-lang="en">Need help with implementation?</h3>
+            <h3 data-lang="en" style="display: none;">Need help with implementation?</h3>
             <p style="margin-bottom: 1.5rem; color: var(--text-dim);">
                 <span data-lang="da">Book en gratis sparring-session for personlig vejledning til din organisation.</span>
-                <span data-lang="en">Book a free strategy session for personalised guidance for your organisation.</span>
+                <span data-lang="en" style="display: none;">Book a free strategy session for personalised guidance for your organisation.</span>
             </p>
             <a href="book-session.html" class="cta-link">
                 <span data-lang="da">Book gratis sparring</span>
-                <span data-lang="en">Book free session</span>
+                <span data-lang="en" style="display: none;">Book free session</span>
             </a>
         </div>
 
         <div class="footer">
-            <p>&copy; 2026 Steven Wensley &nbsp;|&nbsp; <a href="/privacy.html" style="color: #c9a96e; text-decoration: none;">Privacy Policy</a>. <span data-lang="da">Alle rettigheder forbeholdt.</span><span data-lang="en">All rights reserved.</span></p>
+            <p style="font-size: 0.72rem; color: #666; letter-spacing: 0.05em; margin-bottom: 0.3rem;">PMP &middot; PRINCE2 &middot; MSP &middot; P3O &middot; MoP &middot; Agile PM &middot; 18+ years in regulated environments</p>
+            <p>&copy; 2026 Steven Wensley &nbsp;|&nbsp; <a href="/privacy.html" style="color: #c9a96e; text-decoration: none;">Privacy Policy</a>. <span data-lang="da">Alle rettigheder forbeholdt.</span><span data-lang="en" style="display: none;">All rights reserved.</span></p>
             <p><a href="https://stevenwensley.com">stevenwensley.com</a></p>
         </div>
     </div>
