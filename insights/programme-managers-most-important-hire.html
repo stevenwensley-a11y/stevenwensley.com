@@ -282,7 +282,7 @@
       line-height: 1.6;
     }
 
-    /* CTA Section */
+    /* Enhanced CTA Section */
     .cta-section {
       max-width: 720px;
       margin: 3rem auto;
@@ -306,6 +306,13 @@
       font-size: 0.95rem;
     }
 
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .cta-button {
       display: inline-block;
       background: var(--gold);
@@ -313,12 +320,37 @@
       padding: 0.75rem 1.75rem;
       border-radius: 3px;
       text-decoration: none;
-      font-weight: 500;
-      transition: background 0.3s;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+      font-size: 0.95rem;
     }
 
     .cta-button:hover {
       background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .cta-button-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      border: 1px solid var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .cta-button-secondary:hover {
+      background: var(--gold-dim);
+    }
+
+    .cta-divider {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 1.25rem;
     }
 
     /* Footer */
@@ -578,9 +610,13 @@
 
   <!-- CTA Section -->
   <div class="cta-section">
-    <h3>Build Your Programme Foundation</h3>
-    <p>Get expert guidance on structuring your AI governance programme with a dedicated advisor.</p>
-    <a href="https://stevenwensley.com/services.html" class="cta-button">Explore Services</a>
+    <h3>Check Your Organisation's Readiness</h3>
+    <p>Before you hire a programme manager, make sure the foundation is there. The AI Readiness Quick Scan evaluates strategy, data, people, technology, and governance in under 5 minutes.</p>
+    <div class="cta-buttons">
+      <a href="https://stevenwensley.com/ai-readiness-scan.html" class="cta-button" onclick="gtag('event', 'insights_cta_readiness', {event_category: 'insights_cta'})">Take the Quick Scan →</a>
+      <a href="https://calendly.com/steven-wensley/30min" class="cta-button-secondary" onclick="gtag('event', 'insights_cta_book', {event_category: 'insights_cta'})">Book a Call</a>
+    </div>
+    <p class="cta-divider">Free 30-minute consultation · No commitment</p>
   </div>
 
   <!-- Footer -->

@@ -282,7 +282,7 @@
       line-height: 1.6;
     }
 
-    /* CTA Section */
+    /* Enhanced CTA Section */
     .cta-section {
       max-width: 720px;
       margin: 3rem auto;
@@ -306,6 +306,13 @@
       font-size: 0.95rem;
     }
 
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .cta-button {
       display: inline-block;
       background: var(--gold);
@@ -313,12 +320,37 @@
       padding: 0.75rem 1.75rem;
       border-radius: 3px;
       text-decoration: none;
-      font-weight: 500;
-      transition: background 0.3s;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+      font-size: 0.95rem;
     }
 
     .cta-button:hover {
       background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .cta-button-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--gold);
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      border: 1px solid var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .cta-button-secondary:hover {
+      background: var(--gold-dim);
+    }
+
+    .cta-divider {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 1.25rem;
     }
 
     /* Footer */
@@ -574,9 +606,13 @@
 
   <!-- CTA Section -->
   <div class="cta-section">
-    <h3>Classify Your AI Systems</h3>
-    <p>Use the EU AI Act classifier to determine the risk level of your systems and what compliance actions are required.</p>
-    <a href="https://stevenwensley.com/eu-ai-act-classifier.html" class="cta-button">Use Classifier</a>
+    <h3>Start With an Inventory</h3>
+    <p>Shadow AI is the #1 compliance blind spot. The AI Governance Assessment includes an inventory readiness dimension — find out how exposed your organisation is.</p>
+    <div class="cta-buttons">
+      <a href="https://stevenwensley.com/ai-governance-assessment.html" class="cta-button" onclick="gtag('event', 'insights_cta_assessment', {event_category: 'insights_cta'})">Start Assessment →</a>
+      <a href="https://calendly.com/steven-wensley/30min" class="cta-button-secondary" onclick="gtag('event', 'insights_cta_book', {event_category: 'insights_cta'})">Book a Call</a>
+    </div>
+    <p class="cta-divider">Free 30-minute consultation · No commitment</p>
   </div>
 
   <!-- Footer -->
