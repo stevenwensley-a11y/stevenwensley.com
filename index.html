@@ -519,6 +519,10 @@
     .credentials { grid-template-columns: 1fr 1fr; }
   }
 
+  @media (max-width: 600px) {
+    .trust-two-col { grid-template-columns: 1fr !important; }
+  }
+
   /* ── HAMBURGER MOBILE MENU ── */
   .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 101; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold, #c9a96e); margin: 5px 0; transition: all 0.3s; border-radius: 2px; }
@@ -880,6 +884,92 @@
         <div class="case-result">Security governance model delivered on time and accepted.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF / TRUST -->
+<section style="padding: 5rem 3rem; background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div style="max-width: 1000px; margin: 0 auto;">
+
+    <!-- Delivery results -->
+    <div style="text-align: center; margin-bottom: 4rem;">
+      <div style="font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;">Delivery track record</div>
+      <h2 style="font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: var(--text-primary); margin-bottom: 2.5rem; line-height: 1.4;">Results from real programmes</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem;">
+        <div style="padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px;">
+          <div style="font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--gold); margin-bottom: 0.3rem;">DKK 6M</div>
+          <div style="font-size: 0.82rem; color: var(--text-secondary);">Under budget on a DKK 33M programme</div>
+        </div>
+        <div style="padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px;">
+          <div style="font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--gold); margin-bottom: 0.3rem;">0</div>
+          <div style="font-size: 0.82rem; color: var(--text-secondary);">Production downtime across 3 major go-lives</div>
+        </div>
+        <div style="padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px;">
+          <div style="font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--gold); margin-bottom: 0.3rem;">16</div>
+          <div style="font-size: 0.82rem; color: var(--text-secondary);">Teams coordinated in a single programme turnaround</div>
+        </div>
+        <div style="padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px;">
+          <div style="font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--gold); margin-bottom: 0.3rem;">4</div>
+          <div style="font-size: 0.82rem; color: var(--text-secondary);">Countries in a single carve-out programme</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sectors -->
+    <div style="text-align: center; margin-bottom: 4rem;">
+      <div style="font-size: 0.78rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem;">Trusted across regulated industries</div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem;">
+        <div style="padding: 0.7rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.05em;">
+          <span style="color: var(--gold); margin-right: 0.4rem;">&#9670;</span> Pharma &amp; Life Science
+        </div>
+        <div style="padding: 0.7rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.05em;">
+          <span style="color: var(--gold); margin-right: 0.4rem;">&#9670;</span> Financial Infrastructure
+        </div>
+        <div style="padding: 0.7rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.05em;">
+          <span style="color: var(--gold); margin-right: 0.4rem;">&#9670;</span> Telecom
+        </div>
+        <div style="padding: 0.7rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.05em;">
+          <span style="color: var(--gold); margin-right: 0.4rem;">&#9670;</span> Public Sector &amp; Healthcare
+        </div>
+        <div style="padding: 0.7rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); letter-spacing: 0.05em;">
+          <span style="color: var(--gold); margin-right: 0.4rem;">&#9670;</span> Critical Infrastructure (NIS2)
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications + LinkedIn -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="trust-two-col">
+      <div style="padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px;">
+        <div style="font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;">Certifications</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+          <span style="padding: 0.4rem 0.9rem; background: var(--gold-dim); border: 1px solid var(--border); border-radius: 2px; font-size: 0.78rem; font-weight: 500; color: var(--text-primary);">PMP</span>
+          <span style="padding: 0.4rem 0.9rem; background: var(--gold-dim); border: 1px solid var(--border); border-radius: 2px; font-size: 0.78rem; font-weight: 500; color: var(--text-primary);">PRINCE2</span>
+          <span style="padding: 0.4rem 0.9rem; background: var(--gold-dim); border: 1px solid var(--border); border-radius: 2px; font-size: 0.78rem; font-weight: 500; color: var(--text-primary);">MSP</span>
+          <span style="padding: 0.4rem 0.9rem; background: var(--gold-dim); border: 1px solid var(--border); border-radius: 2px; font-size: 0.78rem; font-weight: 500; color: var(--text-primary);">P3O</span>
+          <span style="padding: 0.4rem 0.9rem; background: var(--gold-dim); border: 1px solid var(--border); border-radius: 2px; font-size: 0.78rem; font-weight: 500; color: var(--text-primary);">MoP</span>
+          <span style="padding: 0.4rem 0.9rem; background: var(--gold-dim); border: 1px solid var(--border); border-radius: 2px; font-size: 0.78rem; font-weight: 500; color: var(--text-primary);">Agile PM</span>
+          <span style="padding: 0.4rem 0.9rem; background: var(--gold-dim); border: 1px solid var(--border); border-radius: 2px; font-size: 0.78rem; font-weight: 500; color: var(--text-primary);">ITIL</span>
+        </div>
+      </div>
+      <div style="padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 2px;">
+        <div style="font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;">Professional presence</div>
+        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+          <div style="display: flex; align-items: center; gap: 0.8rem;">
+            <span style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--gold); min-width: 60px;">3,700+</span>
+            <span style="font-size: 0.85rem; color: var(--text-secondary);">LinkedIn followers</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.8rem;">
+            <span style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--gold); min-width: 60px;">1,000+</span>
+            <span style="font-size: 0.85rem; color: var(--text-secondary);">Monthly profile viewers</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.8rem;">
+            <span style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--gold); min-width: 60px;">20+</span>
+            <span style="font-size: 0.85rem; color: var(--text-secondary);">Years in regulated environments</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
