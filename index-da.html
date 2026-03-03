@@ -551,6 +551,33 @@
     nav .nav-links { gap: 1rem; }
     .credentials { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ── HAMBURGER MOBILE MENU ── */
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 101; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold, #c9a96e); margin: 5px 0; transition: all 0.3s; border-radius: 2px; }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  @media (max-width: 680px) {
+    .hamburger { display: block; }
+    nav .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 15, 0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      padding: 1.5rem 2rem;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border, rgba(201,169,110,0.12));
+    }
+    nav .nav-links.open { display: flex; }
+    nav .nav-links a { font-size: 0.9rem; padding: 0.5rem 0; }
+  }
+
 </style>
 </head>
 <body>
@@ -558,6 +585,7 @@
 <!-- NAV -->
 <nav>
   <div class="logo">SSW</div>
+  <button class="hamburger" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="ai-governance-assessment.html" style="color: var(--gold);">Assessment</a>
     <a href="#about">Om mig</a>
@@ -609,7 +637,7 @@
     <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
       <span style="display: inline-block; width: 10px; height: 10px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
       <span style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #10b981;">Tilg&aelig;ngelig nu</span>
-      <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 0.5rem;">Opdateret februar 2026</span>
+      <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 0.5rem;">Opdateret marts 2026</span>
     </div>
     <h2 style="font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.3;">
       Interim programleder i regulerede milj&oslash;er.
@@ -642,6 +670,35 @@
     50% { opacity: 0.4; }
   }
 </style>
+
+<!-- PAIN POINTS -->
+<section style="padding: 5rem 3rem; background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+    <div style="font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;">Lyder det bekendt?</div>
+    <h2 style="font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: var(--text-primary); margin-bottom: 3rem; line-height: 1.4;">De problemer jeg l&oslash;ser</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+      <div style="padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-top: 3px solid #e74c3c; border-radius: 4px; text-align: left;">
+        <div style="font-size: 1.5rem; margin-bottom: 0.8rem;">&#9888;&#65039;</div>
+        <h3 style="font-family: var(--serif); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.6rem;">EU AI Act-deadline n&aelig;rmer sig &mdash; og I har ingen plan</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;">I ved compliance er obligatorisk, men ved ikke hvor I skal starte. Ingen inventory, ingen risikovurdering, ingen governance-struktur.</p>
+      </div>
+      <div style="padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-top: 3px solid #e74c3c; border-radius: 4px; text-align: left;">
+        <div style="font-size: 1.5rem; margin-bottom: 0.8rem;">&#128260;</div>
+        <h3 style="font-family: var(--serif); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.6rem;">Jeres transformationsprogram er g&aring;et i st&aring;</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;">Leverand&oslash;rer driver af. Interessenter er uengagerede. SteerCo stiller de samme sp&oslash;rgsm&aring;l igen og igen. I har brug for &eacute;n der f&aring;r det p&aring; sporet.</p>
+      </div>
+      <div style="padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-top: 3px solid #e74c3c; border-radius: 4px; text-align: left;">
+        <div style="font-size: 1.5rem; margin-bottom: 0.8rem;">&#128065;</div>
+        <h3 style="font-family: var(--serif); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.6rem;">AI bliver adopteret hurtigere end jeres governance kan f&oslash;lge med</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;">Skygge-AI er allerede i brug p&aring; tv&aelig;rs af afdelinger. I har brug for politikker, tilsynsprocesser og ansvarlighedsstrukturer &mdash; f&oslash;r noget g&aring;r galt.</p>
+      </div>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 1rem 2rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 4px;">
+      <span style="font-size: 1.1rem;">&#10003;</span>
+      <span style="font-size: 0.92rem; color: #10b981; font-weight: 500;">Jeg omdanner disse situationer til strukturerede programmer med klare milep&aelig;le og m&aring;lbar fremdrift.</span>
+    </div>
+  </div>
+</section>
 
 <!-- ASSESSMENT BANNER -->
 <section style="padding: 3rem; background: linear-gradient(135deg, #12121a 0%, #1a1a26 50%, #12121a 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
