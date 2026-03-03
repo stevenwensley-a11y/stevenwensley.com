@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-17Y98NY34Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-17Y98NY34Y');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI Governance Starter Kit | Steven Wensley</title>
+  <meta name="description" content="Most organizations skip the hard work. Here's the actual 4-step starter kit for AI governance before you hire someone or wait for guidance.">
+
+  <!-- OG Meta -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://stevenwensley.com/insights/ai-governance-starter-kit.html">
+  <meta property="og:title" content="AI Governance Starter Kit: What You Actually Need">
+  <meta property="og:description" content="Most organizations skip the hard work. Here's the actual 4-step starter kit for AI governance before you hire someone or wait for guidance.">
+  <meta property="og:image" content="https://stevenwensley.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Governance Starter Kit: What You Actually Need">
+  <meta name="twitter:description" content="Most organizations skip the hard work. Here's the actual 4-step starter kit for AI governance.">
+  <meta name="twitter:image" content="https://stevenwensley.com/og-image.png">
+
+  <link rel="canonical" href="https://stevenwensley.com/insights/ai-governance-starter-kit.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='16' fill='%23c9a96e'%3ESSW%3C/text%3E%3C/svg%3E">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Governance Starter Kit: What You Actually Need Before Policies",
+    "description": "Most organizations skip the hard work. Here's the actual 4-step starter kit for AI governance before you hire someone or wait for guidance.",
+    "author": {
+      "@type": "Person",
+      "name": "Steven Seidenfaden Wensley"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Steven Wensley",
+      "url": "https://stevenwensley.com"
+    },
+    "datePublished": "2026-03-03",
+    "image": "https://stevenwensley.com/og-image.png"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a26;
+      --gold: #c9a96e;
+      --gold-light: #dfc08a;
+      --gold-dim: rgba(201, 169, 110, 0.15);
+      --text-primary: #f0ece4;
+      --text-secondary: #9a9aaa;
+      --text-muted: #6a6a7a;
+      --border: rgba(201, 169, 110, 0.12);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    nav .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    nav .logo {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex: 1;
+    }
+
+    nav .nav-links a {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover,
+    nav .nav-links a.active {
+      color: var(--gold);
+    }
+
+    /* Article Container */
+    article {
+      padding-top: 100px;
+      max-width: 720px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 4rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover {
+      color: var(--gold-light);
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .article-meta .tag {
+      background: var(--gold-dim);
+      color: var(--gold);
+      padding: 0.35rem 0.75rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .article-header h1 {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      margin-top: -0.5rem;
+    }
+
+    .article-lead {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .article-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+
+    .article-body strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    /* Related Articles */
+    .related {
+      max-width: 720px;
+      margin: 4rem auto 0;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 3rem;
+    }
+
+    .related h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .related-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .related-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .related-item:hover {
+      border-color: var(--gold);
+      background: rgba(201, 169, 110, 0.05);
+    }
+
+    .related-item h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .related-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--gold-dim);
+      border-left: 3px solid var(--gold);
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--bg-primary);
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: var(--gold-light);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    footer .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    footer h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    footer .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav .nav-container {
+        gap: 1rem;
+      }
+
+      nav .nav-links {
+        gap: 0.75rem;
+      }
+
+      nav .nav-links a {
+        font-size: 0.85rem;
+      }
+
+      article {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .article-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .article-meta {
+        gap: 1rem;
+      }
+
+      .related-list {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 0.75rem 1rem;
+      }
+
+      nav .nav-container {
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav .nav-links {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      article {
+        padding-top: 140px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .article-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .article-lead {
+        font-size: 1rem;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+      }
+
+      .article-body h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="https://stevenwensley.com" class="logo">SSW</a>
+      <ul class="nav-links">
+        <li><a href="https://stevenwensley.com/insights.html" class="active">Insights</a></li>
+        <li><a href="https://stevenwensley.com/about.html">About</a></li>
+        <li><a href="https://stevenwensley.com/services.html">Services</a></li>
+        <li><a href="https://stevenwensley.com/ai-governance-assessment.html">Assessment</a></li>
+        <li><a href="https://stevenwensley.com/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <article>
+    <div class="article-header">
+      <a href="../insights.html" class="back-link">← All Insights</a>
+      <div class="article-meta">
+        <span class="tag">AI Governance</span>
+        <span>3 Mar 2026</span>
+        <span>7 min read</span>
+      </div>
+      <h1>AI Governance Starter Kit: What You Actually Need Before Policies</h1>
+      <p class="article-lead">Most organizations either wait for guidance, hire someone, or skip to writing a policy. None of these approaches work. Here's the actual four-step starter kit that successful AI governance programs begin with.</p>
+    </div>
+
+    <div class="article-body">
+      <p>I've watched organizations approach AI governance three ways, and all three fail predictably. The first group waits. They wait for the EU AI Act to be fully clarified. They wait for their industry body to release guidelines. They wait for their parent company to mandate a program. The second group hires. They bring in a Chief AI Officer or an AI governance lead, give them a mandate to "build governance," and somehow expect structure to emerge. The third group writes. They commission a policy document from legal, distribute it to the company, and declare victory.</p>
+
+      <p>None of these work because they skip what actually matters: understanding what you have, who owns it, and what you're trying to protect. Policies without inventory are fiction. Leadership without ownership is theater. Governance without a plan is just meetings.</p>
+
+      <h2>The Four-Step Starter Kit</h2>
+
+      <p>Here's what actually needs to happen before you hire someone or wait for guidance. These four steps take 4-6 weeks and require no external consultants. They're the foundation that makes everything else possible.</p>
+
+      <h2>Step One: AI System Inventory</h2>
+
+      <p>You don't know what you have. Most organizations think they're running 3-5 AI systems. In practice, they're running 15-50. The rest are invisible. They live in CRM lead scoring, email optimization, recruitment screening, fraud detection, chatbots, recommendation engines, and demand forecasting tools. They're embedded in enterprise software. They're built by individual teams without central knowledge.</p>
+
+      <p>The inventory isn't a spreadsheet. It's a structured workshop where representatives from every department (HR, Finance, Operations, Product, Sales, Marketing, IT, Legal) answer three questions for each system they know about. What does it do? Who uses it? What data does it use? From these conversations, you discover shadow AI. You learn about critical systems nobody realized were critical. You uncover contractual risks when your vendor has licensed an AI to do something they didn't tell you about.</p>
+
+      <p>This step produces three outputs: a complete register of known systems, a list of shadow AI candidates to investigate further, and agreement on who owns each system. That agreement is worth more than the inventory itself. It's the first time the organization has acknowledged that AI systems have owners, and those owners are accountable.</p>
+
+      <h2>Step Two: Risk Classification</h2>
+
+      <p>Once you know what you have, you classify it. The EU AI Act provides the structure for this: <strong>prohibited risk</strong> (social scoring, emotion recognition), <strong>high-risk</strong> (hiring, lending, critical infrastructure), <strong>limited risk</strong> (chatbots that must disclose they're AI), and <strong>minimal risk</strong> (spam filters). This isn't academic. It determines what you have to do next.</p>
+
+      <p>The classification requires the same group from step one. You work through each system against the criteria. Does this system make autonomous decisions that significantly affect human rights? Does it influence credit, employment, education, or essential services? Is it used to detect or prevent crime? The criteria are objective. The conversations are not. Teams will debate whether their system is truly high-risk, and those debates are valuable. They surface assumptions and force clarity about actual impact.</p>
+
+      <p>This step produces two outputs: a risk assessment for every system, and clarity on which systems require mandatory compliance actions. For prohibited systems, the answer is straightforward: stop using them. For high-risk systems, you now know that you need human oversight, documentation, risk management, bias monitoring, and audit trails. For limited risk, you need transparency. For minimal risk, you can monitor and adjust.</p>
+
+      <h2>Step Three: Assign Ownership</h2>
+
+      <p>This is the step that breaks down most governance efforts. Every AI system needs a single owner. Not a committee. Not a task force. One person with authority and accountability. That person owns the day-to-day operation, escalates problems, and answers for compliance.</p>
+
+      <p>The owner doesn't have to be technical. They need to understand the system, understand the risks, and understand the business impact. In most organizations, this is the product manager, the operations leader, or the department head who uses the system most. You're not reassigning people. You're making explicit what's already implicit, and you're giving those people a channel to the governance structure.</p>
+
+      <p>For high-risk systems, you also assign an overseer. Someone from a different function who acts as an independent check. In hiring systems, this might be the HR director and someone from Legal. In credit systems, it might be Risk Management and Compliance. The overseer doesn't run the system. They audit it. They have independent authority to escalate concerns and recommend changes.</p>
+
+      <h2>Step Four: 90-Day Plan</h2>
+
+      <p>With inventory, classification, and ownership in place, you now have clarity about what needs to happen. The 90-day plan is simple: for each high-risk system, document what compliance means, who's responsible, and when it will be done. For prohibited systems, set a decommissioning date. For shadow AI, set a deadline for final assessment or removal.</p>
+
+      <p>The plan is not a detailed project. It's a commitment. You're saying: we know what we have, we know what we need to do, and we're going to do it in the next three months. You're also saying: if something changes, we have a framework to assess it.</p>
+
+      <h2>Why This Order Matters</h2>
+
+      <p>This sequence is important. Inventory first, because you can't classify what you don't know. Classification second, because you can't assign ownership without understanding risk. Ownership third, because a plan without owners is a wish list. Plan last, because a plan without inventory and ownership is just guesswork.</p>
+
+      <p>Most governance efforts start at the wrong end. They start with a plan ("we need a framework") or with ownership ("hire a Chief AI Officer") or with policy ("let's get legal to write something"). This fails because they're trying to build without a foundation.</p>
+
+      <p><strong>This starter kit is your foundation.</strong> It takes 4-6 weeks. It costs almost nothing. It doesn't require external expertise or regulatory guidance. And when you're finished, you'll have the clarity and accountability that makes everything else possible. You'll know what you have. You'll know what it does. You'll know who owns it. And you'll have a realistic plan to make it compliant.</p>
+
+      <p>The program doesn't start when you hire someone. It starts when you understand what you've already built.</p>
+    </div>
+  </article>
+
+  <!-- Related Articles -->
+  <div class="related">
+    <h3>Related Articles</h3>
+    <div class="related-list">
+      <a href="shadow-ai-hidden-compliance-risk.html" class="related-item">
+        <h4>Shadow AI: The Hidden Compliance Risk</h4>
+        <p>Most organizations think they're running 3-5 AI systems. The actual number is usually 15-50. Here's how to find the hidden ones.</p>
+      </a>
+      <a href="human-oversight-not-rubber-stamp.html" class="related-item">
+        <h4>Human Oversight Isn't a Rubber Stamp</h4>
+        <p>Article 14 of the EU AI Act requires human oversight. Most organizations interpret this as "humans review outputs." That's observation, not oversight.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <h3>Assess Your AI Governance Readiness</h3>
+    <p>Take the assessment to see where your organization stands across inventory, risk management, oversight, and compliance.</p>
+    <a href="https://stevenwensley.com/ai-governance-assessment.html" class="cta-button">Start Assessment</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h4>Steven Wensley</h4>
+        <ul>
+          <li><a href="https://stevenwensley.com">Home</a></li>
+          <li><a href="https://stevenwensley.com/insights.html">Insights</a></li>
+          <li><a href="https://stevenwensley.com/about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="https://stevenwensley.com/services.html">Advisory</a></li>
+          <li><a href="https://stevenwensley.com/ai-governance-assessment.html">Assessment</a></li>
+          <li><a href="https://stevenwensley.com/contact.html">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://stevenwensley.com/eu-ai-act-classifier.html">AI Risk Classifier</a></li>
+          <li><a href="https://stevenwensley.com/cost-of-inaction.html">Cost Calculator</a></li>
+          <li><a href="https://stevenwensley.com/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Steven Seidenfaden Wensley. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-17Y98NY34Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-17Y98NY34Y');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shadow AI: Hidden Compliance Risk | Steven Wensley</title>
+  <meta name="description" content="Most organizations think they're running 3–5 AI systems. The actual number is usually 15–50. Here's how shadow AI happens and how to find it.">
+
+  <!-- OG Meta -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://stevenwensley.com/insights/shadow-ai-hidden-compliance-risk.html">
+  <meta property="og:title" content="Shadow AI: The Hidden Compliance Risk You Don't Know You Have">
+  <meta property="og:description" content="Most organizations think they're running 3–5 AI systems. The actual number is usually 15–50. Here's how shadow AI happens and how to find it.">
+  <meta property="og:image" content="https://stevenwensley.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shadow AI: The Hidden Compliance Risk">
+  <meta name="twitter:description" content="Most organizations think they're running 3–5 AI systems. The actual number is usually 15–50.">
+  <meta name="twitter:image" content="https://stevenwensley.com/og-image.png">
+
+  <link rel="canonical" href="https://stevenwensley.com/insights/shadow-ai-hidden-compliance-risk.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='16' fill='%23c9a96e'%3ESSW%3C/text%3E%3C/svg%3E">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Shadow AI: The Biggest Compliance Risk You Don't Know You Have",
+    "description": "Most organizations think they're running 3–5 AI systems. The actual number is usually 15–50. Here's how shadow AI happens and how to find it.",
+    "author": {
+      "@type": "Person",
+      "name": "Steven Seidenfaden Wensley"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Steven Wensley",
+      "url": "https://stevenwensley.com"
+    },
+    "datePublished": "2026-03-03",
+    "image": "https://stevenwensley.com/og-image.png"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a26;
+      --gold: #c9a96e;
+      --gold-light: #dfc08a;
+      --gold-dim: rgba(201, 169, 110, 0.15);
+      --text-primary: #f0ece4;
+      --text-secondary: #9a9aaa;
+      --text-muted: #6a6a7a;
+      --border: rgba(201, 169, 110, 0.12);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    nav .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    nav .logo {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex: 1;
+    }
+
+    nav .nav-links a {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover,
+    nav .nav-links a.active {
+      color: var(--gold);
+    }
+
+    /* Article Container */
+    article {
+      padding-top: 100px;
+      max-width: 720px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 4rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover {
+      color: var(--gold-light);
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .article-meta .tag {
+      background: var(--gold-dim);
+      color: var(--gold);
+      padding: 0.35rem 0.75rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .article-header h1 {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      margin-top: -0.5rem;
+    }
+
+    .article-lead {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .article-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+
+    .article-body strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    /* Related Articles */
+    .related {
+      max-width: 720px;
+      margin: 4rem auto 0;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 3rem;
+    }
+
+    .related h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .related-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .related-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .related-item:hover {
+      border-color: var(--gold);
+      background: rgba(201, 169, 110, 0.05);
+    }
+
+    .related-item h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .related-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--gold-dim);
+      border-left: 3px solid var(--gold);
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--bg-primary);
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: var(--gold-light);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    footer .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    footer h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    footer .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav .nav-container {
+        gap: 1rem;
+      }
+
+      nav .nav-links {
+        gap: 0.75rem;
+      }
+
+      nav .nav-links a {
+        font-size: 0.85rem;
+      }
+
+      article {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .article-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .article-meta {
+        gap: 1rem;
+      }
+
+      .related-list {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 0.75rem 1rem;
+      }
+
+      nav .nav-container {
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav .nav-links {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      article {
+        padding-top: 140px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .article-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .article-lead {
+        font-size: 1rem;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+      }
+
+      .article-body h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="https://stevenwensley.com" class="logo">SSW</a>
+      <ul class="nav-links">
+        <li><a href="https://stevenwensley.com/insights.html" class="active">Insights</a></li>
+        <li><a href="https://stevenwensley.com/about.html">About</a></li>
+        <li><a href="https://stevenwensley.com/services.html">Services</a></li>
+        <li><a href="https://stevenwensley.com/ai-governance-assessment.html">Assessment</a></li>
+        <li><a href="https://stevenwensley.com/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <article>
+    <div class="article-header">
+      <a href="../insights.html" class="back-link">← All Insights</a>
+      <div class="article-meta">
+        <span class="tag">EU AI Act</span>
+        <span>3 Mar 2026</span>
+        <span>8 min read</span>
+      </div>
+      <h1>Shadow AI: The Biggest Compliance Risk You Don't Know You Have</h1>
+      <p class="article-lead">When I ask organizations "How many AI systems are you running?" most answer three to five. The actual number is usually fifteen to fifty. The gap isn't incompetence. It's that the hidden ones aren't called AI. They're just tools.</p>
+    </div>
+
+    <div class="article-body">
+      <p>I was working with a financial services company last year. They told me they had two AI systems: a chatbot and a recommendation engine. Both approved, both documented. I spent a week interviewing their teams. By day three, we'd found twelve more. A CRM that scored leads by likelihood to convert. A fraud detection system embedded in their transaction processor. An email optimization tool that determined when to send messages. A recruiting platform that screened CVs. A demand forecasting tool. An internal tool that recommended which customers should be offered credit increases. A vendor platform they paid for that made decisions about data access. And more.</p>
+
+      <p>None of these were secret. They weren't rogue projects or shadow IT in the traditional sense. They just weren't called AI. The finance team didn't think their fraud detection was AI. It was a tool. The recruiter didn't think their CV screening was AI. It was software. The CRM vendor's marketing materials never said "AI-powered." They said "intelligent lead scoring."</p>
+
+      <p>This is shadow AI, and it's the biggest compliance risk most organizations face under the EU AI Act.</p>
+
+      <h2>Why Shadow AI Happens</h2>
+
+      <p>Shadow AI emerges because we've all been trained to think of AI as something special. Something new. Something deliberate. But the reality is that the line between a rule-based decision system and an AI system is blurry and increasingly irrelevant. If a system uses statistical models, machine learning, neural networks, or any method that learns from data to make predictions or decisions, it's AI under the regulation. Whether anyone marketing it as such is beside the point.</p>
+
+      <p>Shadow AI also happens because accountability is diffuse. The CRM vendor's platform has one owner. The implementation has another. The department using it has a third. When a vendor updates their tool and adds an ML-based feature, often nobody in procurement notices. Often nobody in IT notices. It just gets used one day and nobody marks that anything changed.</p>
+
+      <p>Shadow AI thrives in decentralized organizations. When different business units buy their own software, when product teams build their own features, when each department is responsible for their own tooling, you get fragmentation. You get shadow AI. You also get shadow AI in organizations that are overly centralized. When there's no transparency about what different departments are doing, shadow systems accumulate in silos.</p>
+
+      <h2>Why Shadow AI Matters Under the EU AI Act</h2>
+
+      <p>Under Article 26, the deployer of a high-risk AI system is responsible for compliance. The deployer is <strong>the natural or legal person, other than the provider, that makes the system available to end-users.</strong> If you're running a high-risk system and you don't know it exists, you can't comply with it. You can't implement human oversight if you don't know someone's using the system to make decisions about hiring. You can't maintain documentation if you don't know the system exists. You can't audit bias if you don't monitor the system. You can't explain decisions if you can't explain the system.</p>
+
+      <p>The regulatory risk is real, but it's not the biggest risk. The bigger risk is that <strong>shadow AI often handles the highest-stakes decisions.</strong> Fraud detection. Credit decisions. Hiring. Resume screening. These are the systems that touch people's lives. These are the systems that need oversight, documentation, bias monitoring, and audit trails. These are exactly the systems that often disappear into shadow IT because nobody realized they were AI.</p>
+
+      <p>The reputational risk is also real. If your organization makes a decision that harms someone, and that decision was made by a system nobody knew existed, the story isn't "we made a mistake." The story is "they didn't even know their own systems were running."</p>
+
+      <h2>How to Find Shadow AI</h2>
+
+      <p>Shadow AI discovery requires structure and honesty. Here's the process that actually works.</p>
+
+      <p><strong>First, do a department sweep.</strong> Talk to every function that makes decisions: HR, Finance, Operations, Sales, Marketing, Customer Service, Risk, Fraud, IT, Product. Ask them: what tools do you use to make decisions or predictions? What software decides whether something happens? Ask specifically about tools that learn. The conversation matters more than the list. People often don't realize what they're describing is AI until you ask the right question.</p>
+
+      <p><strong>Second, review contracts.</strong> Look at software contracts from the past three years. Look at SaaS agreements. Look at vendor statements of work. Search for the words "machine learning," "AI," "statistical," "predictive," "algorithm," "learning." You'll find systems that were implemented and forgotten. You'll find features added to existing contracts that nobody noticed. This is where many high-risk systems hide.</p>
+
+      <p><strong>Third, do a data flow analysis.</strong> Which systems have automated access to sensitive data? Which systems push data into critical business processes? CRM systems. Hiring systems. Finance systems. Payment systems. These are containers for shadow AI. A system might be described as "contact management software," but if it's doing lead scoring or opportunity prioritization, that's AI.</p>
+
+      <p><strong>Fourth, build a register and maintain it.</strong> Don't do this as a one-time exercise. Do it as an ongoing discovery process. Build a register of all AI systems. Mark what you've verified and what you've simply been told about. Mark what's high-risk and what's minimal risk. Mark what has an owner and what doesn't. Then maintain it. Every quarter, add new systems. Every year, review for changes.</p>
+
+      <h2>The Real Cost of Shadow AI</h2>
+
+      <p>I worked with an organization that discovered a bias in their credit decisioning system by accident. A journalist asked about a potential pattern in their lending decisions. They didn't even know the system had bias because they weren't monitoring it. They weren't monitoring it because they didn't know it was AI. By the time they discovered the problem, the damage was done.</p>
+
+      <p>Shadow AI isn't just a compliance problem. It's a governance problem. It's a risk management problem. It's an accountability problem.</p>
+
+      <p>The first step in building real AI governance is knowing what you have. That's harder than most organizations want to admit, but it's also the most important step. Until you know what AI systems are running, you can't govern them. Until you govern them, you can't be sure they're working as intended. Until you're sure they're working as intended, you're taking risks you don't understand.</p>
+
+      <p>The AI Governance Starter Kit begins with inventory. For good reason. You can't protect what you don't see.</p>
+    </div>
+  </article>
+
+  <!-- Related Articles -->
+  <div class="related">
+    <h3>Related Articles</h3>
+    <div class="related-list">
+      <a href="ai-governance-starter-kit.html" class="related-item">
+        <h4>AI Governance Starter Kit</h4>
+        <p>Most organizations approach governance wrong. Here's the four-step foundation that actually works.</p>
+      </a>
+      <a href="human-oversight-not-rubber-stamp.html" class="related-item">
+        <h4>Human Oversight Isn't a Rubber Stamp</h4>
+        <p>Article 14 requires human oversight. Most organizations interpret this as passive observation rather than active control.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <h3>Classify Your AI Systems</h3>
+    <p>Use the EU AI Act classifier to determine the risk level of your systems and what compliance actions are required.</p>
+    <a href="https://stevenwensley.com/eu-ai-act-classifier.html" class="cta-button">Use Classifier</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h4>Steven Wensley</h4>
+        <ul>
+          <li><a href="https://stevenwensley.com">Home</a></li>
+          <li><a href="https://stevenwensley.com/insights.html">Insights</a></li>
+          <li><a href="https://stevenwensley.com/about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="https://stevenwensley.com/services.html">Advisory</a></li>
+          <li><a href="https://stevenwensley.com/ai-governance-assessment.html">Assessment</a></li>
+          <li><a href="https://stevenwensley.com/contact.html">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://stevenwensley.com/ai-governance-assessment.html">AI Governance Assessment</a></li>
+          <li><a href="https://stevenwensley.com/cost-of-inaction.html">Cost Calculator</a></li>
+          <li><a href="https://stevenwensley.com/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Steven Seidenfaden Wensley. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

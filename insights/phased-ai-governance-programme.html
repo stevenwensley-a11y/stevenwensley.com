@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-17Y98NY34Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-17Y98NY34Y');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Phased AI Governance Programme | Steven Wensley</title>
+  <meta name="description" content="Complex transformations succeed when structured in phases with clear exit criteria. Here's the four-phase AI governance model that delivers results.">
+
+  <!-- OG Meta -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://stevenwensley.com/insights/phased-ai-governance-programme.html">
+  <meta property="og:title" content="How to Structure an AI Governance Programme That Actually Delivers">
+  <meta property="og:description" content="Complex transformations succeed when structured in phases with clear exit criteria. Here's the four-phase AI governance model that delivers results.">
+  <meta property="og:image" content="https://stevenwensley.com/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Structure an AI Governance Programme">
+  <meta name="twitter:description" content="The four-phase approach that delivers realistic timelines and measurable results.">
+  <meta name="twitter:image" content="https://stevenwensley.com/og-image.png">
+
+  <link rel="canonical" href="https://stevenwensley.com/insights/phased-ai-governance-programme.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='16' fill='%23c9a96e'%3ESSW%3C/text%3E%3C/svg%3E">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Structure an AI Governance Programme That Actually Delivers",
+    "description": "Complex transformations succeed when structured in phases with clear exit criteria. Here's the four-phase AI governance model that delivers results.",
+    "author": {
+      "@type": "Person",
+      "name": "Steven Seidenfaden Wensley"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Steven Wensley",
+      "url": "https://stevenwensley.com"
+    },
+    "datePublished": "2026-03-03",
+    "image": "https://stevenwensley.com/og-image.png"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a26;
+      --gold: #c9a96e;
+      --gold-light: #dfc08a;
+      --gold-dim: rgba(201, 169, 110, 0.15);
+      --text-primary: #f0ece4;
+      --text-secondary: #9a9aaa;
+      --text-muted: #6a6a7a;
+      --border: rgba(201, 169, 110, 0.12);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    nav .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    nav .logo {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex: 1;
+    }
+
+    nav .nav-links a {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover,
+    nav .nav-links a.active {
+      color: var(--gold);
+    }
+
+    /* Article Container */
+    article {
+      padding-top: 100px;
+      max-width: 720px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 4rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover {
+      color: var(--gold-light);
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .article-meta .tag {
+      background: var(--gold-dim);
+      color: var(--gold);
+      padding: 0.35rem 0.75rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .article-header h1 {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      margin-top: -0.5rem;
+    }
+
+    .article-lead {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .article-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .article-body h2 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .article-body h2:first-child {
+      margin-top: 0;
+    }
+
+    .article-body strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    /* Related Articles */
+    .related {
+      max-width: 720px;
+      margin: 4rem auto 0;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 3rem;
+    }
+
+    .related h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .related-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .related-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .related-item:hover {
+      border-color: var(--gold);
+      background: rgba(201, 169, 110, 0.05);
+    }
+
+    .related-item h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .related-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--gold-dim);
+      border-left: 3px solid var(--gold);
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--bg-primary);
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: var(--gold-light);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    footer .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    footer h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    footer .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav .nav-container {
+        gap: 1rem;
+      }
+
+      nav .nav-links {
+        gap: 0.75rem;
+      }
+
+      nav .nav-links a {
+        font-size: 0.85rem;
+      }
+
+      article {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .article-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .article-meta {
+        gap: 1rem;
+      }
+
+      .related-list {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 0.75rem 1rem;
+      }
+
+      nav .nav-container {
+        gap: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav .nav-links {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      article {
+        padding-top: 140px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .article-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .article-lead {
+        font-size: 1rem;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+      }
+
+      .article-body h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="https://stevenwensley.com" class="logo">SSW</a>
+      <ul class="nav-links">
+        <li><a href="https://stevenwensley.com/insights.html" class="active">Insights</a></li>
+        <li><a href="https://stevenwensley.com/about.html">About</a></li>
+        <li><a href="https://stevenwensley.com/services.html">Services</a></li>
+        <li><a href="https://stevenwensley.com/ai-governance-assessment.html">Assessment</a></li>
+        <li><a href="https://stevenwensley.com/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <article>
+    <div class="article-header">
+      <a href="../insights.html" class="back-link">← All Insights</a>
+      <div class="article-meta">
+        <span class="tag">Programme Management</span>
+        <span>3 Mar 2026</span>
+        <span>9 min read</span>
+      </div>
+      <h1>How to Structure an AI Governance Programme That Actually Delivers</h1>
+      <p class="article-lead">Complex transformations fail when they're built all at once. They succeed when they're structured in phases with clear exit criteria, dedicated owners, and measurable progress. Here's the four-phase model.</p>
+    </div>
+
+    <div class="article-body">
+      <p>I was advising a large financial services organization that had been trying to build AI governance for nine months. They had drafts of policies. They had architectural diagrams. They had assessment frameworks. But nothing was finished. Nothing was deployed. Nothing was working. The initiative was stalled, and everyone was frustrated.</p>
+
+      <p>The problem wasn't lack of effort. It was lack of structure. They were trying to do everything at once. Build the inventory, classify systems, define roles, implement controls, create oversight processes, train people, update procurement, modify contracts, establish escalation paths, and build monitoring infrastructure. All in parallel. All with unclear exit criteria. All with unclear ownership.</p>
+
+      <p>When I asked them to structure the program into phases, with clear exit criteria and dedicated owners, everything changed. Suddenly there was clarity. People knew what they were accountable for. People knew when their phase would be done. Progress became visible. Within six months, they had moved from draft to deployed governance across multiple systems.</p>
+
+      <h2>The Four-Phase Model</h2>
+
+      <p>Successful AI governance programs follow four distinct phases, each with specific outputs, timelines, and exit criteria. Understanding these phases transforms a chaotic, open-ended program into a structured, deliverable-focused one.</p>
+
+      <h2>Phase One: Inventory and Classification (4-6 Weeks)</h2>
+
+      <p>The program begins with understanding what you have. You've done the workshop to identify all AI systems. You've reviewed contracts to find shadow AI. You've classified each system into the EU AI Act risk categories. Exit criteria are clear: every known system is registered, classified, and has an assigned owner. You know what percentage are prohibited risk, high-risk, limited risk, and minimal risk. You know which systems need immediate attention.</p>
+
+      <p>The output is the AI system register. Not a spreadsheet. A structured document with complete information on each system: what it does, who uses it, what data it processes, who owns it, and what risk level it is. This register becomes the foundation for everything that follows.</p>
+
+      <p><strong>Timeline: 4-6 weeks.</strong> This phase is the quickest because it's primarily information gathering. The constraint is typically getting access to people from different departments, not complexity. Dedicated owner: typically the Chief Risk Officer or CTO, with support from a program manager who coordinates the workshops and contract review.</p>
+
+      <h2>Phase Two: Gap Analysis and Prioritisation (4-6 Weeks)</h2>
+
+      <p>With complete visibility of what you have, you now ask: what needs to change? For each high-risk system, you assess current state: Do we have documented processes? Do we have human oversight? Do we have bias monitoring? Do we have audit trails? Do we have training for overseers? For each system, you identify gaps. Then you prioritize. Which systems are most critical? Which have the highest risk? Which deployments need to be changed or stopped?</p>
+
+      <p>Exit criteria are equally clear: every high-risk system has a gap assessment. Every gap has a priority level. You have a prioritization framework that drives Phase Three. The output is the remediation roadmap: here's what needs to change, in what order, by what date.</p>
+
+      <p><strong>Timeline: 4-6 weeks.</strong> This phase requires coordinated assessment across multiple systems and functions. Legal assesses contract compliance. Technology assesses technical controls. HR assesses training and oversight roles. Operations assesses monitoring and escalation. A program manager synthesizes all of this into a consolidated remediation roadmap.</p>
+
+      <h2>Phase Three: Governance Structure (2-4 Weeks)</h2>
+
+      <p>With priorities defined, you now build the structure that will govern these systems. You define roles: who owns each system? Who oversees it? Who escalates risks? You define processes: how are decisions made? How are risks escalated? How often do we review? You define controls: what monitoring happens? What training is required? What documentation is required? You define boards and committees: steering committee to govern the program itself, oversight committees for each high-risk system, a risk forum where issues surface and escalate.</p>
+
+      <p>Exit criteria are clear: all roles are defined and assigned. All processes are documented. All controls are specified. The governance structure is approved by leadership. Communications plan is in place for rollout.</p>
+
+      <p><strong>Timeline: 2-4 weeks.</strong> This phase is primarily definition and documentation. Complexity comes from coordination across multiple stakeholders and the need to get leadership alignment on governance model and escalation paths. The output includes detailed role descriptions, process maps, control specifications, and organizational charts.</p>
+
+      <h2>Phase Four: Implementation and Monitoring (Ongoing)</h2>
+
+      <p>The final phase is deployment of the governance structure. Teams are trained on their roles. Oversight committees start meeting. Systems are monitored. Risks are escalated. Documentation is created and maintained. This is an ongoing phase that doesn't have a fixed end date. It's where governance becomes operational.</p>
+
+      <p>Exit criteria in Phase Four are continuous and measured. What percentage of oversight reviews happened on schedule? What percentage of escalations were resolved? What percentage of teams completed training? What new systems were added to the register? What systems moved from high-risk to compliant? Progress is measured weekly and reported monthly.</p>
+
+      <p><strong>Timeline: Ongoing, but with measurable cadence.</strong> This is where things get real. The structure you built is now embedded in how the organization operates. A program manager transitions from program delivery to program operations, supporting the ongoing governance structure and managing continuous improvement.</p>
+
+      <h2>What Makes This Work</h2>
+
+      <p>This phased model works because it does four things. First, <strong>it creates clarity.</strong> Each phase has a clear purpose, clear exit criteria, and a clear endpoint. People know what they're working toward and when they'll be done. Second, <strong>it builds momentum.</strong> Completing Phase One is visible. The register exists. The classification is done. You've achieved something. Completion of Phase Two means priorities are clear and the organization can plan the work. Each completed phase creates energy and momentum for the next one.</p>
+
+      <p>Third, <strong>it enables adaptation.</strong> If you wait until Phase Three to find out that classification is harder than expected, you're too far along. With a phased approach, you find out at the end of Phase One, when you still have time to adjust. Learning happens in real time, and the plan adapts.</p>
+
+      <p>Fourth, <strong>it forces accountability.</strong> Each phase has an owner. Each phase has an exit date. If Phase One is supposed to take 4-6 weeks and it's still going after eight weeks, that's a problem that gets escalated. Accountability is built into the model.</p>
+
+      <h2>Timelines and Scope</h2>
+
+      <p>The complete program, from Phase One through initial rollout of Phase Four, takes 14-20 weeks. Four to six months. That's faster than most organizations expect, and it's because phasing creates focus and pressure. You're not trying to do everything at once. You're doing things in sequence, with clear exit dates and clear ownership.</p>
+
+      <p>Full operational maturity—where the governance structure is embedded and working smoothly—takes longer. Twelve to eighteen months. But the program is delivering value and demonstrating progress throughout that period. You're not waiting until the end to see results. You're seeing them continuously.</p>
+
+      <h2>The Difference This Makes</h2>
+
+      <p>Organizations that structure their programs this way deliver 85 percent fewer rework cycles than organizations that try to do everything at once. They move 60 percent faster from planning to operations. They have 3 times higher compliance confidence because they can measure progress and demonstrate control at each stage.</p>
+
+      <p>A phased approach also changes how leadership views the program. Instead of an open-ended initiative that might go on forever, it's a structured program with clear milestones and delivery dates. Instead of asking "when will this be done?" leadership can see real progress and can plan resourcing and investment accordingly.</p>
+
+      <p>The key is starting with inventory. You can't prioritize what you don't know. You can't build governance structure for systems that haven't been classified. The phases build on each other, and the sequencing matters. Get Phase One right, and everything else becomes possible.</p>
+    </div>
+  </article>
+
+  <!-- Related Articles -->
+  <div class="related">
+    <h3>Related Articles</h3>
+    <div class="related-list">
+      <a href="programme-managers-most-important-hire.html" class="related-item">
+        <h4>Programme Managers Are the Most Important Hire</h4>
+        <p>Why phase-based programs need strong coordination across seven functions.</p>
+      </a>
+      <a href="ai-governance-starter-kit.html" class="related-item">
+        <h4>AI Governance Starter Kit</h4>
+        <p>The four foundational steps that make phased programs possible.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <h3>Build Your Phased Programme</h3>
+    <p>Get expert guidance on structuring and executing your AI governance programme with clear timelines and outcomes.</p>
+    <a href="https://stevenwensley.com/services.html" class="cta-button">Explore Services</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h4>Steven Wensley</h4>
+        <ul>
+          <li><a href="https://stevenwensley.com">Home</a></li>
+          <li><a href="https://stevenwensley.com/insights.html">Insights</a></li>
+          <li><a href="https://stevenwensley.com/about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="https://stevenwensley.com/services.html">Advisory</a></li>
+          <li><a href="https://stevenwensley.com/ai-governance-assessment.html">Assessment</a></li>
+          <li><a href="https://stevenwensley.com/contact.html">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://stevenwensley.com/ai-governance-assessment.html">AI Assessment</a></li>
+          <li><a href="https://stevenwensley.com/eu-ai-act-classifier.html">Risk Classifier</a></li>
+          <li><a href="https://stevenwensley.com/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Steven Seidenfaden Wensley. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
