@@ -4,6 +4,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-17Y98NY34Y"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17Y98NY34Y');</script>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="view-transition" content="same-origin">
     <meta name="description" content="Book a free full-day AI Governance Discovery Session with Steven Wensley. Choose between Scale-up or Public Sector track. Value: DKK 35,000.">
     <meta property="og:title" content="Free AI Governance Discovery Day — Steven Wensley">
     <meta property="og:description" content="Full-day discovery session tailored to your sector: Tech/SaaS Scale-ups or Public Sector. EU AI Act compliance, governance framework, and 90-day action plan.">
@@ -45,7 +46,7 @@
         }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
             color: var(--text-light);
             line-height: 1.7;
@@ -92,7 +93,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
         }
         .lang-toggle:hover { background: rgba(201, 169, 110, 0.25); color: var(--text-light); }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
@@ -117,7 +118,7 @@
             margin-bottom: 2rem;
         }
         h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'DM Serif Display', serif;
             font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
@@ -158,7 +159,7 @@
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
         }
         .btn-primary:hover {
             background: var(--text-light);
@@ -227,7 +228,7 @@
         /* Sections */
         .who-section, .agenda-section, .deliverables-section { padding: 3rem 1rem; }
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'DM Serif Display', serif;
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1rem;
@@ -321,7 +322,7 @@
             background: rgba(20, 20, 30, 0.7);
             border: 1px solid var(--border);
             color: var(--text-light);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 0.95rem;
             border-radius: 4px;
             transition: all 0.3s ease;
@@ -354,7 +355,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
         }
         .submit-btn:hover {
             background: var(--text-light);
@@ -417,7 +418,71 @@
             .hero { padding: 2rem 1rem; }
             .form-container { padding: 1.25rem; }
         }
-    </style>
+    
+  /* ── SCROLL REVEAL ── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .stagger-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── FE3: CSS @property GRADIENT CTA ── */
+  @property --grad-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .gradient-animated {
+    background: linear-gradient(var(--grad-angle), var(--gold, #c9a96e), var(--gold-light, #dfc08a), #e8c97a, var(--gold, #c9a96e));
+    animation: gradient-spin 4s linear infinite;
+  }
+  @keyframes gradient-spin {
+    to { --grad-angle: 360deg; }
+  }
+
+  /* ── FE4: SVG NAV LOGO ── */
+  .nav-logo-svg text {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: logo-draw 2s ease forwards 0.3s;
+    fill-opacity: 0;
+  }
+  .nav-logo-svg text.drawn {
+    fill-opacity: 1;
+    transition: fill-opacity 0.5s ease 1.8s;
+  }
+  @keyframes logo-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* ── FE6: VIEW TRANSITIONS ── */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: fade-out 0.2s ease; }
+  ::view-transition-new(root) { animation: fade-in 0.3s ease; }
+  @keyframes fade-out { to { opacity: 0; } }
+  @keyframes fade-in { from { opacity: 0; } }
+
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal], .stagger-item { opacity: 1; transform: none; transition: none; }
+    .nav-logo-svg text { stroke-dashoffset: 0; fill-opacity: 1; animation: none; }
+    .gradient-animated { animation: none; }
+  }
+
+</style>
 </head>
 <body>
     <header>
@@ -972,6 +1037,46 @@
   },
   "url": "https://stevenwensley.com/book-session.html"
 }
+</script>
+
+
+<!-- CDN: Design System v2 -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+<script>
+(function() {
+  'use strict';
+  /* Lenis smooth scroll */
+  try {
+    var lenis = new Lenis({ duration: 1.2, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+    lenis.on('scroll', function() { if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update(); });
+    gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  } catch(e) {}
+
+  /* Scroll reveal */
+  try {
+    var ro = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          var items = entry.target.querySelectorAll('.stagger-item:not(.revealed)');
+          items.forEach(function(item, i) { setTimeout(function() { item.classList.add('revealed'); }, 100 + i * 80); });
+          ro.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(function(el) { ro.observe(el); });
+  } catch(e) {}
+
+  /* FE4: SVG logo drawn class */
+  try {
+    var svgText = document.querySelector('.nav-logo-svg text');
+    if (svgText) setTimeout(function() { svgText.classList.add('drawn'); }, 2200);
+  } catch(e) {}
+})();
 </script>
 
 </body>

@@ -4,6 +4,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-17Y98NY34Y"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17Y98NY34Y');</script><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="view-transition" content="same-origin">
 <title>Steven Seidenfaden Wensley — AI Governance & Transformation</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -30,7 +31,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -45,8 +46,8 @@
     --text-secondary: #9a9aaa;
     --text-muted: #6a6a7a;
     --border: rgba(201, 169, 110, 0.12);
-    --serif: 'Playfair Display', Georgia, serif;
-    --sans: 'Inter', -apple-system, sans-serif;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Space Grotesk', -apple-system, sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -581,13 +582,77 @@
     nav .nav-links a { font-size: 0.9rem; padding: 0.5rem 0; }
   }
 
+
+  /* ── SCROLL REVEAL ── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .stagger-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── FE3: CSS @property GRADIENT CTA ── */
+  @property --grad-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .gradient-animated {
+    background: linear-gradient(var(--grad-angle), var(--gold, #c9a96e), var(--gold-light, #dfc08a), #e8c97a, var(--gold, #c9a96e));
+    animation: gradient-spin 4s linear infinite;
+  }
+  @keyframes gradient-spin {
+    to { --grad-angle: 360deg; }
+  }
+
+  /* ── FE4: SVG NAV LOGO ── */
+  .nav-logo-svg text {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: logo-draw 2s ease forwards 0.3s;
+    fill-opacity: 0;
+  }
+  .nav-logo-svg text.drawn {
+    fill-opacity: 1;
+    transition: fill-opacity 0.5s ease 1.8s;
+  }
+  @keyframes logo-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* ── FE6: VIEW TRANSITIONS ── */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: fade-out 0.2s ease; }
+  ::view-transition-new(root) { animation: fade-in 0.3s ease; }
+  @keyframes fade-out { to { opacity: 0; } }
+  @keyframes fade-in { from { opacity: 0; } }
+
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal], .stagger-item { opacity: 1; transform: none; transition: none; }
+    .nav-logo-svg text { stroke-dashoffset: 0; fill-opacity: 1; animation: none; }
+    .gradient-animated { animation: none; }
+  }
+
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="logo">SSW</div>
+  <a href="/index-da.html" class="logo" style="text-decoration:none;"><svg class="nav-logo-svg" viewBox="0 0 80 28" width="80" height="28" xmlns="http://www.w3.org/2000/svg"><text x="2" y="22" font-family="'DM Serif Display',Georgia,serif" font-size="22" font-weight="700" fill="var(--gold)" stroke="var(--gold)" stroke-width="0.8">SSW</text></svg></a>
   <button class="hamburger" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="ai-governance-assessment.html" style="color: var(--gold);">Assessment</a>
@@ -635,7 +700,7 @@
 </section>
 
 <!-- AVAILABLE FOR HIRE -->
-<section id="hire" style="padding: 4rem 3rem; background: linear-gradient(135deg, rgba(201, 169, 110, 0.06) 0%, rgba(10, 10, 15, 0.95) 100%); border-top: 2px solid var(--gold); border-bottom: 1px solid var(--border);">
+<section data-reveal id="hire" style="padding: 4rem 3rem; background: linear-gradient(135deg, rgba(201, 169, 110, 0.06) 0%, rgba(10, 10, 15, 0.95) 100%); border-top: 2px solid var(--gold); border-bottom: 1px solid var(--border);">
   <div style="max-width: 900px; margin: 0 auto;">
     <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
       <span style="display: inline-block; width: 10px; height: 10px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
@@ -735,7 +800,7 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section data-reveal id="about">
   <div class="section-inner">
     <div class="section-label">Om mig</div>
     <h2 class="section-title">Broen mellem regulering<br>og operationel virkelighed.</h2>
@@ -777,7 +842,7 @@
 </section>
 
 <!-- WHY ME -->
-<section id="whyme" style="padding: 5rem 3rem;">
+<section data-reveal id="whyme" style="padding: 5rem 3rem;">
   <div class="section-inner">
     <div class="section-label">Hvorfor mig</div>
     <h2 class="section-title">Det der g&oslash;r mig anderledes.</h2>
@@ -829,7 +894,7 @@
 </section>
 
 <!-- EXPERTISE -->
-<section id="expertise">
+<section data-reveal id="expertise">
   <div class="section-inner">
     <div class="section-label">Ekspertise</div>
     <h2 class="section-title">Hvor governance m&oslash;der levering.</h2>
@@ -867,7 +932,7 @@
 </section>
 
 <!-- THESIS -->
-<section id="thesis">
+<section data-reveal id="thesis">
   <div class="section-inner">
     <div class="section-label">Perspektiv</div>
     <h2 class="section-title">Hvor AI og transformation fejler.</h2>
@@ -885,7 +950,7 @@
 </section>
 
 <!-- CASES -->
-<section id="cases">
+<section data-reveal id="cases">
   <div class="section-inner">
     <div class="section-label">Udvalgt erfaring</div>
     <h2 class="section-title">Track record i regulerede milj&oslash;er.</h2>
@@ -1005,7 +1070,7 @@
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section data-reveal id="services">
   <div class="section-inner">
     <div class="section-label">Services</div>
     <h2 class="section-title">AI Governance &mdash; fra assessment til operationel governance.</h2>
@@ -1061,7 +1126,7 @@
 </section>
 
 <!-- HIRING TRIGGER -->
-<section id="trigger">
+<section data-reveal id="trigger">
   <div class="section-inner">
     <div class="section-label">Hvorn&aring;r du ringer</div>
     <h2 class="section-title">Jeg bliver hentet ind n&aring;r.</h2>
@@ -1080,7 +1145,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section data-reveal id="contact">
   <div class="section-inner">
     <div class="section-label">Kontakt</div>
     <div class="gold-line"></div>
@@ -1137,5 +1202,45 @@
   }
 }
 </script>
+
+<!-- CDN: Design System v2 -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+<script>
+(function() {
+  'use strict';
+  /* Lenis smooth scroll */
+  try {
+    var lenis = new Lenis({ duration: 1.2, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+    lenis.on('scroll', function() { if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update(); });
+    gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  } catch(e) {}
+
+  /* Scroll reveal */
+  try {
+    var ro = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          var items = entry.target.querySelectorAll('.stagger-item:not(.revealed)');
+          items.forEach(function(item, i) { setTimeout(function() { item.classList.add('revealed'); }, 100 + i * 80); });
+          ro.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(function(el) { ro.observe(el); });
+  } catch(e) {}
+
+  /* FE4: SVG logo drawn class */
+  try {
+    var svgText = document.querySelector('.nav-logo-svg text');
+    if (svgText) setTimeout(function() { svgText.classList.add('drawn'); }, 2200);
+  } catch(e) {}
+})();
+</script>
+
 </body>
 </html>

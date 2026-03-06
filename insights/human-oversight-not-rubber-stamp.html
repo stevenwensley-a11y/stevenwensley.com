@@ -12,6 +12,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="view-transition" content="same-origin">
 
   <title>Human Oversight: Not a Rubber Stamp | Steven Wensley</title>
   <meta name="description" content="Article 14 of the EU AI Act requires human oversight. Most organizations interpret it as passive observation. Here's what it actually means.">
@@ -32,7 +33,7 @@
   <link rel="canonical" href="https://stevenwensley.com/insights/human-oversight-not-rubber-stamp.html">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='16' fill='%23c9a96e'%3ESSW%3C/text%3E%3C/svg%3E">
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- JSON-LD Article Schema -->
   <script type="application/ld+json">
@@ -67,8 +68,8 @@
       --text-secondary: #9a9aaa;
       --text-muted: #6a6a7a;
       --border: rgba(201, 169, 110, 0.12);
-      --serif: 'Playfair Display', Georgia, serif;
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
     * {
@@ -505,13 +506,77 @@
     nav .nav-links a { font-size: 0.9rem; padding: 0.5rem 0; }
   }
 
+
+  /* ── SCROLL REVEAL ── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .stagger-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── FE3: CSS @property GRADIENT CTA ── */
+  @property --grad-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .gradient-animated {
+    background: linear-gradient(var(--grad-angle), var(--gold, #c9a96e), var(--gold-light, #dfc08a), #e8c97a, var(--gold, #c9a96e));
+    animation: gradient-spin 4s linear infinite;
+  }
+  @keyframes gradient-spin {
+    to { --grad-angle: 360deg; }
+  }
+
+  /* ── FE4: SVG NAV LOGO ── */
+  .nav-logo-svg text {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: logo-draw 2s ease forwards 0.3s;
+    fill-opacity: 0;
+  }
+  .nav-logo-svg text.drawn {
+    fill-opacity: 1;
+    transition: fill-opacity 0.5s ease 1.8s;
+  }
+  @keyframes logo-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* ── FE6: VIEW TRANSITIONS ── */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: fade-out 0.2s ease; }
+  ::view-transition-new(root) { animation: fade-in 0.3s ease; }
+  @keyframes fade-out { to { opacity: 0; } }
+  @keyframes fade-in { from { opacity: 0; } }
+
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal], .stagger-item { opacity: 1; transform: none; transition: none; }
+    .nav-logo-svg text { stroke-dashoffset: 0; fill-opacity: 1; animation: none; }
+    .gradient-animated { animation: none; }
+  }
+
 </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
-      <a href="https://stevenwensley.com" class="logo">SSW</a>
+      <a href="https://stevenwensley.com" class="logo" style="text-decoration:none;"><svg class="nav-logo-svg" viewBox="0 0 80 28" width="80" height="28" xmlns="http://www.w3.org/2000/svg"><text x="2" y="22" font-family="DM Serif Display,Georgia,serif" font-size="22" font-weight="700" fill="var(--gold)" stroke="var(--gold)" stroke-width="0.8">SSW</text></svg></a>
       <ul class="nav-links">
         <li><a href="https://stevenwensley.com/insights.html" class="active">Insights</a></li>
         <li><a href="https://stevenwensley.com/about.html">About</a></li>
@@ -649,5 +714,45 @@
       <p>&copy; 2026 Steven Seidenfaden Wensley. All rights reserved.</p>
     </div>
   </footer>
+
+<!-- CDN: Design System v2 -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+<script>
+(function() {
+  'use strict';
+  /* Lenis smooth scroll */
+  try {
+    var lenis = new Lenis({ duration: 1.2, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+    lenis.on('scroll', function() { if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update(); });
+    gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  } catch(e) {}
+
+  /* Scroll reveal */
+  try {
+    var ro = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          var items = entry.target.querySelectorAll('.stagger-item:not(.revealed)');
+          items.forEach(function(item, i) { setTimeout(function() { item.classList.add('revealed'); }, 100 + i * 80); });
+          ro.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(function(el) { ro.observe(el); });
+  } catch(e) {}
+
+  /* FE4: SVG logo drawn class */
+  try {
+    var svgText = document.querySelector('.nav-logo-svg text');
+    if (svgText) setTimeout(function() { svgText.classList.add('drawn'); }, 2200);
+  } catch(e) {}
+})();
+</script>
+
 </body>
 </html>
