@@ -28,9 +28,10 @@
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='16' fill='%23c9a96e'%3ESSW%3C/text%3E%3C/svg%3E">
 
+<meta name="view-transition" content="same-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -45,8 +46,8 @@
     --text-secondary: #9a9aaa;
     --text-muted: #6a6a7a;
     --border: rgba(201, 169, 110, 0.12);
-    --serif: 'Playfair Display', Georgia, serif;
-    --sans: 'Inter', -apple-system, sans-serif;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Space Grotesk', -apple-system, sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -523,6 +524,82 @@
     .trust-two-col { grid-template-columns: 1fr !important; }
   }
 
+  /* ── SCROLL REVEAL ── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .stagger-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── SPLITTING HERO ── */
+  .hero h1 .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .hero h1.split-done .char {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── FE3: CSS @property GRADIENT CTA ── */
+  @property --grad-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .gradient-animated {
+    background: linear-gradient(var(--grad-angle), var(--gold), var(--gold-light), #e8c97a, var(--gold));
+    animation: gradient-spin 4s linear infinite;
+  }
+  @keyframes gradient-spin {
+    to { --grad-angle: 360deg; }
+  }
+
+  /* ── FE4: SVG NAV LOGO ── */
+  .nav-logo-svg text {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: logo-draw 2s ease forwards 0.3s;
+    fill-opacity: 0;
+  }
+  .nav-logo-svg text.drawn {
+    fill-opacity: 1;
+    transition: fill-opacity 0.5s ease 1.8s;
+  }
+  @keyframes logo-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* ── FE6: VIEW TRANSITIONS ── */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: fade-out 0.2s ease; }
+  ::view-transition-new(root) { animation: fade-in 0.3s ease; }
+  @keyframes fade-out { to { opacity: 0; } }
+  @keyframes fade-in { from { opacity: 0; } }
+
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal], .stagger-item { opacity: 1; transform: none; transition: none; }
+    .hero h1 .char { opacity: 1; transform: none; transition: none; }
+    .nav-logo-svg text { stroke-dashoffset: 0; fill-opacity: 1; animation: none; }
+    .gradient-animated { animation: none; }
+  }
+
   /* ── HAMBURGER MOBILE MENU ── */
   .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 101; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold, #c9a96e); margin: 5px 0; transition: all 0.3s; border-radius: 2px; }
@@ -555,7 +632,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">SSW</div>
+  <a href="/" class="logo" style="text-decoration:none;"><svg class="nav-logo-svg" viewBox="0 0 80 28" width="80" height="28" xmlns="http://www.w3.org/2000/svg"><text x="2" y="22" font-family="'DM Serif Display',Georgia,serif" font-size="22" font-weight="700" fill="var(--gold)" stroke="var(--gold)" stroke-width="0.8">SSW</text></svg></a>
   <button class="hamburger" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="insights.html">Insights</a>
@@ -586,7 +663,7 @@
       20+ years turning stalled programmes into measurable delivery. Currently available for interim assignments in Northern Europe.
     </p>
     <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-      <a href="ai-governance-assessment.html" class="hero-cta" style="background: var(--gold); color: var(--bg-primary); font-weight: 600;">
+      <a href="ai-governance-assessment.html" class="hero-cta gradient-animated" style="color: var(--bg-primary); font-weight: 600; border: none;">
         Take the AI Governance Assessment
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -604,7 +681,7 @@
 </section>
 
 <!-- AVAILABLE FOR HIRE -->
-<section id="hire" style="padding: 4rem 3rem; background: linear-gradient(135deg, rgba(201, 169, 110, 0.06) 0%, rgba(10, 10, 15, 0.95) 100%); border-top: 2px solid var(--gold); border-bottom: 1px solid var(--border);">
+<section id="hire" data-reveal style="padding: 4rem 3rem; background: linear-gradient(135deg, rgba(201, 169, 110, 0.06) 0%, rgba(10, 10, 15, 0.95) 100%); border-top: 2px solid var(--gold); border-bottom: 1px solid var(--border);">
   <div style="max-width: 900px; margin: 0 auto;">
     <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
       <span style="display: inline-block; width: 10px; height: 10px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></span>
@@ -644,7 +721,7 @@
 </style>
 
 <!-- PAIN POINTS -->
-<section style="padding: 5rem 3rem; background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section data-reveal style="padding: 5rem 3rem; background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
     <div style="font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;">Sound familiar?</div>
     <h2 style="font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: var(--text-primary); margin-bottom: 3rem; line-height: 1.4;">The problems I solve</h2>
@@ -704,7 +781,7 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" data-reveal>
   <div class="section-inner">
     <div class="section-label">About</div>
     <h2 class="section-title">The bridge between regulation<br>and real-world execution.</h2>
@@ -725,19 +802,19 @@
       </div>
     </div>
     <div class="credentials">
-      <div class="credential">
-        <div class="credential-value">20+</div>
+      <div class="credential stagger-item">
+        <div class="credential-value" data-countup="20" data-suffix="+">20+</div>
         <div class="credential-label">Years leading programmes</div>
       </div>
-      <div class="credential">
-        <div class="credential-value">DKK 33M+</div>
+      <div class="credential stagger-item">
+        <div class="credential-value" data-countup="33" data-prefix="DKK " data-suffix="M+">DKK 33M+</div>
         <div class="credential-label">Largest programme delivered</div>
       </div>
-      <div class="credential">
-        <div class="credential-value">4</div>
+      <div class="credential stagger-item">
+        <div class="credential-value" data-countup="4">4</div>
         <div class="credential-label">Sectors: pharma, finance, telecom, public</div>
       </div>
-      <div class="credential">
+      <div class="credential stagger-item">
         <div class="credential-value">NIS2 / GxP</div>
         <div class="credential-label">Regulated environments</div>
       </div>
@@ -746,7 +823,7 @@
 </section>
 
 <!-- WHY ME -->
-<section id="whyme" style="padding: 5rem 3rem;">
+<section id="whyme" data-reveal style="padding: 5rem 3rem;">
   <div class="section-inner">
     <div class="section-label">Why me</div>
     <h2 class="section-title">What makes me different.</h2>
@@ -798,33 +875,33 @@
 </section>
 
 <!-- EXPERTISE -->
-<section id="expertise">
+<section id="expertise" data-reveal>
   <div class="section-inner">
     <div class="section-label">Expertise</div>
     <h2 class="section-title">Where governance meets delivery.</h2>
     <div class="expertise-grid">
-      <div class="expertise-card">
+      <div class="expertise-card stagger-item">
         <div class="expertise-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
         <h3>AI Governance</h3>
         <p>Building governance frameworks that actually work in practice — not just on paper. From policy design to operational implementation across the EU AI Act landscape.</p>
       </div>
-      <div class="expertise-card">
+      <div class="expertise-card stagger-item">
         <div class="expertise-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
         </div>
         <h3>Regulatory Compliance</h3>
         <p>NIS2, ISO 27001, GxP — navigating the intersection of cybersecurity directives and industry-specific regulation. Practical compliance for complex organisations.</p>
       </div>
-      <div class="expertise-card">
+      <div class="expertise-card stagger-item">
         <div class="expertise-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
         </div>
         <h3>Digital Transformation</h3>
         <p>Leading large-scale IT transitions and organisational change. Turning strategy into execution with programme management discipline and stakeholder alignment.</p>
       </div>
-      <div class="expertise-card">
+      <div class="expertise-card stagger-item">
         <div class="expertise-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
@@ -836,7 +913,7 @@
 </section>
 
 <!-- THESIS -->
-<section id="thesis">
+<section id="thesis" data-reveal>
   <div class="section-inner">
     <div class="section-label">Perspective</div>
     <h2 class="section-title">Where AI and transformation fail.</h2>
@@ -854,30 +931,30 @@
 </section>
 
 <!-- CASES -->
-<section id="cases">
+<section id="cases" data-reveal>
   <div class="section-inner">
     <div class="section-label">Selected Work</div>
     <h2 class="section-title">Track record in regulated environments.</h2>
     <div class="cases-grid">
-      <div class="case-card">
+      <div class="case-card stagger-item">
         <div class="case-sector">Telecom</div>
         <h3>Mainframe & Data Centre Transition</h3>
         <p>Full migration of mainframe and data centre infrastructure between two strategic vendors. Negotiated 27 sub-schedules, planned and executed cutovers, managed hypercare. Coordinated hardware procurement, dark fibre connectivity and SD-WAN integration.</p>
         <div class="case-result">On time. DKK 6M under budget on a DKK 33M programme.</div>
       </div>
-      <div class="case-card">
+      <div class="case-card stagger-item">
         <div class="case-sector">Life Science / Pharma</div>
         <h3>Global Carve-Out — 4 Countries</h3>
         <p>Took over a delayed carve-out programme. Nine project tracks, four countries, SAP/MES dependencies, GxP validation requirements. Replanned scope, realigned vendors, ran move groups 1–8 and reported weekly to SteerCo.</p>
         <div class="case-result">8 sprint releases, 3 major go-lives. Zero production downtime.</div>
       </div>
-      <div class="case-card">
+      <div class="case-card stagger-item">
         <div class="case-sector">Public Sector</div>
         <h3>Programme Turnaround — 16 Teams</h3>
         <p>Brought in to rescue a transition programme in crisis. 7 infrastructure tracks, 16 teams across 4 countries, no clear governance. Established decision structure, fixed the plan, managed daily status and weekly SteerCo.</p>
         <div class="case-result">Programme back on track. 8 sprint releases, 3 commercial go-lives.</div>
       </div>
-      <div class="case-card">
+      <div class="case-card stagger-item">
         <div class="case-sector">Healthcare / NIS2</div>
         <h3>AD Tiering & Security Governance</h3>
         <p>Defined and implemented Active Directory tiering across multiple hospital environments. Ran workshops with infrastructure architects and security specialists. Risk assessments, documentation and SteerCo reporting for NIS2 compliance.</p>
@@ -888,7 +965,7 @@
 </section>
 
 <!-- SOCIAL PROOF / TRUST -->
-<section style="padding: 5rem 3rem; background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section data-reveal style="padding: 5rem 3rem; background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div style="max-width: 1000px; margin: 0 auto;">
 
     <!-- Delivery results -->
@@ -974,13 +1051,13 @@
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" data-reveal>
   <div class="section-inner">
     <div class="section-label">Services</div>
     <h2 class="section-title">AI Governance — from assessment to operational governance.</h2>
     <p style="font-size: 1rem; color: var(--text-secondary); max-width: 640px; margin-bottom: 1rem;">A clear service ladder from free self-assessment to compliance programme management. Start where you are, progress at your pace.</p>
     <div class="services-list">
-      <a href="ai-governance-assessment.html" class="service-item" style="text-decoration: none; color: inherit;">
+      <a href="ai-governance-assessment.html" class="service-item stagger-item" style="text-decoration: none; color: inherit;">
         <div class="service-num">01</div>
         <div>
           <h3>AI Governance Assessment</h3>
@@ -988,7 +1065,7 @@
         </div>
         <span class="service-arrow">→</span>
       </a>
-      <a href="book-session.html" class="service-item" style="text-decoration: none; color: inherit;">
+      <a href="book-session.html" class="service-item stagger-item" style="text-decoration: none; color: inherit;">
         <div class="service-num">02</div>
         <div>
           <h3>1-Day Strategy Session</h3>
@@ -996,7 +1073,7 @@
         </div>
         <span class="service-arrow">→</span>
       </a>
-      <a href="services.html#literacy" class="service-item" style="text-decoration: none; color: inherit;">
+      <a href="services.html#literacy" class="service-item stagger-item" style="text-decoration: none; color: inherit;">
         <div class="service-num">03</div>
         <div>
           <h3>AI Literacy Workshop</h3>
@@ -1004,7 +1081,7 @@
         </div>
         <span class="service-arrow">→</span>
       </a>
-      <a href="services.html#gap" class="service-item" style="text-decoration: none; color: inherit;">
+      <a href="services.html#gap" class="service-item stagger-item" style="text-decoration: none; color: inherit;">
         <div class="service-num">04</div>
         <div>
           <h3>Compliance Gap Analysis</h3>
@@ -1012,7 +1089,7 @@
         </div>
         <span class="service-arrow">→</span>
       </a>
-      <a href="services.html#implementation" class="service-item" style="text-decoration: none; color: inherit;">
+      <a href="services.html#implementation" class="service-item stagger-item" style="text-decoration: none; color: inherit;">
         <div class="service-num">05</div>
         <div>
           <h3>Compliance Programme Management</h3>
@@ -1030,18 +1107,18 @@
 </section>
 
 <!-- HIRING TRIGGER -->
-<section id="trigger">
+<section id="trigger" data-reveal>
   <div class="section-inner">
     <div class="section-label">When to call</div>
     <h2 class="section-title">Brought in when.</h2>
     <div class="trigger-list">
-      <div class="trigger-item">
+      <div class="trigger-item stagger-item">
         <strong>Governance is unclear</strong> — decision rights, accountability and risk ownership are undefined or disputed.
       </div>
-      <div class="trigger-item">
+      <div class="trigger-item stagger-item">
         <strong>A programme is stalling</strong> — missed deadlines, vendor conflicts, no clear plan forward.
       </div>
-      <div class="trigger-item">
+      <div class="trigger-item stagger-item">
         <strong>Regulation must become operational</strong> — EU AI Act, NIS2 or GxP compliance needs to move from strategy to execution.
       </div>
     </div>
@@ -1049,7 +1126,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" data-reveal>
   <div class="section-inner">
     <div class="section-label">Contact</div>
     <div class="gold-line"></div>
@@ -1105,6 +1182,112 @@
     "addressCountry": "DK"
   }
 }
+</script>
+
+<!-- CDN: Lenis + GSAP + ScrollTrigger + Splitting + CountUp -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/splitting@1.0.6/dist/splitting.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/splitting@1.0.6/dist/splitting.css">
+
+<script>
+(function() {
+  'use strict';
+
+  /* ── LENIS SMOOTH SCROLL ── */
+  try {
+    var lenis = new Lenis({ duration: 1.2, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+    lenis.on('scroll', function() { if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update(); });
+    gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  } catch(e) { console.warn('Lenis init skipped:', e); }
+
+  /* ── INTERSECTION OBSERVER: SCROLL REVEAL ── */
+  try {
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          // Stagger children
+          var items = entry.target.querySelectorAll('.stagger-item:not(.revealed)');
+          items.forEach(function(item, i) {
+            setTimeout(function() { item.classList.add('revealed'); }, 100 + i * 80);
+          });
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(function(el) { revealObserver.observe(el); });
+  } catch(e) { console.warn('Reveal observer skipped:', e); }
+
+  /* ── SPLITTING.JS: HERO H1 ── */
+  try {
+    if (typeof Splitting !== 'undefined') {
+      Splitting({ target: '.hero h1', by: 'chars' });
+      setTimeout(function() {
+        var h1 = document.querySelector('.hero h1');
+        if (h1) {
+          h1.classList.add('split-done');
+          var chars = h1.querySelectorAll('.char');
+          chars.forEach(function(ch, i) {
+            ch.style.transitionDelay = (i * 0.03) + 's';
+          });
+        }
+      }, 300);
+    }
+  } catch(e) { console.warn('Splitting init skipped:', e); }
+
+  /* ── COUNTUP: CREDENTIAL VALUES ── */
+  try {
+    if (typeof countUp !== 'undefined' || typeof window.countUp !== 'undefined') {
+      var CU = (window.countUp || countUp).CountUp;
+      var countObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            var val = parseFloat(el.getAttribute('data-countup'));
+            var prefix = el.getAttribute('data-prefix') || '';
+            var suffix = el.getAttribute('data-suffix') || '';
+            if (!isNaN(val)) {
+              var cu = new CU(el, val, { duration: 2.5, prefix: prefix, suffix: suffix, useGrouping: false });
+              cu.start();
+            }
+            countObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('[data-countup]').forEach(function(el) {
+        el.textContent = '0';
+        countObserver.observe(el);
+      });
+    }
+  } catch(e) { console.warn('CountUp init skipped:', e); }
+
+  /* ── GSAP: PARALLAX ON THESIS SECTION ── */
+  try {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to('#thesis .thesis-statement', {
+        y: -30,
+        ease: 'none',
+        scrollTrigger: { trigger: '#thesis', start: 'top bottom', end: 'bottom top', scrub: 1.5 }
+      });
+    }
+  } catch(e) { console.warn('GSAP parallax skipped:', e); }
+
+  /* ── FE4: SVG LOGO LINE-DRAW ── */
+  try {
+    var svgText = document.querySelector('.nav-logo-svg text');
+    if (svgText) {
+      setTimeout(function() { svgText.classList.add('drawn'); }, 2200);
+    }
+  } catch(e) {}
+
+})();
 </script>
 </body>
 </html>
