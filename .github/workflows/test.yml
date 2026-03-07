@@ -1,0 +1,121 @@
+name: Quality Gate
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main]
+
+jobs:
+  html-validate:
+    name: HTML Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install -g html-validate
+      - name: Validate all HTML files
+        run: |
+          FILES=$(find . -name "*.html" -not -path "*/node_modules/*" -not -name "*backup*" | sort)
+          if [ -z "$FILES" ]; then
+            echo "No HTML files found"
+            exit 0
+          fi
+          html-validate $FILES || true
+          ERRORS=$(html-validate $FILES 2>&1 | grep -c "error" || true)
+          if [ "$ERRORS" -gt 0 ]; then
+            echo "::error::Found $ERRORS HTML validation errors"
+            exit 1
+          fi
+
+  broken-links:
+    name: Broken Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install -g linkinator
+      - name: Start local server
+        run: |
+          npx http-server . -p 8080 -s &
+          sleep 2
+      - name: Check internal links
+        run: |
+          linkinator http://localhost:8080 --recurse --skip "^(?!http://localhost)" --format json --timeout 10000 > link-report.json || true
+          node -e "const d=require('./link-report.json');const b=(d.links||[]).filter(l=>l.status>=400);b.forEach(l=>console.log(l.status,l.url));process.exit(b.length?1:0)" && echo "No broken links found" || { echo "::error::Broken links found"; exit 1; }
+
+  lighthouse:
+    name: Lighthouse Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          npm install -g @lhci/cli
+          npm install -g http-server
+      - name: Start local server
+        run: |
+          http-server . -p 8080 -s &
+          sleep 2
+      - name: Run Lighthouse on key pages
+        run: |
+          PAGES=()
+          if [ -f "index.html" ]; then
+            PAGES+=("http://localhost:8080/index.html")
+          fi
+          for f in $(find . -maxdepth 1 -name "*.html" -not -name "index.html" -not -name "*backup*" | sort | head -5); do
+            PAGE=$(basename "$f")
+            PAGES+=("http://localhost:8080/$PAGE")
+          done
+          if [ ${#PAGES[@]} -eq 0 ]; then
+            echo "No HTML pages found"
+            exit 0
+          fi
+          FAILED=0
+          for URL in "${PAGES[@]}"; do
+            PAGE=$(echo "$URL" | sed 's|.*/||')
+            echo "=== Testing $PAGE ==="
+            lhci collect --url="$URL" --settings.chromeFlags="--no-sandbox --headless" || true
+            REPORT=$(ls -t .lighthouseci/lhr-*.json 2>/dev/null | head -1)
+            if [ -f "$REPORT" ]; then
+              node -e "const d=require('$REPORT');const c=d.categories||{};const p=Math.round((c.performance||{}).score*100);const a=Math.round((c.accessibility||{}).score*100);const s=Math.round((c.seo||{}).score*100);const b=Math.round((c['best-practices']||{}).score*100);console.log('Perf:',p,'A11y:',a,'SEO:',s,'BP:',b);if(a<90||s<90){console.log('FAIL');process.exit(1)}"
+              if [ $? -ne 0 ]; then FAILED=1; fi
+            fi
+          done
+          if [ $FAILED -eq 1 ]; then
+            echo "::error::One or more pages failed Lighthouse gates"
+            exit 1
+          fi
+
+  playwright:
+    name: Smoke Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install @playwright/test
+          npx playwright install chromium --with-deps
+      - name: Start local server
+        run: |
+          npx http-server . -p 8080 -s &
+          sleep 2
+      - name: Run smoke tests
+        run: npx playwright test tests/ --reporter=list
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: tests/screenshots/
+          retention-days: 7
