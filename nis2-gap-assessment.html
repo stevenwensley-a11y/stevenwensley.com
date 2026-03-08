@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-17Y98NY34Y"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17Y98NY34Y');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="view-transition" content="same-origin">
+  <title>NIS2 Compliance Gap Assessment — Food & Manufacturing | Steven Wensley</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="description" content="Free NIS2 Directive gap assessment for food manufacturing & critical infrastructure. 10 domains, 33 questions, radar chart results. Art. 20-24 coverage.">
+  <meta property="og:title" content="NIS2 Compliance Gap Assessment — Food & Manufacturing">
+  <meta property="og:description" content="Structured NIS2 gap assessment across 10 Article 21 domains. Tailored for food production, supply chain & manufacturing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stevenwensley.com/nis2-gap-assessment.html">
+  <meta property="og:image" content="https://stevenwensley.com/og-image.png">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NIS2 Compliance Gap Assessment — Food & Manufacturing">
+  <meta name="twitter:description" content="Structured NIS2 gap assessment across 10 Article 21 domains. Tailored for food production, supply chain & manufacturing.">
+  <meta name="twitter:image" content="https://stevenwensley.com/og-image.png">
+  <link rel="canonical" href="https://stevenwensley.com/nis2-gap-assessment.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+  <style>
+    :root {
+      --bg: #0C0C12; --surface: #16161E; --surface-2: #1E1E28;
+      --gold: #C9A96E; --gold-light: #DFC08A; --teal: #2B7A6F; --blue: #1B3A5C;
+      --navy: #0F1923; --red: #C0392B; --orange: #E67E22; --green: #27AE60;
+      --text-primary: #E8E8ED; --text-secondary: #B0B0BA; --text-muted: #6B6B78;
+      --border: rgba(255,255,255,0.06);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text-primary); font-family: 'Space Grotesk', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+    ::selection { background: #C9A96E44; color: #fff; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(12,12,18,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+    }
+    nav .nav-links { display: flex; gap: 2.5rem; }
+    nav .nav-links a {
+      color: var(--text-secondary); text-decoration: none; font-size: 0.82rem;
+      font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s;
+    }
+    nav .nav-links a:hover, nav .nav-links a.active { color: var(--gold); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-secondary); margin: 5px 0; transition: 0.3s; }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .hamburger { display: block; }
+      nav .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(12,12,18,0.97); flex-direction: column; padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--border); }
+      nav .nav-links.open { display: flex; }
+    }
+
+    /* ── DS2 FEATURES ── */
+    [data-reveal] { opacity: 0; transform: translateY(32px); transition: opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+    [data-reveal].revealed { opacity: 1; transform: translateY(0); }
+
+    @property --grad-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    .gradient-animated { background: linear-gradient(var(--grad-angle), var(--gold), var(--gold-light), #e8c97a, var(--gold)); animation: gradient-spin 4s linear infinite; }
+    @keyframes gradient-spin { to { --grad-angle: 360deg; } }
+
+    .nav-logo-svg text { stroke-dasharray: 300; stroke-dashoffset: 300; animation: logo-draw 2s ease forwards 0.3s; fill-opacity: 0; }
+    .nav-logo-svg text.drawn { fill-opacity: 1; transition: fill-opacity 0.5s ease 1.8s; }
+    @keyframes logo-draw { to { stroke-dashoffset: 0; } }
+
+    @view-transition { navigation: auto; }
+    ::view-transition-old(root) { animation: vt-fade-out 0.2s ease; }
+    ::view-transition-new(root) { animation: vt-fade-in 0.3s ease; }
+    @keyframes vt-fade-out { to { opacity: 0; } }
+    @keyframes vt-fade-in { from { opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] { opacity: 1; transform: none; transition: none; }
+      .nav-logo-svg text { stroke-dashoffset: 0; fill-opacity: 1; animation: none; }
+      .gradient-animated { animation: none; }
+    }
+
+    /* ── TOOL LAYOUT ── */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .tool-header {
+      padding: 140px 0 48px; text-align: center;
+      background: linear-gradient(180deg, rgba(43,122,111,0.08) 0%, transparent 100%);
+    }
+    .tool-header h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.8rem,4vw,2.6rem); margin-bottom: 8px; color: var(--gold); }
+    .tool-header p { font-size: 1rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto; }
+    .badge { display: inline-block; background: rgba(43,122,111,0.15); color: var(--teal); padding: 4px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; border: 1px solid rgba(43,122,111,0.25); }
+
+    /* Progress */
+    .progress-bar { background: var(--surface); border-radius: 12px; padding: 20px 24px; margin: 24px auto; border: 1px solid var(--border); }
+    .progress-bar .track { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; margin-top: 8px; }
+    .progress-bar .fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 4px; transition: width 0.4s ease; }
+    .progress-info { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Domain tabs */
+    .domain-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; justify-content: center; }
+    .domain-tab { padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary); transition: all 0.2s; }
+    .domain-tab:hover { border-color: var(--teal); }
+    .domain-tab.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .domain-tab.completed { background: rgba(43,122,111,0.2); color: var(--teal); border-color: var(--teal); }
+
+    /* Questions */
+    .domain-section { display: none; background: var(--surface); border-radius: 12px; padding: 32px; margin: 16px 0; border: 1px solid var(--border); }
+    .domain-section.active { display: block; }
+    .domain-section h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 4px; }
+    .domain-section .subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; }
+    .nis2-ref { display: inline-block; background: rgba(27,58,92,0.2); color: var(--text-secondary); padding: 2px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; margin-bottom: 16px; }
+
+    .question { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .question label { font-weight: 600; font-size: 0.95rem; display: block; margin-bottom: 4px; }
+    .question .context { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px; font-style: italic; }
+    .options { display: flex; flex-direction: column; gap: 8px; }
+    .option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); cursor: pointer; transition: all 0.15s; font-size: 0.9rem; color: var(--text-secondary); }
+    .option:hover { border-color: var(--teal); background: rgba(43,122,111,0.04); }
+    .option.selected { border-color: var(--teal); background: rgba(43,122,111,0.1); color: var(--text-primary); font-weight: 600; }
+    .option input { display: none; }
+    .option .dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.15); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+    .option.selected .dot { border-color: var(--teal); background: var(--teal); }
+    .option.selected .dot::after { content: ''; width: 6px; height: 6px; background: #fff; border-radius: 50%; }
+    .score-indicator { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+    .score-0 { background: var(--red); } .score-1 { background: var(--orange); } .score-2 { background: var(--gold); } .score-3 { background: var(--green); }
+
+    /* Navigation buttons */
+    .nav-buttons { display: flex; justify-content: space-between; margin: 24px 0; }
+    .btn { padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; cursor: pointer; border: none; transition: all 0.2s; }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: #237A6A; }
+    .btn-secondary { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: var(--surface); }
+    .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--bg); font-size: 1rem; padding: 14px 36px; font-weight: 700; }
+    .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(196,162,101,0.3); }
+
+    /* Results */
+    #results { display: none; }
+    .results-header { background: linear-gradient(135deg, var(--surface), var(--surface-2)); border: 1px solid var(--border); border-radius: 12px 12px 0 0; padding: 40px 32px; text-align: center; }
+    .results-header h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 2rem; color: var(--gold); margin-bottom: 8px; }
+    .overall-score { font-size: 4rem; font-weight: 800; margin: 16px 0 8px; }
+    .overall-score.red { color: var(--red); } .overall-score.orange { color: var(--orange); }
+    .overall-score.gold { color: var(--gold); } .overall-score.green { color: var(--green); }
+    .maturity-label { font-size: 1.1rem; color: var(--text-secondary); }
+
+    .results-body { background: var(--surface); border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; padding: 32px; }
+
+    /* Radar */
+    .radar-container { max-width: 500px; margin: 0 auto 32px; }
+    canvas { width: 100% !important; height: auto !important; }
+
+    /* Domain cards */
+    .domain-results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+    @media (max-width: 600px) { .domain-results { grid-template-columns: 1fr; } }
+    .domain-card { border: 1px solid var(--border); border-radius: 10px; padding: 20px; position: relative; overflow: hidden; background: var(--surface-2); }
+    .domain-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+    .domain-card.red::before { background: var(--red); } .domain-card.orange::before { background: var(--orange); }
+    .domain-card.gold::before { background: var(--gold); } .domain-card.green::before { background: var(--green); }
+    .domain-card h4 { font-size: 0.9rem; margin-bottom: 4px; color: var(--text-primary); }
+    .domain-card .score-text { font-size: 1.6rem; font-weight: 800; margin-bottom: 4px; }
+    .domain-card .score-text.red { color: var(--red); } .domain-card .score-text.orange { color: var(--orange); }
+    .domain-card .score-text.gold { color: var(--gold); } .domain-card .score-text.green { color: var(--green); }
+    .domain-card .bar { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; margin-top: 8px; }
+    .domain-card .bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+
+    /* Gaps */
+    .critical-gaps { margin: 32px 0; }
+    .critical-gaps h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; color: var(--gold); margin-bottom: 16px; }
+    .gap-item { display: flex; gap: 12px; padding: 14px 16px; border-radius: 8px; margin-bottom: 8px; background: rgba(192,57,43,0.08); border-left: 3px solid var(--red); }
+    .gap-item .gap-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .gap-item .gap-text { font-size: 0.88rem; color: var(--text-secondary); }
+    .gap-item .gap-text strong { display: block; margin-bottom: 2px; color: var(--text-primary); }
+
+    /* Recommendations */
+    .reco-section { margin: 32px 0; }
+    .reco-section h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; color: var(--gold); margin-bottom: 16px; }
+    .reco-item { display: flex; gap: 12px; padding: 16px; border-radius: 8px; margin-bottom: 10px; background: rgba(43,122,111,0.06); border: 1px solid rgba(43,122,111,0.15); }
+    .reco-item .reco-num { width: 28px; height: 28px; background: var(--teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
+    .reco-item .reco-text { font-size: 0.88rem; color: var(--text-secondary); }
+    .reco-item .reco-text strong { display: block; margin-bottom: 2px; color: var(--text-primary); }
+
+    /* CTA section */
+    .cta-section { text-align: center; margin: 48px 0 0; padding: 40px 24px; background: linear-gradient(135deg, rgba(43,122,111,0.08), rgba(201,169,110,0.06)); border: 1px solid var(--border); border-radius: 12px; }
+    .cta-section h3 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 8px; }
+    .cta-section p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* Actions */
+    .action-bar { display: flex; gap: 12px; justify-content: center; margin: 32px 0; flex-wrap: wrap; }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.78rem;
+      border-top: 1px solid var(--border); margin-top: 4rem;
+    }
+    footer a { color: var(--text-secondary); transition: color 0.3s; }
+    footer a:hover { color: var(--gold); }
+
+    /* Print */
+    @media print {
+      nav, .domain-nav, .nav-buttons, .action-bar, .btn, .cta-section, footer { display: none !important; }
+      .tool-header { padding-top: 24px; }
+      .domain-section { display: none !important; }
+      #results { display: block !important; }
+      body { background: #fff; color: #1a1a1a; }
+      .results-header { background: #f4f6f8; border: 1px solid #ddd; }
+      .results-header h2 { color: #1B3A5C; }
+      .results-body { background: #fff; border: 1px solid #ddd; }
+      .domain-card { background: #f9f9f9; border: 1px solid #ddd; }
+      .gap-item { background: #fff5f5; }
+      .reco-item { background: #f0faf8; }
+    }
+  </style>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "NIS2 Compliance Gap Assessment",
+    "description": "Structured NIS2 gap assessment across 10 Article 21 domains for food manufacturing and critical infrastructure.",
+    "url": "https://stevenwensley.com/nis2-gap-assessment.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "author": {
+      "@type": "Person",
+      "name": "Steven Seidenfaden Wensley",
+      "url": "https://stevenwensley.com"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo" style="text-decoration:none;"><svg class="nav-logo-svg" viewBox="0 0 80 28" width="80" height="28" xmlns="http://www.w3.org/2000/svg"><text x="2" y="22" font-family="DM Serif Display,Georgia,serif" font-size="22" font-weight="700" fill="var(--gold)" stroke="var(--gold)" stroke-width="0.8">SSW</text></svg></a>
+  <button class="hamburger" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-links">
+    <a href="insights.html">Insights</a>
+    <a href="ai-governance-assessment.html">Assessment</a>
+    <a href="nis2-gap-assessment.html" class="active">NIS2</a>
+    <a href="services.html">Services</a>
+    <a href="book-session.html">Book Session</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="tool-header">
+  <div class="container">
+    <div class="badge">NIS2 Directive (EU 2022/2555) — Food & Manufacturing</div>
+    <h1>NIS2 Compliance Gap Assessment</h1>
+    <p>Structured assessment across 10 NIS2 Article 21 domains, tailored for food production, supply chain & manufacturing environments.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Progress -->
+  <div class="progress-bar" data-reveal>
+    <div class="progress-info">
+      <span id="progress-text">Domain 1 of 10</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="track"><div class="fill" id="progress-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- Domain tabs -->
+  <div class="domain-nav" id="domain-nav" data-reveal></div>
+
+  <!-- Assessment form -->
+  <form id="assessment-form"></form>
+
+  <!-- Navigation -->
+  <div class="nav-buttons" id="nav-buttons">
+    <button type="button" class="btn btn-secondary" id="btn-prev" onclick="navigate(-1)" style="visibility:hidden">&larr; Previous</button>
+    <button type="button" class="btn btn-primary" id="btn-next" onclick="navigate(1)">Next Domain &rarr;</button>
+  </div>
+
+  <!-- Results -->
+  <div id="results"></div>
+
+  <!-- CTA -->
+  <div class="cta-section" id="cta-section" style="display:none;">
+    <h3>Need help implementing NIS2?</h3>
+    <p>18+ years managing compliance programmes in regulated environments. From gap assessment to board-level governance.</p>
+    <a href="book-session.html" class="btn btn-gold gradient-animated" onclick="gtag('event','nis2_cta_click',{event_category:'NIS2 Assessment'})">Book a Free Session &rarr;</a>
+  </div>
+
+</div>
+
+<footer>
+  <div style="margin-bottom: 0.8rem; font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.08em;">
+    PMP &middot; PRINCE2 &middot; MSP &middot; P3O &middot; MoP &middot; Agile PM &middot; 18+ years in regulated environments
+  </div>
+  &copy; 2026 Steven Seidenfaden Wensley &middot;
+  <a href="index.html">Home</a> &middot;
+  <a href="ai-governance-assessment.html">AI Assessment</a> &middot;
+  <a href="nis2-gap-assessment.html">NIS2</a> &middot;
+  <a href="services.html">Services</a> &middot;
+  <a href="book-session.html">Book Session</a>
+</footer>
+
+<script>
+// ── DATA ──
+const domains = [
+  {
+    id: 'governance', name: 'Governance & Leadership', ref: 'Art. 20',
+    subtitle: 'Board accountability, cybersecurity strategy, management oversight',
+    questions: [
+      { text: 'Has the board formally approved a cybersecurity risk management policy?', context: 'NIS2 Art. 20 requires management body approval of cybersecurity measures.', options: ['No policy exists','Policy exists but not board-approved','Board-approved policy, reviewed annually','Board-approved, integrated with enterprise risk management'] },
+      { text: 'Does the management body receive regular cybersecurity briefings?', context: 'Art. 20 mandates management oversight — not delegation to IT alone.', options: ['No structured reporting','Ad-hoc reporting when incidents occur','Quarterly reporting with metrics','Monthly reporting with risk dashboard and KPIs'] },
+      { text: 'Has management completed NIS2-specific cybersecurity training?', context: 'Art. 20(2): Members of management bodies must follow training.', options: ['No training completed','General awareness training only','NIS2-specific training planned','NIS2-specific training completed and documented'] },
+      { text: 'Is there a designated CISO or equivalent security officer?', context: 'Essential for NIS2 governance. Reports to board, not buried in IT ops.', options: ['No dedicated security role','IT manager handles security part-time','Dedicated CISO but reports to CIO only','CISO with direct board reporting line'] }
+    ]
+  },
+  {
+    id: 'risk', name: 'Risk Management', ref: 'Art. 21(2)(a)',
+    subtitle: 'Cyber risk assessment methodology, risk register, acceptance criteria',
+    questions: [
+      { text: 'Do you maintain a formal cybersecurity risk assessment process?', context: 'Art. 21(2)(a): risk analysis and information system security policies.', options: ['No formal risk assessment','Informal/ad-hoc assessments','Annual risk assessment documented','Continuous risk assessment with automated monitoring'] },
+      { text: 'Are OT/production systems included in your risk assessments?', context: 'Food manufacturing relies on SCADA, PLCs, cold chain monitoring — all in scope.', options: ['OT systems not assessed','OT included informally','OT has separate risk assessment','Integrated IT/OT risk assessment with unified register'] },
+      { text: 'Do you have documented risk acceptance criteria approved by management?', context: 'Regulators expect evidence of conscious risk decisions — not ignored gaps.', options: ['No risk acceptance criteria','Informal thresholds','Documented criteria, management-approved','Quantified criteria with regular review and board sign-off'] }
+    ]
+  },
+  {
+    id: 'incident', name: 'Incident Management', ref: 'Art. 23, 24',
+    subtitle: 'Detection, response, reporting — 24h/72h/30-day obligations',
+    questions: [
+      { text: 'Do you have a documented incident response plan covering NIS2 reporting timelines?', context: 'NIS2 requires: 24h early warning, 72h detailed notification, 30-day final report.', options: ['No incident response plan','Plan exists but no NIS2-specific timelines','Plan includes NIS2 timelines, not tested','Plan tested via tabletop exercises within last 12 months'] },
+      { text: 'Can you detect a significant cyber incident within 24 hours?', context: '24-hour early warning is mandatory. Requires real-time monitoring capability.', options: ['No real-time monitoring','Basic monitoring, detection likely >48h','SIEM/SOC in place, <24h detection likely','24/7 SOC with automated alerting and <1h detection target'] },
+      { text: 'Do you know which national authority to notify for incidents?', context: 'Denmark: Centre for Cybersecurity. Sweden: MSB. Finland: Traficom.', options: ['Not identified','Identified but no contact established','Contact established, procedures drafted','Tested notification procedure with authority engagement'] },
+      { text: 'Have you conducted an incident response exercise in the last 12 months?', context: 'Regulators expect evidence of preparedness — not just documentation.', options: ['No exercises conducted','Discussed scenarios informally','Tabletop exercise completed','Full simulation including OT/production scenarios'] }
+    ]
+  },
+  {
+    id: 'bcp', name: 'Business Continuity', ref: 'Art. 21(2)(c)',
+    subtitle: 'Backup, disaster recovery, crisis management for production & supply chain',
+    questions: [
+      { text: 'Do you have documented RTO/RPO targets for critical systems?', context: 'ERP downtime = no orders. Production SCADA failure = factory stops. Cold chain break = product loss.', options: ['No documented RTO/RPO','Informal targets for some systems','Documented for all critical systems','Documented, tested, and validated quarterly'] },
+      { text: 'Are backups tested regularly and stored off-site/offline?', context: 'Ransomware specifically targets online backups. Air-gapped copies are essential.', options: ['No regular backup testing','Backups exist but rarely tested','Regular testing, online storage only','Tested quarterly with offline/air-gapped copies'] },
+      { text: 'Do you have a crisis management plan for cyber incidents affecting production?', context: 'Food production downtime has cascading effects: waste, supply chain delays, recalls.', options: ['No crisis management plan','IT disaster recovery only','Includes production/OT scenarios','Integrated plan with supply chain partners, tested annually'] }
+    ]
+  },
+  {
+    id: 'supply-chain', name: 'Supply Chain Security', ref: 'Art. 21(2)(d)',
+    subtitle: 'Vendor assessments, contractual clauses, third-party monitoring',
+    questions: [
+      { text: 'Have you assessed the cybersecurity posture of your critical suppliers?', context: 'Art. 21(2)(d): security of supply chain including vendor relationships.', options: ['No supplier security assessments','Informal assessment of some suppliers','Formal assessment of critical suppliers','Comprehensive program with regular reassessment and monitoring'] },
+      { text: 'Do supplier contracts include NIS2-compliant cybersecurity clauses?', context: 'Must include incident notification requirements, security standards, audit rights.', options: ['No security clauses in contracts','Generic security clauses','NIS2-aligned clauses in new contracts','All contracts updated with specific NIS2 requirements'] },
+      { text: 'Can your suppliers notify you of incidents within agreed timeframes?', context: 'Your 24h reporting obligation depends on supplier incident visibility.', options: ['No supplier notification procedures','Informal expectations','Documented notification requirements','Tested notification chain with critical suppliers'] },
+      { text: 'Do you assess the security of software/SaaS vendors (ERP, cloud, IoT)?', context: 'ERP, Azure, production monitoring, e-commerce — all are attack surfaces.', options: ['No vendor security assessment','SOC2/ISO cert checked at onboarding','Regular security reviews of critical vendors','Continuous monitoring with vendor risk scoring'] }
+    ]
+  },
+  {
+    id: 'access', name: 'Access Control', ref: 'Art. 21(2)(i)',
+    subtitle: 'Authentication, authorization, privileged access, zero trust',
+    questions: [
+      { text: 'Is multi-factor authentication (MFA) enforced for all privileged access?', context: 'Admin accounts, VPN, cloud consoles, ERP admin — all require MFA under NIS2.', options: ['MFA not deployed','MFA for some systems (e.g. email)','MFA for all remote and cloud access','MFA enforced universally including OT admin access'] },
+      { text: 'Do you implement least-privilege access control across IT and OT?', context: 'Production operators should only access their line. Admins should not have permanent root.', options: ['No formal access control policy','Basic role-based access in some systems','RBAC across IT systems, not OT','RBAC/ABAC across IT and OT with regular access reviews'] },
+      { text: 'How do you manage privileged access (admin/root accounts)?', context: 'Compromised admin accounts are the #1 path for ransomware in food manufacturing.', options: ['Shared admin accounts in use','Individual accounts but no PAM','Privileged Access Management (PAM) for IT','PAM across IT and OT with session recording'] }
+    ]
+  },
+  {
+    id: 'assets', name: 'Asset Management', ref: 'Art. 21(2)',
+    subtitle: 'Hardware, software, data inventory — IT and OT assets',
+    questions: [
+      { text: 'Do you maintain a complete inventory of IT and OT assets?', context: 'You cannot protect what you do not know. Includes servers, PLCs, sensors, IoT devices.', options: ['No centralized inventory','Partial IT inventory only','Complete IT inventory, partial OT','Complete IT + OT inventory with automated discovery'] },
+      { text: 'Are assets classified by criticality and data sensitivity?', context: 'Recipe databases, production SCADA, customer PII, financial systems — different risk levels.', options: ['No classification scheme','Informal classification','Documented classification for IT','Classification for IT and OT with risk-based prioritization'] },
+      { text: 'Do you track end-of-life/end-of-support for all systems?', context: 'Legacy OT systems often run unsupported OS. Major vulnerability if not managed.', options: ['No lifecycle tracking','Tracked for some IT systems','Tracked for all IT, some OT','Complete lifecycle management with upgrade/migration plans'] }
+    ]
+  },
+  {
+    id: 'crypto', name: 'Cryptography & Data Protection', ref: 'Art. 21(2)(h)',
+    subtitle: 'Encryption at rest and in transit, key management, data classification',
+    questions: [
+      { text: 'Is data encrypted in transit across all critical systems?', context: 'TLS 1.2+ for all connections. Includes internal traffic, not just external.', options: ['Encryption not standardized','External connections encrypted','All critical connections encrypted (TLS 1.2+)','Full encryption including internal east-west traffic'] },
+      { text: 'Is sensitive data encrypted at rest?', context: 'Recipes, customer data, financial records, employee PII — all require encryption.', options: ['No encryption at rest','Some databases encrypted','All sensitive data encrypted (AES-256)','Full disk + database + backup encryption with key rotation'] },
+      { text: 'Do you have a documented key management process?', context: 'Keys in code repos, shared drives, or individual laptops = critical vulnerability.', options: ['No key management process','Keys managed informally','Documented process with HSM/vault','Automated key lifecycle with rotation and audit logging'] }
+    ]
+  },
+  {
+    id: 'network', name: 'Network Security', ref: 'Art. 21(2)',
+    subtitle: 'Segmentation, monitoring, OT/IT separation, remote access',
+    questions: [
+      { text: 'Are your IT and OT networks segmented?', context: 'Critical for food manufacturing. IT ransomware must not reach production SCADA.', options: ['Flat network (no segmentation)','Basic VLAN segmentation','IT/OT separated with firewall','Purdue model / IEC 62443 zone architecture with DMZ'] },
+      { text: 'Do you monitor network traffic for anomalies?', context: 'Includes both IT (SIEM) and OT (industrial IDS/NMS) monitoring.', options: ['No network monitoring','Basic monitoring (availability only)','SIEM for IT, no OT monitoring','Integrated IT + OT monitoring with anomaly detection'] },
+      { text: 'How is remote access to OT systems managed?', context: 'Vendor remote access to PLCs/SCADA is a top attack vector in manufacturing.', options: ['Open VPN access to OT','VPN with standard credentials','Dedicated secure remote access gateway','Zero-trust remote access with session recording and approval workflows'] }
+    ]
+  },
+  {
+    id: 'hr', name: 'Human Resources Security', ref: 'Art. 21(2)(g)',
+    subtitle: 'Training, awareness, background checks, onboarding/offboarding',
+    questions: [
+      { text: 'Do all employees receive cybersecurity awareness training?', context: 'Art. 21(2)(g): Includes production staff, not just office workers.', options: ['No structured training','Training for office staff only','Annual training for all employees','Role-specific training (IT, OT, management) with phishing simulations'] },
+      { text: 'Are background checks performed for staff with access to critical systems?', context: 'Food manufacturing has high turnover. Contractors and temp workers also in scope.', options: ['No background checks','For senior IT staff only','For all staff with system access','Comprehensive checks including contractors, with periodic renewal'] },
+      { text: 'Do you have documented onboarding/offboarding procedures for system access?', context: 'Departed employee with active ERP/production access = significant risk.', options: ['No formal procedures','Informal process, often delayed','Documented with IT checklist','Automated provisioning/deprovisioning with same-day revocation'] }
+    ]
+  }
+];
+
+// ── STATE ──
+let currentDomain = 0;
+let answers = {};
+
+// ── INIT ──
+function init() {
+  const nav = document.getElementById('domain-nav');
+  const form = document.getElementById('assessment-form');
+
+  domains.forEach((d, di) => {
+    const tab = document.createElement('div');
+    tab.className = 'domain-tab' + (di === 0 ? ' active' : '');
+    tab.textContent = d.name.split(' ')[0];
+    tab.onclick = () => goToDomain(di);
+    tab.id = 'tab-' + di;
+    nav.appendChild(tab);
+
+    const section = document.createElement('div');
+    section.className = 'domain-section' + (di === 0 ? ' active' : '');
+    section.id = 'domain-' + di;
+
+    let html = `<h2>${d.name}</h2><div class="nis2-ref">${d.ref}</div><p class="subtitle">${d.subtitle}</p>`;
+
+    d.questions.forEach((q, qi) => {
+      const key = `${di}-${qi}`;
+      html += `<div class="question"><label>${q.text}</label>`;
+      if (q.context) html += `<div class="context">${q.context}</div>`;
+      html += '<div class="options">';
+      q.options.forEach((opt, oi) => {
+        html += `<div class="option" onclick="selectOption('${key}',${oi},this)">
+          <div class="dot"></div>
+          <span><span class="score-indicator score-${oi}"></span>${opt}</span>
+        </div>`;
+      });
+      html += '</div></div>';
+    });
+
+    section.innerHTML = html;
+    form.appendChild(section);
+  });
+
+  updateProgress();
+  gtag('event', 'tool_start', { event_category: 'NIS2 Assessment', event_label: 'page_load' });
+}
+
+function selectOption(key, value, el) {
+  answers[key] = value;
+  el.parentElement.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  updateProgress();
+}
+
+function goToDomain(idx) {
+  currentDomain = idx;
+  document.querySelectorAll('.domain-section').forEach((s,i) => { s.classList.toggle('active', i === idx); });
+  document.querySelectorAll('.domain-tab').forEach((t,i) => { t.classList.remove('active'); if (i === idx) t.classList.add('active'); });
+  updateNavButtons();
+  updateProgress();
+  window.scrollTo({ top: 200, behavior: 'smooth' });
+}
+
+function navigate(dir) {
+  const next = currentDomain + dir;
+  if (next >= 0 && next < domains.length) goToDomain(next);
+  else if (next >= domains.length) showResults();
+}
+
+function updateNavButtons() {
+  document.getElementById('btn-prev').style.visibility = currentDomain === 0 ? 'hidden' : 'visible';
+  const btn = document.getElementById('btn-next');
+  btn.textContent = currentDomain === domains.length - 1 ? 'View Results \u2192' : 'Next Domain \u2192';
+}
+
+function updateProgress() {
+  const total = domains.reduce((s,d) => s + d.questions.length, 0);
+  const answered = Object.keys(answers).length;
+  const pct = Math.round((answered / total) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-text').textContent = `Domain ${currentDomain + 1} of ${domains.length} \u00b7 ${answered}/${total} answered`;
+  domains.forEach((d, di) => {
+    const allAnswered = d.questions.every((_, qi) => answers[`${di}-${qi}`] !== undefined);
+    const tab = document.getElementById('tab-' + di);
+    if (allAnswered && di !== currentDomain) tab.className = 'domain-tab completed';
+  });
+}
+
+// ── RESULTS ──
+function showResults() {
+  document.getElementById('assessment-form').style.display = 'none';
+  document.getElementById('nav-buttons').style.display = 'none';
+  document.getElementById('domain-nav').style.display = 'none';
+  document.querySelector('.progress-bar').style.display = 'none';
+
+  const results = document.getElementById('results');
+  results.style.display = 'block';
+  document.getElementById('cta-section').style.display = 'block';
+
+  const domainScores = domains.map((d, di) => {
+    let total = 0, max = 0;
+    d.questions.forEach((q, qi) => { const val = answers[`${di}-${qi}`]; total += (val !== undefined ? val : 0); max += 3; });
+    return { name: d.name, ref: d.ref, score: total, max, pct: Math.round((total / max) * 100) };
+  });
+
+  const overallScore = domainScores.reduce((s, d) => s + d.score, 0);
+  const overallMax = domainScores.reduce((s, d) => s + d.max, 0);
+  const overallPct = Math.round((overallScore / overallMax) * 100);
+  const colorClass = overallPct < 30 ? 'red' : overallPct < 55 ? 'orange' : overallPct < 75 ? 'gold' : 'green';
+  const maturity = overallPct < 30 ? 'Initial \u2014 Significant gaps require immediate attention'
+    : overallPct < 55 ? 'Developing \u2014 Foundation exists but critical gaps remain'
+    : overallPct < 75 ? 'Defined \u2014 Good progress, focused improvements needed'
+    : 'Managed \u2014 Strong posture, continuous improvement recommended';
+
+  gtag('event', 'tool_complete', { event_category: 'NIS2 Assessment', event_label: maturity.split(' ')[0], value: overallPct });
+
+  let html = `
+    <div class="results-header">
+      <div class="badge">Assessment Complete</div>
+      <h2>NIS2 Compliance Maturity</h2>
+      <div class="overall-score ${colorClass}">${overallPct}%</div>
+      <div class="maturity-label">${maturity}</div>
+    </div>
+    <div class="results-body">
+      <div class="radar-container"><canvas id="radar-chart"></canvas></div>
+      <h3 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.3rem;color:var(--gold);margin-bottom:16px">Domain Scores</h3>
+      <div class="domain-results">`;
+
+  domainScores.forEach(d => {
+    const c = d.pct < 30 ? 'red' : d.pct < 55 ? 'orange' : d.pct < 75 ? 'gold' : 'green';
+    html += `<div class="domain-card ${c}"><h4>${d.name} <span style="color:var(--text-muted);font-weight:400;font-size:.75rem">${d.ref}</span></h4><div class="score-text ${c}">${d.pct}%</div><div class="bar"><div class="bar-fill" style="width:${d.pct}%;background:var(--${c})"></div></div></div>`;
+  });
+  html += '</div>';
+
+  // Critical gaps
+  const gaps = [];
+  domains.forEach((d, di) => { d.questions.forEach((q, qi) => { const val = answers[`${di}-${qi}`]; if (val !== undefined && val <= 1) gaps.push({ domain: d.name, ref: d.ref, question: q.text, score: val, option: q.options[val] }); }); });
+
+  if (gaps.length > 0) {
+    html += `<div class="critical-gaps"><h3>Critical Gaps Identified (${gaps.length})</h3>`;
+    gaps.forEach(g => { html += `<div class="gap-item"><div class="gap-icon">${g.score === 0 ? '\ud83d\udd34' : '\ud83d\udfe0'}</div><div class="gap-text"><strong>${g.domain} (${g.ref})</strong>${g.question}<br><em style="color:var(--text-muted)">Current: ${g.option}</em></div></div>`; });
+    html += '</div>';
+  }
+
+  // Recommendations
+  html += `<div class="reco-section"><h3>Priority Recommendations</h3>`;
+  const recos = [
+    { cond: () => domainScores[0].pct < 50, text: 'Establish Board-Level Governance', desc: 'Secure board approval for cybersecurity policy. Schedule quarterly security briefings. Appoint or empower a CISO with direct board reporting.' },
+    { cond: () => domainScores[2].pct < 50, text: 'Implement NIS2 Incident Reporting', desc: 'Document 24h/72h/30-day reporting procedures. Register with national CSIRT. Conduct tabletop exercise within 30 days.' },
+    { cond: () => domainScores[4].pct < 50, text: 'Launch Supply Chain Security Programme', desc: 'Identify and assess top 30 critical suppliers. Update contracts with NIS2 security clauses. Establish incident notification chain.' },
+    { cond: () => domainScores[1].pct < 50, text: 'Formalize Cybersecurity Risk Assessment', desc: 'Implement structured risk methodology covering IT and OT. Include production systems, cold chain, and ERP in scope.' },
+    { cond: () => domainScores[3].pct < 50, text: 'Strengthen Business Continuity', desc: 'Define RTO/RPO for production-critical systems. Test backups with offline/air-gapped copies. Develop production-specific crisis plan.' },
+    { cond: () => domainScores[8].pct < 75, text: 'Segment IT/OT Networks', desc: 'Implement Purdue model or IEC 62443 zone architecture. Deploy industrial firewall between IT and OT.' },
+    { cond: () => domainScores[5].pct < 75, text: 'Enforce Multi-Factor Authentication', desc: 'Deploy MFA across all privileged access, VPN, and cloud consoles. Include OT administrative access.' },
+    { cond: () => true, text: 'Continuous Monitoring & Evidence Collection', desc: 'Implement automated compliance dashboards, audit trails, and security metrics reporting.' }
+  ];
+  let recoCount = 0;
+  recos.forEach(r => { if (r.cond() && recoCount < 6) { recoCount++; html += `<div class="reco-item"><div class="reco-num">${recoCount}</div><div class="reco-text"><strong>${r.text}</strong>${r.desc}</div></div>`; } });
+  html += '</div>';
+
+  html += `<div class="action-bar"><button class="btn btn-gold gradient-animated" onclick="window.print()">Export as PDF</button><button class="btn btn-secondary" onclick="resetAssessment()">Retake Assessment</button></div>`;
+  html += '</div>';
+  results.innerHTML = html;
+
+  // Radar chart
+  setTimeout(() => {
+    const ctx = document.getElementById('radar-chart');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: domainScores.map(d => d.name.length > 20 ? d.name.substring(0,18) + '\u2026' : d.name),
+          datasets: [{
+            label: 'Current Maturity', data: domainScores.map(d => d.pct),
+            backgroundColor: 'rgba(43,122,111,0.15)', borderColor: '#2B7A6F', borderWidth: 2, pointBackgroundColor: '#2B7A6F', pointRadius: 4
+          }, {
+            label: 'Target (75%)', data: Array(10).fill(75),
+            backgroundColor: 'rgba(201,169,110,0.05)', borderColor: '#C9A96E', borderWidth: 1, borderDash: [5,5], pointRadius: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: { r: { beginAtZero: true, max: 100, ticks: { stepSize: 25, font: { size: 10 }, color: '#6B6B78', backdropColor: 'transparent' }, pointLabels: { font: { size: 10 }, color: '#B0B0BA' }, grid: { color: 'rgba(255,255,255,0.06)' }, angleLines: { color: 'rgba(255,255,255,0.06)' } } },
+          plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, color: '#B0B0BA' } } }
+        }
+      });
+    }
+  }, 100);
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetAssessment() {
+  answers = {};
+  currentDomain = 0;
+  document.getElementById('assessment-form').style.display = '';
+  document.getElementById('nav-buttons').style.display = '';
+  document.getElementById('domain-nav').style.display = '';
+  document.querySelector('.progress-bar').style.display = '';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('cta-section').style.display = 'none';
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.domain-tab').forEach((t,i) => { t.className = 'domain-tab' + (i === 0 ? ' active' : ''); });
+  goToDomain(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+init();
+</script>
+
+<!-- DS2: Design System v2 -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+<script>
+(function() {
+  'use strict';
+  try {
+    var lenis = new Lenis({ duration: 1.2, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+    lenis.on('scroll', function() { if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update(); });
+    gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  } catch(e) {}
+  try {
+    var ro = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          var items = entry.target.querySelectorAll('.stagger-item:not(.revealed)');
+          items.forEach(function(item, i) { setTimeout(function() { item.classList.add('revealed'); }, 100 + i * 80); });
+          ro.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(function(el) { ro.observe(el); });
+  } catch(e) {}
+  try {
+    var svgText = document.querySelector('.nav-logo-svg text');
+    if (svgText) setTimeout(function() { svgText.classList.add('drawn'); }, 2200);
+  } catch(e) {}
+})();
+</script>
+
+</body>
+</html>
