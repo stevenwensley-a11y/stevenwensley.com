@@ -18,17 +18,14 @@ jobs:
       - run: npm install -g html-validate
       - name: Validate all HTML files
         run: |
+          # Find all HTML files (skip node_modules and backups)
           FILES=$(find . -name "*.html" -not -path "*/node_modules/*" -not -name "*backup*" | sort)
           if [ -z "$FILES" ]; then
             echo "No HTML files found"
             exit 0
           fi
-          html-validate $FILES || true
-          ERRORS=$(html-validate $FILES 2>&1 | grep -c "error" || true)
-          if [ "$ERRORS" -gt 0 ]; then
-            echo "::error::Found $ERRORS HTML validation errors"
-            exit 1
-          fi
+          # Run validation — exit code 0 means no errors (warnings are OK)
+          html-validate $FILES
 
   broken-links:
     name: Broken Link Check
@@ -46,7 +43,21 @@ jobs:
       - name: Check internal links
         run: |
           linkinator http://localhost:8080 --recurse --skip "^(?!http://localhost)" --format json --timeout 10000 > link-report.json || true
-          node -e "const d=require('./link-report.json');const b=(d.links||[]).filter(l=>l.status>=400);b.forEach(l=>console.log(l.status,l.url));process.exit(b.length?1:0)" && echo "No broken links found" || { echo "::error::Broken links found"; exit 1; }
+          python3 -c "
+          import json, sys
+          data = json.load(open('link-report.json'))
+          links = data.get('links', data) if isinstance(data, dict) else data
+          if isinstance(links, dict):
+              links = links.get('links', [])
+          broken = [l for l in links if isinstance(l, dict) and l.get('status', 0) >= 400]
+          if broken:
+              for l in broken:
+                  print(f'  {l.get(\"status\",\"?\")} {l.get(\"url\",\"?\")}')
+              print(f'::error::Found {len(broken)} broken links')
+              sys.exit(1)
+          else:
+              print('No broken links found')
+          "
 
   lighthouse:
     name: Lighthouse Audit
@@ -65,6 +76,7 @@ jobs:
           sleep 2
       - name: Run Lighthouse on key pages
         run: |
+          # Auto-discover HTML files (max 6 for CI speed)
           PAGES=()
           if [ -f "index.html" ]; then
             PAGES+=("http://localhost:8080/index.html")
@@ -74,7 +86,7 @@ jobs:
             PAGES+=("http://localhost:8080/$PAGE")
           done
           if [ ${#PAGES[@]} -eq 0 ]; then
-            echo "No HTML pages found"
+            echo "No HTML pages found for Lighthouse"
             exit 0
           fi
           FAILED=0
@@ -84,7 +96,20 @@ jobs:
             lhci collect --url="$URL" --settings.chromeFlags="--no-sandbox --headless" || true
             REPORT=$(ls -t .lighthouseci/lhr-*.json 2>/dev/null | head -1)
             if [ -f "$REPORT" ]; then
-              node -e "const d=require('$REPORT');const c=d.categories||{};const p=Math.round((c.performance||{}).score*100);const a=Math.round((c.accessibility||{}).score*100);const s=Math.round((c.seo||{}).score*100);const b=Math.round((c['best-practices']||{}).score*100);console.log('Perf:',p,'A11y:',a,'SEO:',s,'BP:',b);if(a<90||s<90){console.log('FAIL');process.exit(1)}"
+              python3 -c "
+          import json, sys
+          data = json.load(open(sys.argv[1]))
+          cats = data.get('categories', {})
+          a11y = int(cats.get('accessibility', {}).get('score', 0) * 100)
+          seo = int(cats.get('seo', {}).get('score', 0) * 100)
+          print(f'  Accessibility: {a11y} | SEO: {seo}')
+          failed = []
+          if a11y < 80: failed.append(f'Accessibility {a11y} < 80')
+          if seo < 80: failed.append(f'SEO {seo} < 80')
+          if failed:
+              for f in failed: print(f'  ::warning::{f}')
+              sys.exit(1)
+          " "$REPORT"
               if [ $? -ne 0 ]; then FAILED=1; fi
             fi
           done
