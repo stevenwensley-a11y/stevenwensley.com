@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NIS2 Implementation Roadmap — Food & Manufacturing | Steven S. Wensley</title>
-<meta name="description" content="Accelerated 14-week NIS2 implementation roadmap for food & manufacturing. 4 overlapping phases, Gantt timeline, risk assessment, and resource planning aligned to EU Directive 2022/2555.">
+<title>NIS2 Governance Roadmap — 12-Week Programme | Steven S. Wensley</title>
+<meta name="description" content="12-week NIS2 governance & compliance roadmap. Single consultant delivery: stakeholder mapping, gap assessment, policy framework, and prioritised implementation roadmap aligned to EU Directive 2022/2555.">
 <meta name="view-transition" content="same-origin">
 <link rel="canonical" href="https://stevenwensley.com/nis2-implementation-roadmap.html">
-<meta property="og:title" content="NIS2 Implementation Roadmap — Food & Manufacturing">
-<meta property="og:description" content="Accelerated 14-week NIS2 compliance programme plan with Gantt timeline, 4 overlapping phases, risk matrix, and resource requirements.">
+<meta property="og:title" content="NIS2 Governance Roadmap — 12-Week Programme">
+<meta property="og:description" content="Pragmatic 12-week NIS2 governance programme. 4 focused phases: planning, interviews, documentation, and roadmap delivery. One senior consultant, clear deliverables.">
 <meta property="og:url" content="https://stevenwensley.com/nis2-implementation-roadmap.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,7 +19,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-17Y98NY34Y"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-17Y98NY34Y');</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"NIS2 Implementation Roadmap","description":"Accelerated 14-week NIS2 implementation roadmap for food & manufacturing sector","url":"https://stevenwensley.com/nis2-implementation-roadmap.html","applicationCategory":"BusinessApplication","author":{"@type":"Person","name":"Steven S. Wensley","url":"https://stevenwensley.com"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"NIS2 Governance Roadmap","description":"12-week NIS2 governance & compliance programme roadmap","url":"https://stevenwensley.com/nis2-implementation-roadmap.html","applicationCategory":"BusinessApplication","author":{"@type":"Person","name":"Steven S. Wensley","url":"https://stevenwensley.com"}}
 </script>
 <style>
 :root {
@@ -78,12 +78,12 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
 /* GANTT */
 .gantt-wrapper { overflow-x: auto; margin-bottom: 16px; border-radius: 12px; background: var(--surface); padding: 24px; border: 1px solid var(--border); }
-.gantt { min-width: 900px; }
-.gantt-header { display: grid; grid-template-columns: 200px repeat(14, 1fr); margin-bottom: 8px; }
+.gantt { min-width: 800px; }
+.gantt-header { display: grid; grid-template-columns: 220px repeat(12, 1fr); margin-bottom: 8px; }
 .gantt-header .phase-label { font-size: 12px; font-weight: 600; color: var(--text-muted); }
 .gantt-header .week { font-size: 10px; color: var(--text-muted); text-align: center; padding: 4px 2px; border-left: 1px solid var(--border); }
 .gantt-header .week.quarter { font-weight: 700; color: var(--gold); border-left: 2px solid var(--gold); }
-.gantt-row { display: grid; grid-template-columns: 200px repeat(14, 1fr); margin-bottom: 4px; align-items: center; min-height: 32px; }
+.gantt-row { display: grid; grid-template-columns: 220px repeat(12, 1fr); margin-bottom: 4px; align-items: center; min-height: 32px; }
 .gantt-row .task-name { font-size: 13px; font-weight: 500; padding-right: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .gantt-row .cell { height: 24px; border-left: 1px solid rgba(42,42,54,0.5); position: relative; }
 .gantt-row .cell.qb { border-left: 2px solid rgba(201,169,110,0.2); }
@@ -156,14 +156,15 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 .risk-card p { font-size: 13px; color: var(--text-muted); }
 .risk-card .mitigation { font-size: 12px; color: var(--teal-light); margin-top: 10px; font-weight: 500; padding-top: 8px; border-top: 1px solid var(--border); }
 
-/* RESOURCE TABLE */
-.resource-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
-.resource-table { width: 100%; border-collapse: collapse; background: var(--surface); }
-.resource-table th { background: var(--surface-2); color: var(--gold); padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 600; border-bottom: 1px solid var(--border); }
-.resource-table td { padding: 10px 16px; font-size: 13px; border-bottom: 1px solid var(--border); color: var(--text-muted); }
-.resource-table tr:last-child td { border-bottom: none; }
-.resource-table tr:hover td { background: rgba(201,169,110,0.04); }
-.resource-table .total-row td { font-weight: 700; color: var(--gold); background: rgba(201,169,110,0.06); }
+/* APPROACH */
+.approach-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; }
+.approach-box h3 { font-family: var(--font-display); font-size: 20px; margin-bottom: 12px; color: var(--gold); }
+.approach-box p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
+.approach-box p:last-child { margin-bottom: 0; }
+.approach-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.approach-highlights .ah { text-align: center; padding: 20px; background: var(--surface-2); border-radius: 10px; border: 1px solid var(--border); }
+.approach-highlights .ah .ah-num { font-family: var(--font-display); font-size: 28px; color: var(--gold); }
+.approach-highlights .ah .ah-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
 /* CTA */
 .cta-section { padding: 80px clamp(16px,4vw,40px); text-align: center; background: linear-gradient(180deg, transparent, rgba(43,122,111,0.08), transparent); }
@@ -190,7 +191,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   .nav, .cta-section, .btn-cta, .phase-toggle { display: none !important; }
   body { background: white; color: #1a1a1a; }
   .hero { padding-top: 40px; }
-  .phase-card, .risk-card, .article-item { border: 1px solid #ddd; break-inside: avoid; }
+  .phase-card, .risk-card, .article-item, .approach-box { border: 1px solid #ddd; break-inside: avoid; }
   .gantt-wrapper { border: 1px solid #ddd; }
   .bar.p1, .bar.p2, .bar.p3, .bar.p4 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .section-title { color: #1a1a1a; }
@@ -201,6 +202,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   .phases-grid { grid-template-columns: 1fr; }
   .risks-grid { grid-template-columns: 1fr; }
   .article-grid { grid-template-columns: 1fr; }
+  .approach-highlights { grid-template-columns: 1fr; }
   .hero-stats { gap: 24px; }
   .nav-links { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--surface); flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid var(--border); }
   .nav-links.open { display: flex; }
@@ -248,18 +250,33 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-label">EU Directive 2022/2555 &mdash; Food & Manufacturing</div>
-  <h1>NIS2 Implementation <span>Roadmap</span></h1>
-  <p>An accelerated 14-week programme plan for achieving NIS2 compliance across Nordic operations. Compressed timeline with parallel workstreams, higher resource intensity, and aggressive phase overlap &mdash; all mapped to Article 21 requirements.</p>
+  <div class="hero-label">EU Directive 2022/2555 &mdash; Governance & Compliance</div>
+  <h1>NIS2 Governance <span>Roadmap</span></h1>
+  <p>A focused 12-week governance programme to achieve NIS2 compliance readiness. One senior consultant delivering structured planning, stakeholder interviews, gap documentation, and a prioritised implementation roadmap &mdash; all mapped to Article 21 requirements.</p>
   <div class="hero-stats" data-reveal>
-    <div class="hero-stat"><div class="num">14</div><div class="label">Weeks to compliance</div></div>
-    <div class="hero-stat"><div class="num">4</div><div class="label">Overlapping phases</div></div>
+    <div class="hero-stat"><div class="num">12</div><div class="label">Weeks to delivery</div></div>
+    <div class="hero-stat"><div class="num">4</div><div class="label">Focused phases</div></div>
     <div class="hero-stat"><div class="num">10</div><div class="label">Art. 21 domains</div></div>
-    <div class="hero-stat"><div class="num" style="color:var(--red);">+30%</div><div class="label">Resource uplift</div></div>
+    <div class="hero-stat"><div class="num">1</div><div class="label">Senior consultant</div></div>
   </div>
 </section>
 
 <div class="container">
+
+  <!-- ENGAGEMENT APPROACH -->
+  <section class="section" data-reveal>
+    <h2 class="section-title">Engagement Approach</h2>
+    <div class="approach-box">
+      <h3>Pragmatic, governance-focused delivery</h3>
+      <p>This is a single-consultant engagement focused on the governance and compliance layer of NIS2. The goal is to assess your current state, identify gaps against all 10 Article 21 domains, build the policy and governance framework, and deliver a clear, prioritised implementation roadmap your internal team can execute on.</p>
+      <p>No large team. No scope creep into technical implementation. Just structured programme management applied to NIS2 compliance &mdash; interviews, documentation, and a roadmap you can act on by August 2026.</p>
+      <div class="approach-highlights">
+        <div class="ah"><div class="ah-num">Plan</div><div class="ah-label">Scope, stakeholders, baseline</div></div>
+        <div class="ah"><div class="ah-num">Interview</div><div class="ah-label">Assess current state across 10 domains</div></div>
+        <div class="ah"><div class="ah-num">Deliver</div><div class="ah-label">Policies, gaps, prioritised roadmap</div></div>
+      </div>
+    </div>
+  </section>
 
   <!-- GANTT TIMELINE -->
   <section class="section" data-reveal>
@@ -268,33 +285,33 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
       <div class="gantt">
         <div class="gantt-header">
           <div class="phase-label"></div>
-          <div class="week quarter">W1</div><div class="week">2</div><div class="week">3</div><div class="week">4</div>
-          <div class="week quarter">W5</div><div class="week">6</div><div class="week">7</div><div class="week">8</div>
-          <div class="week quarter">W9</div><div class="week">10</div><div class="week">11</div><div class="week">12</div>
-          <div class="week quarter">W13</div><div class="week">14</div>
+          <div class="week quarter">W1</div><div class="week">2</div>
+          <div class="week quarter">W3</div><div class="week">4</div><div class="week">5</div><div class="week">6</div>
+          <div class="week quarter">W7</div><div class="week">8</div><div class="week">9</div><div class="week">10</div>
+          <div class="week quarter">W11</div><div class="week">12</div>
         </div>
-        <!-- Phase 1: W1-4 -->
-        <div class="gantt-row phase-header ph1"><div class="task-name">Phase 1: Assessment</div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">Stakeholder mapping</div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">Gap assessment (10 domains)</div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">OT/SCADA risk review</div><div class="cell"></div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">Roadmap & budget</div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <!-- Phase 2: W3-8 -->
-        <div class="gantt-row phase-header ph2" style="margin-top:8px"><div class="task-name">Phase 2: Governance</div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">Board policy & CISO mandate</div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">Incident response playbook</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">Training programme</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <!-- Phase 3: W5-12 -->
-        <div class="gantt-row phase-header ph3" style="margin-top:8px"><div class="task-name">Phase 3: Technical</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">MFA & access control</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">OT/IT segmentation</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">Supplier assessments</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">Encryption & monitoring</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"></div><div class="cell"></div></div>
-        <!-- Phase 4: W10-14 -->
-        <div class="gantt-row phase-header ph4" style="margin-top:8px"><div class="task-name">Phase 4: Verification</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div><div class="cell qb"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div></div>
-        <div class="gantt-row"><div class="task-name">Internal audit</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div><div class="cell qb"></div><div class="cell"></div></div>
-        <div class="gantt-row"><div class="task-name">Authority registration</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar p4"></div></div><div class="cell qb"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div></div>
-        <div class="gantt-row"><div class="task-name">Compliance dashboard</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar p4"></div></div><div class="cell qb"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div></div>
+        <!-- Phase 1: W1-2 -->
+        <div class="gantt-row phase-header ph1"><div class="task-name">Phase 1: Planning</div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Stakeholder mapping</div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Document review & baseline</div><div class="cell"><div class="bar p1"></div></div><div class="cell"><div class="bar p1"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Interview schedule & scope</div><div class="cell"></div><div class="cell"><div class="bar p1"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <!-- Phase 2: W3-6 -->
+        <div class="gantt-row phase-header ph2" style="margin-top:8px"><div class="task-name">Phase 2: Interviews & Assessment</div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Stakeholder interviews</div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Gap assessment (10 domains)</div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Current-state maturity scoring</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Risk register & prioritisation</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"><div class="bar p2"></div></div><div class="cell"><div class="bar p2"></div></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <!-- Phase 3: W7-10 -->
+        <div class="gantt-row phase-header ph3" style="margin-top:8px"><div class="task-name">Phase 3: Documentation & Framework</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Governance policy framework</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Roles, responsibilities & RACI</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Incident response framework</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"></div><div class="cell"></div></div>
+        <div class="gantt-row"><div class="task-name">Board reporting template</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"><div class="bar p3"></div></div><div class="cell"><div class="bar p3"></div></div><div class="cell qb"></div><div class="cell"></div></div>
+        <!-- Phase 4: W11-12 -->
+        <div class="gantt-row phase-header ph4" style="margin-top:8px"><div class="task-name">Phase 4: Roadmap & Handover</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div></div>
+        <div class="gantt-row"><div class="task-name">Prioritised implementation roadmap</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div></div>
+        <div class="gantt-row"><div class="task-name">Executive presentation</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"><div class="bar p4"></div></div><div class="cell"><div class="bar p4"></div></div></div>
+        <div class="gantt-row"><div class="task-name">Handover & knowledge transfer</div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell qb"></div><div class="cell"><div class="bar p4"></div></div></div>
       </div>
     </div>
   </section>
@@ -306,74 +323,71 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
     <div class="phases-grid">
       <div class="phase-card pc1 stagger-item" onclick="this.classList.toggle('expanded')">
         <div class="phase-num">1</div>
-        <h3>Assessment & Scoping</h3>
-        <div class="weeks">Weeks 1&ndash;4 &nbsp;|&nbsp; Accelerated Foundation</div>
-        <div class="desc">Rapid gap analysis across all 10 NIS2 Article 21 domains with parallel workstreams. Map IT, OT, and supply chain landscape. Build prioritised remediation roadmap.</div>
+        <h3>Planning & Stakeholder Mapping</h3>
+        <div class="weeks">Weeks 1&ndash;2 &nbsp;|&nbsp; Foundation</div>
+        <div class="desc">Establish programme scope, identify key stakeholders across the organisation, review existing policies and documentation, and build the interview schedule for the assessment phase.</div>
         <div class="phase-toggle">Show deliverables &darr;</div>
         <div class="phase-detail">
           <ul class="deliverables" style="margin-top:12px">
-            <li>NIS2 gap assessment report (10 domains, maturity scores)</li>
-            <li>Risk register with severity ratings and ownership</li>
-            <li>IT/OT asset inventory and dependency mapping</li>
             <li>Stakeholder map with RACI matrix</li>
-            <li>Prioritised remediation roadmap with budget estimates</li>
-            <li>Board-ready executive summary presentation</li>
+            <li>Document inventory &amp; baseline assessment</li>
+            <li>Interview schedule (structured across 10 domains)</li>
+            <li>Programme charter &amp; scope agreement</li>
+            <li>Communication plan</li>
           </ul>
-          <div class="effort-tag high">HIGH EFFORT &mdash; Foundational</div>
+          <div class="effort-tag low">FOCUSED &mdash; 10 days</div>
         </div>
       </div>
       <div class="phase-card pc2 stagger-item" onclick="this.classList.toggle('expanded')">
         <div class="phase-num">2</div>
-        <h3>Governance & Quick Wins</h3>
-        <div class="weeks">Weeks 3&ndash;8 &nbsp;|&nbsp; Overlaps Phase 1 &amp; 3</div>
-        <div class="desc">Establish governance framework, board accountability (Art. 20), incident response capabilities (Art. 23), and mandatory cybersecurity training. Begins while assessment is ongoing.</div>
+        <h3>Interviews & Current-State Assessment</h3>
+        <div class="weeks">Weeks 3&ndash;6 &nbsp;|&nbsp; Core Assessment</div>
+        <div class="desc">Conduct structured interviews with key stakeholders across all 10 NIS2 Article 21 domains. Score current maturity, identify gaps, and build a prioritised risk register. This is the analytical core of the engagement.</div>
         <div class="phase-toggle">Show deliverables &darr;</div>
         <div class="phase-detail">
           <ul class="deliverables" style="margin-top:12px">
-            <li>Board-approved cybersecurity policy (NIS2-aligned)</li>
-            <li>CISO mandate and job description</li>
-            <li>Incident response playbook (24h/72h/30-day reporting)</li>
-            <li>CSIRT notification templates (SE/DK/FI authorities)</li>
-            <li>Management training programme (Art. 20 compliance)</li>
-            <li>Business continuity plan update</li>
+            <li>Structured interviews across all 10 Art. 21 domains</li>
+            <li>Gap assessment report with maturity scores per domain</li>
+            <li>Risk register with severity ratings and ownership</li>
+            <li>Current-state heatmap (visual maturity overview)</li>
+            <li>Interim findings presentation to management</li>
           </ul>
-          <div class="effort-tag medium">MEDIUM EFFORT &mdash; Governance</div>
+          <div class="effort-tag high">HIGH EFFORT &mdash; 20 days</div>
         </div>
       </div>
       <div class="phase-card pc3 stagger-item" onclick="this.classList.toggle('expanded')">
         <div class="phase-num">3</div>
-        <h3>Technical Controls</h3>
-        <div class="weeks">Weeks 5&ndash;12 &nbsp;|&nbsp; Parallel workstreams</div>
-        <div class="desc">Implement technical security measures at high intensity: MFA rollout, OT/IT network segmentation, supplier assessments, encryption, and SOC enhancement. Multiple workstreams running simultaneously.</div>
+        <h3>Gap Documentation & Policy Framework</h3>
+        <div class="weeks">Weeks 7&ndash;10 &nbsp;|&nbsp; Governance Build</div>
+        <div class="desc">Translate assessment findings into actionable governance documentation. Build the policy framework, define roles and responsibilities, draft incident response procedures, and establish board reporting structures.</div>
         <div class="phase-toggle">Show deliverables &darr;</div>
         <div class="phase-detail">
           <ul class="deliverables" style="margin-top:12px">
-            <li>MFA rollout across all critical systems</li>
-            <li>OT/IT network segmentation architecture</li>
-            <li>Supplier security assessment questionnaire (SAQ)</li>
-            <li>Vendor risk classification for top 50 suppliers</li>
-            <li>Encryption standards document (data at rest + transit)</li>
-            <li>SOC enhancement plan (NIS2 incident detection)</li>
+            <li>NIS2-aligned governance policy framework</li>
+            <li>Roles &amp; responsibilities matrix (including Art. 20 board accountability)</li>
+            <li>Incident response framework (24h/72h/30-day reporting structure)</li>
+            <li>Board reporting template (quarterly compliance status)</li>
+            <li>Training requirements specification</li>
+            <li>Supply chain security assessment criteria</li>
           </ul>
-          <div class="effort-tag high">HIGH EFFORT &mdash; Technical</div>
+          <div class="effort-tag medium">MEDIUM EFFORT &mdash; 20 days</div>
         </div>
       </div>
       <div class="phase-card pc4 stagger-item" onclick="this.classList.toggle('expanded')">
         <div class="phase-num">4</div>
-        <h3>Verification & Sustain</h3>
-        <div class="weeks">Weeks 10&ndash;14 &nbsp;|&nbsp; Assurance</div>
-        <div class="desc">Internal audit against NIS2 requirements, register with national authorities, establish compliance dashboard and annual programme calendar. Overlaps final technical work.</div>
+        <h3>Implementation Roadmap & Handover</h3>
+        <div class="weeks">Weeks 11&ndash;12 &nbsp;|&nbsp; Delivery</div>
+        <div class="desc">Consolidate all findings into a prioritised implementation roadmap with clear timelines, resource requirements, and cost estimates. Present to executive team and hand over to internal programme management.</div>
         <div class="phase-toggle">Show deliverables &darr;</div>
         <div class="phase-detail">
           <ul class="deliverables" style="margin-top:12px">
-            <li>Internal audit report with findings and evidence</li>
-            <li>Authority registration (SE, DK, FI, NO)</li>
-            <li>Compliance dashboard (real-time status tracking)</li>
-            <li>Annual compliance programme calendar</li>
-            <li>Continuous improvement framework</li>
-            <li>Board reporting template (quarterly)</li>
+            <li>Prioritised implementation roadmap (next 12 months)</li>
+            <li>Resource and budget estimates per workstream</li>
+            <li>Board-ready executive presentation</li>
+            <li>Compliance programme calendar</li>
+            <li>Knowledge transfer &amp; handover documentation</li>
           </ul>
-          <div class="effort-tag medium">MEDIUM EFFORT &mdash; Assurance</div>
+          <div class="effort-tag low">FOCUSED &mdash; 10 days</div>
         </div>
       </div>
     </div>
@@ -383,14 +397,14 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   <section class="section" data-reveal>
     <h2 class="section-title">NIS2 Article Mapping</h2>
     <div class="article-grid">
-      <div class="article-item stagger-item"><div class="article-badge">Art. 20</div><div class="article-text"><h4>Governance & Management Accountability</h4><p>Board must approve cybersecurity measures and undergo training. Personal liability for management.</p><div class="phase-tags"><span class="phase-tag pt1">Phase 1</span><span class="phase-tag pt2">Phase 2</span></div></div></div>
-      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(a)</div><div class="article-text"><h4>Risk Analysis & IS Policies</h4><p>Comprehensive risk assessment across IT, OT (SCADA/PLCs), and cloud environments.</p><div class="phase-tags"><span class="phase-tag pt1">Phase 1</span><span class="phase-tag pt3">Phase 3</span></div></div></div>
-      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(b)</div><div class="article-text"><h4>Incident Handling</h4><p>24-hour early warning, 72-hour notification, 30-day final report to national CSIRTs.</p><div class="phase-tags"><span class="phase-tag pt2">Phase 2</span></div></div></div>
-      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(c)</div><div class="article-text"><h4>Business Continuity & Crisis Management</h4><p>Backup management, disaster recovery for production systems and cold chain infrastructure.</p><div class="phase-tags"><span class="phase-tag pt2">Phase 2</span><span class="phase-tag pt3">Phase 3</span></div></div></div>
-      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(d)</div><div class="article-text"><h4>Supply Chain Security</h4><p>Raw material suppliers, logistics partners, SaaS vendors. Contract clauses and SAQs required.</p><div class="phase-tags"><span class="phase-tag pt1">Phase 1</span><span class="phase-tag pt3">Phase 3</span></div></div></div>
-      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(e)</div><div class="article-text"><h4>Acquisition & Development Security</h4><p>Secure development lifecycle for ERP transformation and data platform integrations.</p><div class="phase-tags"><span class="phase-tag pt3">Phase 3</span></div></div></div>
-      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(f)</div><div class="article-text"><h4>Vulnerability Handling & Disclosure</h4><p>Patch management across IT and OT. Vulnerability disclosure policy and process.</p><div class="phase-tags"><span class="phase-tag pt3">Phase 3</span><span class="phase-tag pt4">Phase 4</span></div></div></div>
-      <div class="article-item stagger-item"><div class="article-badge">Art. 23</div><div class="article-text"><h4>Notification Obligations</h4><p>Multi-jurisdiction reporting to SE/DK/FI authorities. Templates and escalation procedures.</p><div class="phase-tags"><span class="phase-tag pt2">Phase 2</span><span class="phase-tag pt4">Phase 4</span></div></div></div>
+      <div class="article-item stagger-item"><div class="article-badge">Art. 20</div><div class="article-text"><h4>Governance & Management Accountability</h4><p>Board must approve cybersecurity measures and undergo training. Personal liability for management.</p><div class="phase-tags"><span class="phase-tag pt1">Phase 1</span><span class="phase-tag pt2">Phase 2</span><span class="phase-tag pt3">Phase 3</span></div></div></div>
+      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(a)</div><div class="article-text"><h4>Risk Analysis & IS Policies</h4><p>Comprehensive risk assessment and information security policy development across all domains.</p><div class="phase-tags"><span class="phase-tag pt2">Phase 2</span><span class="phase-tag pt3">Phase 3</span></div></div></div>
+      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(b)</div><div class="article-text"><h4>Incident Handling</h4><p>24-hour early warning, 72-hour notification, 30-day final report to national CSIRTs.</p><div class="phase-tags"><span class="phase-tag pt3">Phase 3</span></div></div></div>
+      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(c)</div><div class="article-text"><h4>Business Continuity & Crisis Management</h4><p>Backup management, disaster recovery planning, and business continuity procedures.</p><div class="phase-tags"><span class="phase-tag pt2">Phase 2</span><span class="phase-tag pt3">Phase 3</span></div></div></div>
+      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(d)</div><div class="article-text"><h4>Supply Chain Security</h4><p>Assessment criteria for suppliers and service providers. Contract requirements and risk classification.</p><div class="phase-tags"><span class="phase-tag pt2">Phase 2</span><span class="phase-tag pt3">Phase 3</span></div></div></div>
+      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(e)</div><div class="article-text"><h4>Acquisition & Development Security</h4><p>Secure development lifecycle requirements for systems and network development.</p><div class="phase-tags"><span class="phase-tag pt2">Phase 2</span><span class="phase-tag pt4">Phase 4</span></div></div></div>
+      <div class="article-item stagger-item"><div class="article-badge">Art. 21(2)(f)</div><div class="article-text"><h4>Vulnerability Handling & Disclosure</h4><p>Vulnerability management processes and responsible disclosure policies.</p><div class="phase-tags"><span class="phase-tag pt2">Phase 2</span><span class="phase-tag pt3">Phase 3</span></div></div></div>
+      <div class="article-item stagger-item"><div class="article-badge">Art. 23</div><div class="article-text"><h4>Notification Obligations</h4><p>Multi-jurisdiction reporting procedures and escalation framework for national authorities.</p><div class="phase-tags"><span class="phase-tag pt3">Phase 3</span><span class="phase-tag pt4">Phase 4</span></div></div></div>
     </div>
   </section>
 
@@ -398,33 +412,12 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
   <section class="section" data-reveal>
     <h2 class="section-title">Key Programme Risks</h2>
     <div class="risks-grid">
-      <div class="risk-card stagger-item"><div class="risk-level high">HIGH</div><h4>Multi-Jurisdiction Complexity</h4><p>3 EU member states + Norway (EEA). Different transposition timelines and sector-specific authorities.</p><div class="mitigation">Mitigation: Unified compliance framework with country-specific addenda</div></div>
-      <div class="risk-card stagger-item"><div class="risk-level high">HIGH</div><h4>OT/IT Convergence</h4><p>Production SCADA systems may lack modern security controls. Segmentation without disrupting operations.</p><div class="mitigation">Mitigation: Phased OT assessment with production-safe testing windows</div></div>
-      <div class="risk-card stagger-item"><div class="risk-level medium">MEDIUM</div><h4>Supply Chain Depth</h4><p>Global supply chain with varying digital maturity. Tier-2+ supplier visibility limited.</p><div class="mitigation">Mitigation: Risk-based tiering, focus SAQs on critical suppliers first</div></div>
-      <div class="risk-card stagger-item"><div class="risk-level medium">MEDIUM</div><h4>Swedish Transposition Delay</h4><p>Sweden (HQ jurisdiction) still in legislative process. Requirements may shift.</p><div class="mitigation">Mitigation: Build to directive baseline, adapt when national law finalised</div></div>
-      <div class="risk-card stagger-item"><div class="risk-level medium">MEDIUM</div><h4>HQ/Group Alignment</h4><p>Swiss parent may have own security standards. Need to align Nordic programme with group framework.</p><div class="mitigation">Mitigation: Early engagement with HQ CISO/security team</div></div>
-      <div class="risk-card stagger-item"><div class="risk-level medium">MEDIUM</div><h4>Resource Availability</h4><p>Nordic team of ~130. Key SMEs may be stretched across compliance + BAU operations.</p><div class="mitigation">Mitigation: Dedicated programme resource + clear time allocation agreements</div></div>
-    </div>
-  </section>
-
-  <!-- RESOURCE TABLE -->
-  <section class="section" data-reveal>
-    <h2 class="section-title">Indicative Resource Requirements</h2>
-    <div class="resource-table-wrap">
-      <table class="resource-table">
-        <thead><tr><th>Role</th><th>Phase 1 (W1-4)</th><th>Phase 2 (W3-8)</th><th>Phase 3 (W5-12)</th><th>Phase 4 (W10-14)</th><th>Total</th></tr></thead>
-        <tbody>
-          <tr><td><strong style="color:var(--text)">Programme Manager</strong></td><td>18 days</td><td>24 days</td><td>40 days</td><td>22 days</td><td><strong style="color:var(--gold)">104 days</strong></td></tr>
-          <tr><td>Security Architect / OT Specialist</td><td>12 days</td><td>8 days</td><td>35 days</td><td>12 days</td><td><strong style="color:var(--text)">67 days</strong></td></tr>
-          <tr><td>Compliance / Legal Advisor</td><td>10 days</td><td>14 days</td><td>10 days</td><td>14 days</td><td><strong style="color:var(--text)">48 days</strong></td></tr>
-          <tr><td>Internal IT Team</td><td>16 days</td><td>12 days</td><td>32 days</td><td>12 days</td><td><strong style="color:var(--text)">72 days</strong></td></tr>
-          <tr><td style="color:var(--orange)">Additional OT/Network Engineer</td><td>&mdash;</td><td>&mdash;</td><td>24 days</td><td>8 days</td><td><strong style="color:var(--text)">32 days</strong></td></tr>
-          <tr class="total-row"><td>Total</td><td>56 days</td><td>58 days</td><td>141 days</td><td>68 days</td><td>323 days</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div style="margin-top:20px;padding:16px 20px;background:rgba(224,82,82,0.08);border:1px solid rgba(224,82,82,0.2);border-radius:10px;font-size:14px;color:var(--text-muted);line-height:1.7;">
-      <strong style="color:var(--red);">Accelerated Timeline Note:</strong> Compressing from 24 to 14 weeks requires ~30% more resource days (323 vs. 275), an additional OT/Network Engineer, and significantly more parallel execution. Peak weeks (W5&ndash;8) will see 3 phases running simultaneously. Executive sponsor availability for fast decisions is critical path.
+      <div class="risk-card stagger-item"><div class="risk-level medium">MEDIUM</div><h4>Multi-Jurisdiction Complexity</h4><p>Multiple Nordic jurisdictions with different transposition timelines and sector-specific authorities.</p><div class="mitigation">Mitigation: Unified compliance framework with country-specific addenda</div></div>
+      <div class="risk-card stagger-item"><div class="risk-level medium">MEDIUM</div><h4>Stakeholder Availability</h4><p>Key subject matter experts may be stretched across compliance work and BAU operations.</p><div class="mitigation">Mitigation: Structured interview schedule agreed upfront with management commitment</div></div>
+      <div class="risk-card stagger-item"><div class="risk-level medium">MEDIUM</div><h4>HQ/Group Alignment</h4><p>Parent company may have existing security standards. Need to align governance programme with group framework.</p><div class="mitigation">Mitigation: Early engagement with HQ security team to understand existing baselines</div></div>
+      <div class="risk-card stagger-item"><div class="risk-level medium">MEDIUM</div><h4>Documentation Gaps</h4><p>Existing policies may be informal or outdated. Limited baseline documentation increases assessment effort.</p><div class="mitigation">Mitigation: Phase 1 document review identifies gaps early, adjusts interview depth</div></div>
+      <div class="risk-card stagger-item"><div class="risk-level medium">MEDIUM</div><h4>Supply Chain Depth</h4><p>Global supply chain with varying digital maturity. Tier-2+ supplier visibility may be limited.</p><div class="mitigation">Mitigation: Risk-based tiering, focus assessment criteria on critical suppliers first</div></div>
+      <div class="risk-card stagger-item"><div class="risk-level low">LOW</div><h4>Transposition Delays</h4><p>National transposition timelines may shift, affecting specific requirements.</p><div class="mitigation">Mitigation: Build to EU Directive baseline, adapt when national law finalised</div></div>
     </div>
   </section>
 
@@ -432,7 +425,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text);
 
 <!-- CTA -->
 <section class="cta-section" data-reveal>
-  <h2>Ready to start your NIS2 programme?</h2>
+  <h2>Ready to start your NIS2 governance programme?</h2>
   <p>18+ years of programme management in regulated environments. Let's build a compliance roadmap tailored to your organisation.</p>
   <a href="https://stevenwensley.com/book-session.html" class="btn-cta gradient-animated">Book a Session</a>
 </section>
@@ -465,7 +458,7 @@ const sObs = new IntersectionObserver((entries) => {
 document.querySelectorAll('.phases-grid, .article-grid, .risks-grid').forEach(el => sObs.observe(el));
 
 // GA4 tracking
-gtag('event', 'roadmap_view', { event_category: 'NIS2', event_label: 'implementation_roadmap' });
+gtag('event', 'roadmap_view', { event_category: 'NIS2', event_label: 'governance_roadmap' });
 </script>
 </body>
 </html>
