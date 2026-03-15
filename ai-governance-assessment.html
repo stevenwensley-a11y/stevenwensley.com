@@ -4,6 +4,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-17Y98NY34Y"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-17Y98NY34Y');</script>  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
 <meta name="view-transition" content="same-origin">
   <title>AI Governance Readiness Assessment | Steven Wensley</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -246,6 +247,8 @@
       const [email, setEmail] = useState("");
       const [showEmailPrompt, setShowEmailPrompt] = useState(false);
       const [industry, setIndustry] = useState("");
+      const [showPdfGate, setShowPdfGate] = useState(false);
+      const [pdfEmail, setPdfEmail] = useState("");
 
       const t = (da, en) => (lang === "da" ? da : en);
 
@@ -461,14 +464,92 @@
         doc.save('AI-Governance-Report-' + new Date().toISOString().split('T')[0] + '.pdf');
       };
 
+      const handlePdfClick = () => {
+        if (email && email.includes('@')) {
+          // Already have email from earlier prompt
+          generatePDF();
+          gtag('event', 'assessment_pdf_download', { event_category: 'lead' });
+        } else {
+          setShowPdfGate(true);
+        }
+      };
+
+      const handlePdfGateSubmit = () => {
+        if (pdfEmail && pdfEmail.includes('@')) {
+          const dimScores = scores.reduce((acc, s) => { acc[s.name] = s.pct + '%'; return acc; }, {});
+          fetch('https://formspree.io/f/xpqjldbp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              _subject: 'AI Governance Assessment — PDF download lead',
+              email: pdfEmail,
+              samlet_score: totalPct + '%',
+              ...dimScores
+            })
+          }).catch(() => {});
+          setEmail(pdfEmail);
+          setShowPdfGate(false);
+          generatePDF();
+          gtag('event', 'assessment_pdf_lead_captured', { event_category: 'lead' });
+        }
+      };
+
       const handleFinish = () => { setShowEmailPrompt(true); };
-      const handleShowResults = () => { setShowEmailPrompt(false); setShowResults(true); };
+      const handleShowResults = () => {
+        // Send lead to Formspree if email provided
+        if (email && email.includes('@')) {
+          const dimScores = scores.reduce((acc, s) => { acc[s.name] = s.pct + '%'; return acc; }, {});
+          fetch('https://formspree.io/f/xpqjldbp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              _subject: 'AI Governance Assessment — ny lead',
+              email: email,
+              branche: industry || 'Ikke angivet',
+              samlet_score: totalPct + '%',
+              ...dimScores
+            })
+          }).catch(() => {});
+          gtag('event', 'assessment_lead_captured', { event_category: 'lead', event_label: industry || 'unknown' });
+        }
+        setShowEmailPrompt(false);
+        setShowResults(true);
+      };
 
       // RESULTS PAGE
       if (showResults) {
         const sortedScores = [...scores].sort((a, b) => a.pct - b.pct);
         return (
           <div style={{ minHeight: "100vh", background: "#0C0C12", color: "#E8E8ED", fontFamily: "'Space Grotesk', -apple-system, sans-serif" }}>
+            {/* PDF Email Gate Modal */}
+            {showPdfGate && (
+              <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.8)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center" }}
+                onClick={(e) => { if (e.target === e.currentTarget) setShowPdfGate(false); }}>
+                <div className="fade-in" style={{ background: "#161620", border: "1px solid #C9A96E44", borderRadius: 16, padding: 32, maxWidth: 400, width: "90%", textAlign: "center" }}>
+                  <div style={{ fontSize: 36, marginBottom: 12 }}>📄</div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "#C9A96E", marginBottom: 8 }}>
+                    {t("Indtast din email for PDF-rapporten", "Enter your email for the PDF report")}
+                  </h3>
+                  <p style={{ fontSize: 13, color: "#9CA3AF", marginBottom: 20, lineHeight: 1.5 }}>
+                    {t("Vi sender dig kun rapporten — ingen spam.", "We'll only send you the report — no spam.")}
+                  </p>
+                  <input type="email" placeholder={t("Din arbejdsmail", "Your work email")}
+                    value={pdfEmail} onChange={(e) => setPdfEmail(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') handlePdfGateSubmit(); }}
+                    style={{ width: "100%", padding: "12px 16px", borderRadius: 8, border: "1px solid #333", background: "#0C0C12", color: "#E8E8ED", fontSize: 14, marginBottom: 16, outline: "none", boxSizing: "border-box" }} />
+                  <button onClick={handlePdfGateSubmit}
+                    style={{ width: "100%", background: "#C9A96E", color: "#0C0C12", padding: "12px 20px", borderRadius: 8, fontSize: 15, fontWeight: 700, border: "none", cursor: "pointer", marginBottom: 8 }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = "#D4B896"}
+                    onMouseLeave={(e) => e.currentTarget.style.background = "#C9A96E"}>
+                    {t("Download PDF", "Download PDF")} →
+                  </button>
+                  <button onClick={() => setShowPdfGate(false)}
+                    style={{ background: "transparent", border: "none", color: "#666", fontSize: 12, cursor: "pointer", padding: 4 }}>
+                    {t("Annuller", "Cancel")}
+                  </button>
+                </div>
+              </div>
+            )}
             <div className="fade-in" style={{ maxWidth: 1000, margin: "0 auto", padding: "40px 20px" }}>
               <div style={{ textAlign: "center", marginBottom: 40 }}>
                 <h1 style={{ fontSize: 28, fontWeight: 700, color: "#C9A96E", marginBottom: 8 }}>
@@ -568,7 +649,7 @@
                     <p style={{ fontSize: 13, color: "#9CA3AF", marginBottom: 16, lineHeight: 1.5 }}>
                       {t("Få en PDF med din score, radar chart og skræddersyede anbefalinger for alle 6 dimensioner.", "Get a PDF with your score, radar chart, and tailored recommendations for all 6 dimensions.")}
                     </p>
-                    <button onClick={generatePDF}
+                    <button onClick={handlePdfClick}
                       style={{ width: "100%", background: "#C9A96E", color: "#0C0C12", padding: "12px 20px", borderRadius: 8, fontSize: 15, fontWeight: 700, border: "none", cursor: "pointer", transition: "all 0.2s ease" }}
                       onMouseEnter={(e) => e.currentTarget.style.background = "#D4B896"}
                       onMouseLeave={(e) => e.currentTarget.style.background = "#C9A96E"}>

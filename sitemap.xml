@@ -82,8 +82,14 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stevenwensley.com/book-session.html</loc>
-    <lastmod>2026-02-26</lastmod>
+    <loc>https://stevenwensley.com/nis2-gap-assessment.html</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stevenwensley.com/nis2-implementation-roadmap.html</loc>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
