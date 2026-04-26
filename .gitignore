@@ -1,4 +1,7 @@
 node_modules/
-package-lock.json
 tests/screenshots/
 .lighthouseci/
+
+# Eleventy builds directly to project root (output: ".") so no separate
+# _site/ exists by default. Defensive ignore in case anyone misconfigures.
+_site/
