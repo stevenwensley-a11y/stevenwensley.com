@@ -76,15 +76,15 @@ jobs:
           sleep 2
       - name: Run Lighthouse on key pages
         run: |
-          # Auto-discover HTML files (max 6 for CI speed)
-          PAGES=()
-          if [ -f "index.html" ]; then
-            PAGES+=("http://localhost:8080/index.html")
-          fi
-          for f in $(find . -maxdepth 1 -name "*.html" -not -name "index.html" -not -name "*backup*" | sort | head -5); do
-            PAGE=$(basename "$f")
-            PAGES+=("http://localhost:8080/$PAGE")
-          done
+          # Curated list spanning landing, services, insights hub, one article and one tool
+          PAGES=(
+            "http://localhost:8080/index.html"
+            "http://localhost:8080/services.html"
+            "http://localhost:8080/insights.html"
+            "http://localhost:8080/insights/ai-governance-starter-kit.html"
+            "http://localhost:8080/ai-governance-assessment.html"
+            "http://localhost:8080/book-session.html"
+          )
           if [ ${#PAGES[@]} -eq 0 ]; then
             echo "No HTML pages found for Lighthouse"
             exit 0
