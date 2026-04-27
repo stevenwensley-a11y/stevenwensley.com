@@ -23,6 +23,7 @@ committed copy drifts from the freshly built version.
 | `/feed.xml` | `collections.insights` | `/src/feed.njk` (Atom 1.0) |
 | `/feed.json` | `collections.insights` | `/src/feed.json.njk` (JSON Feed 1.1) |
 | `/insights/*.html` | `/src/insights/<slug>.html` + `_layouts/article.njk` | Eleventy |
+| `/fonts/*.woff2` + `/fonts/fonts.css` | Google Fonts API | `/scripts/fetch-fonts.py` (one-shot, idempotent) |
 
 
 GitHub Pages serves the **repository root** as the document root. So
@@ -147,6 +148,40 @@ npm run build:watch   # rebuild on /src/ changes
 npm run serve         # 11ty dev server on :8080 with live reload
 npm run verify        # build + diff against committed /insights/
 ```
+
+## Self-hosted fonts (PR #4)
+
+Two webfonts are served from `/fonts/`, downloaded once from Google
+Fonts and committed:
+
+- **DM Serif Display** 400 + 400 italic (display headings)
+- **Space Grotesk** 300, 400, 500, 600, 700 (body + UI)
+
+Each weight × style is split into Latin, Latin Extended, and (for Space
+Grotesk) Vietnamese unicode-range subsets — exactly as Google Fonts
+serves them. Browsers fetch only the subsets they need based on the
+`unicode-range` declarations in `/fonts/fonts.css`. Typical English
+page hits 2 files; a Danish page hits 4.
+
+Why self-host:
+
+| Before | After |
+|---|---|
+| 5 network connections (preconnect ×2 + CSS + 2 woff2, all to fonts.googleapis.com / fonts.gstatic.com) | 3 same-origin requests (CSS + 2 preloaded woff2) |
+| Third-party data leak: Google sees every page view via the CSS request | Zero third-party font requests |
+| Font version pinned to whatever Google serves today | Font version pinned to the woff2 in `/fonts/` (refresh via `npm run fetch:fonts`) |
+| GDPR concern in EU jurisdictions (German court rulings 2022) | No external transfer triggered by font load |
+
+To refresh fonts (e.g. when adding a weight or pinning a new version):
+
+```sh
+python3 scripts/fetch-fonts.py
+git add fonts/
+git commit -m "fonts: refresh"
+```
+
+The script is idempotent — already-downloaded files are skipped on
+subsequent runs.
 
 ## SEO + syndication infrastructure (PR #3)
 
