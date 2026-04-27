@@ -1,0 +1,30 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.shortName }} — Insights</title>
+  <subtitle>{{ site.tagline }}</subtitle>
+  <link href="{{ site.url }}/feed.xml" rel="self"/>
+  <link href="{{ site.url }}/insights.html"/>
+  {%- set latest = (collections.insights | orderByDate(1))[0] %}
+  <updated>{{ (latest.data.dateModified or latest.data.datePublished) | rfc3339 }}</updated>
+  <id>{{ site.url }}/feed.xml</id>
+  <author>
+    <name>{{ site.author.name }}</name>
+    <uri>{{ site.author.url }}</uri>
+  </author>
+  {%- for article in collections.insights | orderByDate(20) %}
+  <entry>
+    <title>{{ article.data.title }}</title>
+    <link href="{{ site.url }}{{ article.url }}"/>
+    <id>{{ site.url }}{{ article.url }}</id>
+    <published>{{ article.data.datePublished | rfc3339 }}</published>
+    <updated>{{ (article.data.dateModified or article.data.datePublished) | rfc3339 }}</updated>
+    <summary>{{ article.data.description }}</summary>
+    {%- for t in (article.data.tags or []) %}{% if t !== "insights" %}
+    <category term="{{ t }}"/>{% endif %}{% endfor %}
+  </entry>
+  {%- endfor %}
+</feed>

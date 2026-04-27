@@ -1,0 +1,32 @@
+---
+permalink: /feed.json
+eleventyExcludeFromCollections: true
+---
+{%- set latest = (collections.insights | orderByDate(1))[0] -%}
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "{{ site.shortName }} — Insights",
+  "description": "{{ site.tagline }}",
+  "home_page_url": "{{ site.url }}/insights.html",
+  "feed_url": "{{ site.url }}/feed.json",
+  "language": "en",
+  "icon": "{{ site.ogImage }}",
+  "authors": [{
+    "name": "{{ site.author.name }}",
+    "url": "{{ site.author.url }}"
+  }],
+  "items": [
+    {%- for article in collections.insights | orderByDate(20) %}
+    {
+      "id": "{{ site.url }}{{ article.url }}",
+      "url": "{{ site.url }}{{ article.url }}",
+      "title": {{ article.data.title | dump | safe }},
+      "summary": {{ article.data.description | dump | safe }},
+      "date_published": "{{ article.data.datePublished | rfc3339 }}",
+      "date_modified": "{{ (article.data.dateModified or article.data.datePublished) | rfc3339 }}",
+      "tags": {{ (article.data.tags or []) | dump | safe }},
+      "authors": [{ "name": "{{ site.author.name }}" }]
+    }{% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}

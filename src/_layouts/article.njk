@@ -11,15 +11,26 @@
      permalink:       string, /insights/<slug>.html (set per article)
      datePublished:   ISO date 2026-MM-DD
      dateModified:    ISO date
-     tag:             string, e.g. "AI Governance"
+     tag:             string display label, e.g. "AI Governance"
+     tags:            array of slugs incl. "insights" for collection membership;
+                      others are topical for tag-based "related" matching
+                      e.g. ["insights", "governance", "eu-ai-act"]
      displayDate:     string, e.g. "3 Mar 2026"
      readTime:        string, e.g. "7 min read"
      lead:            string, the dek paragraph after the h1
      linkedinUrl:     string, link to LinkedIn post (optional, defaults to author)
-     related:         array of { slug, title, description }, exactly 2
+     related:         OPTIONAL array of { slug, title, description }. If
+                      omitted, layout auto-fills 2 articles by tag overlap.
 
-   Body content is the rendered Markdown / Nunjucks below the frontmatter.
+   Body content is the HTML below the `---` frontmatter terminator.
 #}
+{# Auto-build BreadcrumbList for SERP rich snippets:
+   Home → Insights → <article title> #}
+{%- set breadcrumbs = [
+  { name: "Home", url: site.url + "/" },
+  { name: "Insights", url: site.url + "/insights.html" },
+  { name: title, url: site.url + page.url }
+] -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,10 +68,27 @@
       </div>
     </article>
 
+    {#- Related articles. If frontmatter sets `related`, use it verbatim
+       (manual editorial override). Otherwise fall back to tag-based
+       auto-discovery via the `relatedByTags` filter, picking 2 articles
+       with highest tag overlap, ties broken by recency. #}
+    {%- if related and related.length > 0 -%}
+      {%- set relatedItems = [] -%}
+      {%- for r in related -%}
+        {%- set _ = relatedItems.push({ slug: r.slug, title: r.title, description: r.description }) -%}
+      {%- endfor -%}
+    {%- else -%}
+      {%- set autoRelated = collections.insights | relatedByTags(page.url, tags, 2) -%}
+      {%- set relatedItems = [] -%}
+      {%- for r in autoRelated -%}
+        {%- set _ = relatedItems.push({ slug: r.fileSlug, title: r.data.title, description: r.data.description }) -%}
+      {%- endfor -%}
+    {%- endif %}
+    {%- if relatedItems.length > 0 %}
     <div class="related">
       <h3>Related Articles</h3>
       <div class="related-list">
-        {%- for r in related %}
+        {%- for r in relatedItems %}
         <a href="{{ r.slug }}.html" class="related-item">
           <h4>{{ r.title }}</h4>
           <p>{{ r.description }}</p>
@@ -68,6 +96,7 @@
         {%- endfor %}
       </div>
     </div>
+    {%- endif %}
 
     {%- if cta %}
     <div class="cta-section">

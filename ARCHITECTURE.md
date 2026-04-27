@@ -11,6 +11,20 @@ The site is a static, multi-language portfolio + lead-gen funnel for an AI
 governance / programme management consultancy in Copenhagen. It is hosted
 on **GitHub Pages** at the apex domain `stevenwensley.com` (via `CNAME`).
 
+## Auto-generated artefacts
+
+These files are **build outputs** — do not edit by hand. They are
+regenerated from `/src/` on every `npm run build` and CI fails if the
+committed copy drifts from the freshly built version.
+
+| File | Source | Generator |
+|---|---|---|
+| `/sitemap.xml` | `/src/_data/staticPages.js` + `collections.insights` | `/src/sitemap.njk` |
+| `/feed.xml` | `collections.insights` | `/src/feed.njk` (Atom 1.0) |
+| `/feed.json` | `collections.insights` | `/src/feed.json.njk` (JSON Feed 1.1) |
+| `/insights/*.html` | `/src/insights/<slug>.html` + `_layouts/article.njk` | Eleventy |
+
+
 GitHub Pages serves the **repository root** as the document root. So
 `/index.html`, `/services.html`, `/insights/foo.html` etc. are the actual
 deployed URLs.
@@ -96,10 +110,19 @@ of `article.njk`. Required:
 - `slug`, `permalink: /insights/<slug>.html`
 - `canonical`, `hreflang` (array)
 - `datePublished`, `dateModified`
-- `tag`, `displayDate`, `readTime`, `lead`
-- `jsonLd` (raw object dumped into `<script type="application/ld+json">`)
-- `related` (array of 2 link objects)
+- `tag` (singular display label) and `tags` (array, must include `"insights"` for collection membership; other entries are topical for tag-based "related" matching)
+- `displayDate`, `readTime`, `lead`
+- `jsonLd` (raw object emitted as Article schema)
 - `cta` (heading, body, buttons, divider) — different per article
+
+Optional:
+- `related` — array of `{ slug, title, description }`. Manual override.
+  If omitted, the layout auto-fills 2 articles by tag overlap (uses the
+  `relatedByTags` filter in `eleventy.config.js`, ranking by shared
+  topical tag count and breaking ties by recency).
+
+`BreadcrumbList` JSON-LD is built automatically from `title` + `permalink`
+(Home → Insights → article) and emitted alongside the Article schema.
 
 Body (the article prose) lives below the `---` frontmatter terminator and
 is straight HTML.
@@ -125,7 +148,42 @@ npm run serve         # 11ty dev server on :8080 with live reload
 npm run verify        # build + diff against committed /insights/
 ```
 
+## SEO + syndication infrastructure (PR #3)
+
+The Eleventy build now emits:
+
+1. **`/sitemap.xml`** — auto-generated from `/src/_data/staticPages.js`
+   (hand-curated list of non-templated pages) plus `collections.insights`
+   (any article in `/src/insights/`). When a page migrates from root →
+   `/src/`, remove it from `staticPages.js` so the auto-discovery picks
+   it up via its frontmatter.
+
+2. **`/feed.xml`** (Atom 1.0) — for Feedly, NewsBlur, Inoreader and
+   anyone who reads via RSS aggregators. Auto-discovered by browsers via
+   `<link rel="alternate" type="application/atom+xml">` in every
+   article's `<head>`.
+
+3. **`/feed.json`** (JSON Feed 1.1) — modern alternative to RSS, well
+   supported by NetNewsWire, Reeder, and many feed-to-Slack/Discord
+   bridges. Same content as Atom; some readers prefer one over the
+   other.
+
+4. **`BreadcrumbList`** Schema.org JSON-LD on every insights article —
+   helps Google show breadcrumb trails in search results.
+
+5. **Tag-based "related articles"** — `relatedByTags` filter in
+   `eleventy.config.js` picks 2 articles with highest topical-tag
+   overlap. Excludes the `"insights"` collection tag from scoring.
+   Falls back to manual `related:` frontmatter if set (editorial
+   override always wins).
+
+6. **LinkedIn Insight Tag** scaffolding — disabled by default. Set
+   `site.linkedinInsightId` in `/src/_data/site.js` to a 7-digit
+   Campaign Manager partner ID to activate. Useful for future LinkedIn
+   Ads retargeting.
+
 ## What is NOT yet templated
 
-Everything outside `/insights/` is still hand-edited HTML at project root.
-See `MIGRATION.md` for the planned phasing and rationale.
+Everything outside `/insights/`, `/sitemap.xml`, `/feed.xml`, `/feed.json`
+is still hand-edited HTML at project root. See `MIGRATION.md` for the
+planned phasing and rationale.
