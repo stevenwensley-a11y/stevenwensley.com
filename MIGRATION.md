@@ -8,7 +8,10 @@ reviewability — see PR notes for scope of each.
 
 | Page / set                      | Status            | PR        |
 |---------------------------------|-------------------|-----------|
-| `/insights/*.html` (10 articles)| ✅ Templated       | #2 (this) |
+| `/insights/*.html` (10 articles)| ✅ Templated       | #2        |
+| `/sitemap.xml`                  | ✅ Auto-generated  | #3        |
+| `/feed.xml` (Atom)              | ✅ Auto-generated  | #3        |
+| `/feed.json` (JSON Feed)        | ✅ Auto-generated  | #3        |
 | `/insights.html` (hub)          | ⬜ Hand-edited     | Phase 2   |
 | `/privacy.html`                 | ⬜ Hand-edited     | Phase 2   |
 | `/404.html`                     | ⬜ Hand-edited     | Phase 2   |
@@ -89,21 +92,19 @@ page; massive Lighthouse Performance gain. ~1–2 days work per tool.
 QA report (PR #1) recommends 5b as "punkt 11". Either option is a
 separate set of PRs and deserves its own scope discussion.
 
-## Known broken links (carried over verbatim — to fix in a follow-up PR)
+## Known broken links — status
 
-The article footer (`_includes/footer.njk`) currently links to
-`/about.html` and `/contact.html`, which are 404s. These are preserved
-exactly as the pre-Eleventy site had them so this PR's diff is purely
-infrastructural.
+| Link | Was | Now (PR #3) |
+|---|---|---|
+| Footer "About" | `/about.html` (404) | `/#about` |
+| Footer "Book a Call" | `/contact.html` (404) | `/book-session.html` |
+| Footer "Contact" (Resources column) | `/contact.html` (404) | `/templates.html` |
+| Article CTA Calendly link | `https://calendly.com/steven-wensley/30min` | unchanged (still works on Steven's Calendly) |
 
-Recommended targets in the follow-up:
-- "About" → `/index.html#about` (anchor on home page)
-- "Book a Call" + "Contact" → `/book-session.html` (existing page) or
-  `/index.html#contact`
-
-Same applies to the article CTA, where some articles link to
-`https://calendly.com/steven-wensley/30min` — verify the Calendly URL
-still resolves and decide whether to consolidate to `/book-session.html`.
+Note that the broken links existed in **all** templated insights articles
+in the legacy site — the fix in PR #3 propagates to all 10 simultaneously
+because they share `_includes/footer.njk`. Same fix applied to
+hand-edited root pages would require 16 file edits.
 
 ## Why this phasing?
 

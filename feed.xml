@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Steven Wensley — Insights</title>
+  <subtitle>AI Governance &amp; Transformation</subtitle>
+  <link href="https://stevenwensley.com/feed.xml" rel="self"/>
+  <link href="https://stevenwensley.com/insights.html"/>
+  <updated>2026-04-26T00:00:00.000Z</updated>
+  <id>https://stevenwensley.com/feed.xml</id>
+  <author>
+    <name>Steven Seidenfaden Wensley</name>
+    <uri>https://stevenwensley.com</uri>
+  </author>
+  <entry>
+    <title>Danish Public Sector AI Governance Failure</title>
+    <link href="https://stevenwensley.com/insights/danish-public-sector-ai-governance.html"/>
+    <id>https://stevenwensley.com/insights/danish-public-sector-ai-governance.html</id>
+    <published>2026-04-19T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>Danish public institutions fail at AI governance from fragmented decision authority, not lack of regulation. Why power clarity matters most.</summary>
+    <category term="governance"/>
+    <category term="public-sector"/>
+    <category term="denmark"/>
+  </entry>
+  <entry>
+    <title>Pharma Lessons for EU AI Act</title>
+    <link href="https://stevenwensley.com/insights/pharma-lessons-for-ai-act.html"/>
+    <id>https://stevenwensley.com/insights/pharma-lessons-for-ai-act.html</id>
+    <published>2026-04-12T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>The EU AI Act mirrors pharma&#39;s compliance model. GxP validation, change control, and human oversight. Pharma managers already know how to run AI governance.</summary>
+    <category term="eu-ai-act"/>
+    <category term="pharma"/>
+    <category term="regulated"/>
+  </entry>
+  <entry>
+    <title>Programme Managers Are the Most Important Hire</title>
+    <link href="https://stevenwensley.com/insights/programme-managers-most-important-hire.html"/>
+    <id>https://stevenwensley.com/insights/programme-managers-most-important-hire.html</id>
+    <published>2026-04-05T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>AI governance needs a Chief AI Officer or governance specialist. Wrong. What you need first is a programme manager who can manage 50+ deliverables.</summary>
+    <category term="programme-management"/>
+    <category term="hiring"/>
+    <category term="leadership"/>
+  </entry>
+  <entry>
+    <title>Phased AI Governance Programme</title>
+    <link href="https://stevenwensley.com/insights/phased-ai-governance-programme.html"/>
+    <id>https://stevenwensley.com/insights/phased-ai-governance-programme.html</id>
+    <published>2026-03-29T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>Complex transformations succeed when structured in phases with clear exit criteria. Here&#39;s the four-phase AI governance model that delivers results.</summary>
+    <category term="governance"/>
+    <category term="programme-management"/>
+    <category term="implementation"/>
+  </entry>
+  <entry>
+    <title>AI Infrastructure Timing Problem</title>
+    <link href="https://stevenwensley.com/insights/ai-infrastructure-timing-problem.html"/>
+    <id>https://stevenwensley.com/insights/ai-infrastructure-timing-problem.html</id>
+    <published>2026-03-22T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>AI has become operational infrastructure in financial systems. Tools fail in isolation. Infrastructure cannot. Why governance cannot keep pace with AI speed.</summary>
+    <category term="governance"/>
+    <category term="infrastructure"/>
+    <category term="strategy"/>
+  </entry>
+  <entry>
+    <title>Human Oversight: Not a Rubber Stamp</title>
+    <link href="https://stevenwensley.com/insights/human-oversight-not-rubber-stamp.html"/>
+    <id>https://stevenwensley.com/insights/human-oversight-not-rubber-stamp.html</id>
+    <published>2026-03-15T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>Article 14 of the EU AI Act requires human oversight. Most organizations interpret it as passive observation. Here&#39;s what it actually means.</summary>
+    <category term="governance"/>
+    <category term="eu-ai-act"/>
+    <category term="oversight"/>
+  </entry>
+  <entry>
+    <title>Cost of AI Governance Inaction</title>
+    <link href="https://stevenwensley.com/insights/cost-of-doing-nothing.html"/>
+    <id>https://stevenwensley.com/insights/cost-of-doing-nothing.html</id>
+    <published>2026-03-08T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>The cost of doing nothing about AI governance exceeds the cost of building it by 5-10x. Fines, remediation, lost deals, and talent costs add up fast.</summary>
+    <category term="governance"/>
+    <category term="business-case"/>
+    <category term="risk"/>
+  </entry>
+  <entry>
+    <title>Shadow AI: Hidden Compliance Risk</title>
+    <link href="https://stevenwensley.com/insights/shadow-ai-hidden-compliance-risk.html"/>
+    <id>https://stevenwensley.com/insights/shadow-ai-hidden-compliance-risk.html</id>
+    <published>2026-03-01T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>Most organizations think they&#39;re running 3–5 AI systems. The actual number is usually 15–50. Here&#39;s how shadow AI happens and how to find it.</summary>
+    <category term="governance"/>
+    <category term="eu-ai-act"/>
+    <category term="compliance"/>
+  </entry>
+  <entry>
+    <title>5 Signs You Aren&#39;t Ready for EU AI Act</title>
+    <link href="https://stevenwensley.com/insights/five-signs-not-ready.html"/>
+    <id>https://stevenwensley.com/insights/five-signs-not-ready.html</id>
+    <published>2026-02-22T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>Five clear signs your organization lacks AI governance foundations. And what to do about each one. Five months until the deadline. You still have time.</summary>
+    <category term="governance"/>
+    <category term="readiness"/>
+    <category term="diagnostics"/>
+  </entry>
+  <entry>
+    <title>AI Governance Starter Kit</title>
+    <link href="https://stevenwensley.com/insights/ai-governance-starter-kit.html"/>
+    <id>https://stevenwensley.com/insights/ai-governance-starter-kit.html</id>
+    <published>2026-02-15T00:00:00.000Z</published>
+    <updated>2026-04-26T00:00:00.000Z</updated>
+    <summary>Most organizations skip the hard work. Here&#39;s the actual 4-step starter kit for AI governance before you hire someone or wait for guidance.</summary>
+    <category term="governance"/>
+    <category term="foundations"/>
+    <category term="policy"/>
+  </entry>
+</feed>

@@ -41,8 +41,20 @@ hand-edited and the planned phasing.
 ## Adding an article
 
 1. Copy an existing `/src/insights/<slug>.html` and edit frontmatter +
-   body.
+   body. Pick `tags:` carefully — they drive auto-related-articles
+   matching.
 2. Run `npm run build`.
 3. Commit both `/src/insights/<slug>.html` and the generated
-   `/insights/<slug>.html`.
-4. Add the URL to `/sitemap.xml`.
+   `/insights/<slug>.html`. The article will automatically appear in
+   `/sitemap.xml`, `/feed.xml`, and `/feed.json` on the next build —
+   no extra step required.
+
+## Feeds + sitemap
+
+- `https://stevenwensley.com/sitemap.xml` — Google + Bing crawler index
+- `https://stevenwensley.com/feed.xml` — Atom for Feedly / NewsBlur etc.
+- `https://stevenwensley.com/feed.json` — JSON Feed 1.1
+
+All three are auto-generated from `/src/`. Static pages in the sitemap
+come from `/src/_data/staticPages.js`; insights are pulled from the
+`collections.insights` Eleventy collection.
