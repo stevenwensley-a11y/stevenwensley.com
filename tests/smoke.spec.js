@@ -90,10 +90,15 @@ const VIEWPORTS = [
 ];
 
 // Only screenshot key pages (not all 30)
-const KEY_PAGES = ALL_PAGES.filter(p =>
-  ['index.html', 'services.html', 'priser.html', 'om.html', 'foer-efter.html'].includes(p) ||
-  p === ALL_PAGES[0] // Always include first page
-).slice(0, 6);
+const KEY_PAGE_NAMES = [
+  'index.html',
+  'index-da.html',
+  'services.html',
+  'insights.html',
+  'book-session.html',
+  'ai-governance-assessment.html',
+];
+const KEY_PAGES = ALL_PAGES.filter(p => KEY_PAGE_NAMES.includes(p)).slice(0, 6);
 
 test.describe('Responsive Screenshots', () => {
   for (const page of KEY_PAGES) {
