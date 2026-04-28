@@ -3,6 +3,35 @@
 This file is a high-level log of merged PRs. Each PR description on
 GitHub remains the source of truth; this is a quick scannable index.
 
+## PR #4 — Self-hosted fonts + 404 tracking  *(claude/self-hosted-fonts)*
+
+**Privacy + performance hardening across all 26 pages.**
+
+Self-hosted fonts (item K from improvements roster):
+- 19 woff2 files (~290 KB committed total) for DM Serif Display +
+  Space Grotesk, downloaded via `/scripts/fetch-fonts.py` (idempotent
+  re-fetch).
+- `/fonts/fonts.css` carries the original `unicode-range` declarations
+  so browsers still fetch only the subsets they need (Latin only on
+  English pages, Latin + Latin-ext on Danish, etc).
+- Two key woff2 files preloaded in `<head>` for above-the-fold paint.
+- Removed all preconnects to `fonts.googleapis.com` /
+  `fonts.gstatic.com`.
+- Side-fix: 404.html, book-session.html, templates.html were loading
+  Inter + Playfair Display from Google but their CSS used DM Serif
+  Display + Space Grotesk. They've been showing system fallbacks for
+  who knows how long. Now load the right fonts.
+
+GA4 404 tracking (item L):
+- 404.html now fires `gtag('event', 'page_not_found', { page_location,
+  referrer })` so dead URLs surface in GA4 reports.
+
+Net effect:
+- 5 third-party network connections → 0 (no Google contact on every
+  page view)
+- GDPR cleanup (relevant for the AI governance positioning)
+- Font version now pinned to repo, not whatever Google serves
+
 ## PR #3 — SEO + syndication leverage  *(claude/seo-syndication)*
 
 Builds on the Eleventy infrastructure from PR #2 to add:
